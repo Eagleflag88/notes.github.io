@@ -43,7 +43,7 @@ nav:
   - Home: index.md
   - Deep Learning:
     - Transformer:
-      - Transformer: Transformer.md
+      - Basics: Transformer.md
       - Swin Transformer: Swin-Transformer.md
       - DETR: DETR.md
       - Deformable Detr: Deformable Detr.md
