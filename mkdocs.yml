@@ -4,8 +4,8 @@ site_url: https://eagleflag88.github.io/notes.github.io/ # Change this to your s
 
 theme:
     name: 'material'
-    logo: assets/meta/favicons.png
-    favicon: assets/meta/favicons.png
+    logo: assets/meta/AD.jpeg
+    favicon: assets/meta/AD.jpeg
     custom_dir: overrides
     font:
         text: Ubuntu
