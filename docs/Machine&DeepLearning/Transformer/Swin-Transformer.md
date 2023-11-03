@@ -5,7 +5,7 @@ share: true
 # Concept
 - 提出一个hierarchical的transformer结构。通过shifted windows这个block实现；
 - limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection
--  hierarchical feature maps and has linear computational complexity to image size;
+-  hierarchical feature maps and has linear computational complexity to image size; ss
 
 # Problem
 - 视觉模态中我们需要关注各个尺度的问题；
