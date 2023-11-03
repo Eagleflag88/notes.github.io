@@ -6,6 +6,7 @@ share: true
 [详解](https://zhuanlan.zhihu.com/p/520666550)
 
 # Deformable Attention
+
 - 输入：
 1. Feature map，维度CxHxW。
 2. Query element: $z_q$。
