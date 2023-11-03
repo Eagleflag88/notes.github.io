@@ -2,3 +2,8 @@
 desktop.ini
 Pipfile
 Pipfile.lock
+encryptcontent.cache
+docs/assets/graph.html
+overrides/hooks/__pycache__/on_env.cpython-39.pyc
+overrides/hooks/__pycache__/on_files.cpython-39.pyc
+overrides/hooks/__pycache__/on_page_markdown.cpython-39.pyc

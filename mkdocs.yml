@@ -40,10 +40,11 @@ theme:
         - search.highlight
 
 nav:
-  - Home: 'index.md'
-  - 'ML':
-    - 'Writing your docs': 'DETR.md'
-    - 'Styling your docs': 'Transformer.md'
+  - Home: index.md
+  - ML:
+    - Transformer:
+      - Transformer: Transformer.md
+      - DETR: DETR.md
 
 # Extensions
 markdown_extensions:
