@@ -13,7 +13,7 @@ share: true
 [猛猿](https://www.zhihu.com/question/347678607)
 
 ## 现有方法及其缺点
-- 方法一：直接用token的index，会有数值上的问题；
+- 方法一：直接用token的index，会有数值上的问题；s
 - 方法二：Normalized过后的index，不同长度的序列的步长是不一致的；
 - 方法三：利用二进制向量表述位置信息，离散的向量，无法训练；
 
