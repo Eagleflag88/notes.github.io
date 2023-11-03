@@ -38,12 +38,7 @@ theme:
         - navigation.expand
         - search.suggest
         - search.highlight
-
-nav:
-  - Home: 'index.md'
-  - ML: 
-    - 'Transformer': 'Deformable Detr.md' 
-
+        
 # Extensions
 markdown_extensions:
   - footnotes
