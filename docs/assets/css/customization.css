@@ -52,3 +52,9 @@ h2 {
     border-bottom: 2px solid #000; /* Change #000 to the color you want */
     padding-bottom: 10px; /* Adjust padding as needed */
 }
+
+
+p, li, td, th {
+    line-height: 1.2;
+}
+
