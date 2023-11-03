@@ -37,7 +37,7 @@ key_positional_embedding：key的位置编码,即feature map的位置编码 [W_f
 key_padding_mask：key，即feature map的有效padding mask [B, W_feat*H_feat]
 
 ## Ref
-[代码解析]{https://zhuanlan.zhihu.com/p/348060767}
+[代码解析](https://zhuanlan.zhihu.com/p/348060767)
 
 ## Feature Extraction
 ResNet-50，输出维度CxHxW
