@@ -41,7 +41,7 @@ theme:
 
 nav:
   - Home: index.md
-  - ML:
+  - Deep Learning:
     - Transformer:
       - Transformer: Transformer.md
       - Swin Transformer: Swin-Transformer.md
