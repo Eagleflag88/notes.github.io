@@ -1,16 +1,13 @@
 ---
 share: true
 ---
-
 # Ref
-[保姆级transformer]{https://wangguisen.blog.csdn.net/article/details/125074022?spm=1001.2014.3001.5502}
+- [保姆级transformer解释](https://wangguisen.blog.csdn.net/article/details/125074022?spm=1001.2014.3001.5502)
+- [Positional Encoding](https://www.zhihu.com/question/347678607)
+- [Attention详解](https://blog.csdn.net/qq_42363032/article/details/124651978)
 # Embedding
 
-
 # Positional Encoding
-
-## Ref
-[猛猿](https://www.zhihu.com/question/347678607)
 
 ## 现有方法及其缺点
 - 方法一：直接用token的index，会有数值上的问题；s
@@ -42,9 +39,6 @@ $$ i = 0,1,2,3,...,\frac{d_{model}}{2} -1 $$
 
 # Attention
 
-## Ref
-[Attention详解]{https://blog.csdn.net/qq_42363032/article/details/124651978}
-
 ## Concept
 1. 从众多关注点中找到最重要的关注点。
 2. 聚焦的过程体现在**权重系数**的计算上，权重越大越聚焦于其对应的**value**值上。即权重代表了信息的重要性，而**value**是其对应的信息。
@@ -68,7 +62,7 @@ $$
 在Transformer模型中，`padding_mask`或者`mask_padding`是用来处理变长序列的机制。由于神经网络通常需要固定长度的输入，但实际应用中的序列数据往往是变长的，因此通常会通过填充（padding）的方式来使所有序列达到同一长度。但是，填充的部分不应该对模型的计算产生影响，这就需要一种机制来告诉模型哪些位置是填充的，应该被忽略。这种机制就是通过`padding_mask`来实现的。
 `padding_mask`是一个与输入序列同形状的布尔掩码（Boolean mask），在该掩码中，填充位置的值为`True`，而非填充位置的值为`False`
 
-## Self-Attention
+# Self-Attention
 
 一种特殊的Attention机制，$Q$和$K$是同一个向量。
 
@@ -91,7 +85,7 @@ $$
 2. 计算Q和K的相似性，注意，这里的计算具体来说是在$Q_i$和$K_i$，$V_i$之间进行的。i代表第i行。每一行都代表一个token的相关向量，Q，K和V。然后利用softmax进行归一化，获得注意力权重$A$，维度是LxL。
 3. 计算注意力：Z = A*V，维度是LxD。
 
-## Multi-Head Attention
+# Multi-Head Attention
 - 多头注意力机制，是在自注意力的基础上，使用多种变换生成的Q、K、V进行计算，再将它们对相关性的结论综合起来，进一步增强自注意力的效果。
 - **多头指的就是多套Q、K、V**。比如论文原文是8个头，那就是8套Q、K、V。
 - **经过注意力之后的矩阵会有自己理解的语义信息，那所以最后8个Z就会有8个不同的理解**。
