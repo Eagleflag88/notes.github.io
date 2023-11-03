@@ -38,7 +38,13 @@ theme:
         - navigation.expand
         - search.suggest
         - search.highlight
-        
+
+nav:
+  - Home: 'index.md'
+  - 'ML':
+    - 'Writing your docs': 'DETR.md'
+    - 'Styling your docs': 'Transformer.md'
+
 # Extensions
 markdown_extensions:
   - footnotes
