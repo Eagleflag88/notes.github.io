@@ -19,7 +19,7 @@ share: true
 2. Offest是输入query通过一个Linear线性层学习得到的；
 3. Attention Weight是输入query通过一个Linear和Softmax学习得到的；
 4. Value是通过Input feature map经过一个线性层后，再通过reference point和offest选取特定位置的特征得到的；
-5. Output是将Value与Attention Weight相乘后，经过一个线性层得到的;是
+5. Output是将Value与Attention Weight相乘后，经过一个线性层得到的;
 
 
 # Architecture
