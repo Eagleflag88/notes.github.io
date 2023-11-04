@@ -51,8 +51,8 @@ nav:
   - SLAM:
       - GNSS and IMU: GNSS and IMU.md
       - Visual SLAM Basics: Visual SLAM Basics.md
-  # - Math Basics:
-  #     - Assignment Problem: Assignment Problem.md
+  - Math Basics:
+      - Assignment Problem: Assignment Problem.md
 
 # Extensions
 markdown_extensions:
