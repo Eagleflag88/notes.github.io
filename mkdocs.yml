@@ -39,20 +39,20 @@ theme:
         - search.suggest
         - search.highlight
 
-nav:
-  - Home: index.md
-  - Deep Learning:
-    - Transformer:
-      - Basics: Transformer.md
-      - Swin Transformer: Swin-Transformer.md
-      - DETR: DETR.md
-      - Deformable Detr: Deformable Detr.md
-      - BEVFormer: BEVFormer.md
-  - SLAM:
-      - GNSS and IMU: GNSS and IMU.md
-      - Visual SLAM Basics: Visual SLAM Basics.md
-  - Math Basics:
-      - Assignment Problem: Assignment Problem.md
+# nav:
+#   - Home: index.md
+#   - Deep Learning:
+#     - Transformer:
+#       - Basics: Transformer.md
+#       - Swin Transformer: Swin-Transformer.md
+#       - DETR: DETR.md
+#       - Deformable Detr: Deformable Detr.md
+#       - BEVFormer: BEVFormer.md
+#   - SLAM:
+#       - GNSS and IMU: GNSS and IMU.md
+#       - Visual SLAM Basics: Visual SLAM Basics.md
+#   - Math Basics:
+#       - Assignment Problem: Assignment Problem.md
 
 # Extensions
 markdown_extensions:
