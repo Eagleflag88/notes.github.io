@@ -48,9 +48,9 @@ nav:
       - DETR: DETR.md
       - Deformable Detr: Deformable Detr.md
       - BEVFormer: BEVFormer.md
-  # - SLAM:
-  #     - GNSS and IMU: GNSS and IMU.md
-  #     - Visual SLAM Basics: Visual SLAM Basics.md
+  - SLAM:
+      - GNSS and IMU: GNSS and IMU.md
+      - Visual SLAM Basics: Visual SLAM Basics.md
   # - Math Basics:
   #     - Assignment Problem: Assignment Problem.md
 
