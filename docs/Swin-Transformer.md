@@ -24,6 +24,7 @@ share: true
 - 一般的组合方式是一个W-MSA之后接一个SW-MSA，这样能够实现patch之间的信息交流；
 - 每个MSA模块之后会接上一个LayerNormlization + 两层的MLP(之间使用GeLU)；
 - Shifting带来的extra计算开销可以通过论文里提出的Cyclic Shift解决；
+- 值得注意的是，这里attention的计算过程中会使用relative postion bias。详见[[Transformer#Relative Position Bias|Transformer > Relative Position Bias]]
 
 ## Patch Merging
 - 把相邻的patch（2x2）连接成一个patch；
