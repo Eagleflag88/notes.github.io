@@ -2,14 +2,14 @@
 share: true
 ---
 
-# Concept
-- 提出一个hierarchical的transformer结构。通过shifted windows这个block实现；
-- Limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection
-- Hierarchical feature maps and has linear computational complexity to image size; 
-
 # Problem
 - 视觉模态中我们需要关注各个尺度的问题；
 - Higher resolution of pixels lead to the problem of computation complexity, which is quadratic to image size; 这里主要是指ViT的问题；
+
+# Approach
+- 提出一个hierarchical的transformer结构。通过shifted windows这个block实现；
+- Limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection
+- Hierarchical feature maps and has linear computational complexity to image size; 
 
 # Architecture
 
