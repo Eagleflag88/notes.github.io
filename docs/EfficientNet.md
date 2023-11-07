@@ -27,9 +27,11 @@ EfficientNet使用了一种复合缩放方法，均衡地缩放网络的所有�
 $$
 depth: d = \alpha^\phi
 $$
+
 $$
 width: w = \beta^\phi
 $$
+
 $$
 resolution: r = \gamma^\phi
 $$
