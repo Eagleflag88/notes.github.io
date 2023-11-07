@@ -12,6 +12,8 @@ share: true
 
 # Positional Encoding
 
+仅仅只有token的embedding是不能体现输入的全部特征的，比如说输入中各个token的位置关系，特别是在NLP领域中。
+
 ## Potential Solutions
 - 方法一：直接用token的index，会有数值上的问题；
 - 方法二：Normalized过后的index，不同长度的序列的步长是不一致的；
@@ -19,7 +21,7 @@ share: true
 
 好的方法需要满足**有界**且**连续**的。
 
-## Solution
+## Approach
 - 假设t是这个token在序列中的实际位置（例如第一个token为1，第二个token为2...）；  
 -  定义$PE_t$是是这个token的位置向量，长度为d的向量， $PE_{t}^{(i)}$ 表示这个位置向量里的第i个元素；
 - $d_{model}$ 是这个token的维度（在论文中，是512)；
@@ -60,8 +62,7 @@ $$
 ## Concept
 1. 从众多关注点中找到最重要的关注点。
 2. 聚焦的过程体现在**权重系数**的计算上，权重越大越聚焦于其对应的**value**值上即权重代表了信息的重要性，而**value**是其对应的信息。
-3. 比如在翻译一个句子的某个词的时候，我们不应该把注意力平均放到所有的输入上面，而是应该聚焦到某个输入，思考他应该如何被翻译。而具体应该聚焦到输入的哪个部分则是训练之后学习到的。
-4. 
+3. 比如在翻译一个句子的某个词的时候，我们不应该把注意力平均放到所有的输入上面，而是应该聚焦到某个输入，思考他应该如何被翻译。而具体应该聚焦到输入的哪个部分则是训练之后学习到的；  
 
 ## Process
 
@@ -78,10 +79,10 @@ Attention(Q,K,V) = \sum^L aV
 $$
 
 ## Padding Mask
-在Transformer模型中，`padding_mask`或者`mask_padding`是用来处理变长序列的机制。由于神经网络通常需要固定长度的输入，但实际应用中的序列数据往往是变长的，因此通常会通过填充（padding）的方式来使所有序列达到同一长度。但是，填充的部分不应该对模型的计算产生影响，这就需要一种机制来告诉模型哪些位置是填充的，应该被忽略。这种机制就是通过`padding_mask`来实现的。
-`padding_mask`是一个与输入序列同形状的布尔掩码（Boolean mask），在该掩码中，填充位置的值为`True`，而非填充位置的值为`False`
+在Transformer模型中，padding_mask或者mask_padding是用来处理变长序列的机制。由于神经网络通常需要固定长度的输入，但实际应用中的序列数据往往是变长的，因此通常会通过填充（padding）的方式来使所有序列达到同一长度。但是，填充的部分不应该对模型的计算产生影响，这就需要一种机制来告诉模型哪些位置是填充的，应该被忽略。这种机制就是通过padding_mask来实现的。
+padding_mask是一个与输入序列同形状的布尔掩码（Boolean mask），在该掩码中，填充位置的值为True，而非填充位置的值为False。
 
-# Self-Attention
+## Self-Attention
 
 一种特殊的Attention机制，$Q$和$K$是同一个向量。
 
@@ -102,23 +103,68 @@ V = W_VX
 $$
 获得，Q，K和V，他们都是LxD维的。Q是我们正要查询的信息，K是正在被查询的信息，V是被查询到的内容
 2. 计算Q和K的相似性，注意，这里的计算具体来说是在$Q_i$和$K_i$，$V_i$之间进行的。i代表第i行。每一行都代表一个token的相关向量，Q，K和V。然后利用softmax进行归一化，获得注意力权重$A$，维度是LxL。
-3. 计算注意力：Z = A*V，维度是LxD。
+3. 计算注意力：$Z = A*V$，维度是LxD。
 
-# Multi-Head Attention
+## Multi-Head Attention
 - 多头注意力机制，是在自注意力的基础上，使用多种变换生成的Q、K、V进行计算，再将它们对相关性的结论综合起来，进一步增强自注意力的效果。
 - **多头指的就是多套Q、K、V**。比如论文原文是8个头，那就是8套Q、K、V。
 - **经过注意力之后的矩阵会有自己理解的语义信息，那所以最后8个Z就会有8个不同的理解**。
 - 多头信息输出，由于多套参数得到了多个信息，然而我们还是只需要一个信息，因此可以通过某种方法(例如矩阵相乘)把多个信息汇总为一个信息。
 - 实际操作时，会使用同一套$W_Q$,$W_K$和$W_V$，然后把Q，K和V也切成几个部分。
 
-# Layer Normalization
-与BatchNorm：在一个Batch之内包含若干个sample，每个sample有若干个feature，BN是在feature层面进行归一化，LayerNorm是在每个sample内部跨feature做归一话。
+## Layer Normalization
+- 核心思想是对单个样本中的所有激活值进行规范化，以稳定学习过程；
+- 与BatchNorm相比：在一个Batch之内包含若干个sample，每个sample有若干个feature，BN是在feature层面进行归一化，LayerNorm是在每个sample内部跨feature做归一化；
 
-# Feed-forward Network
+$\underline{计算过程}$
+1. 计算某一层输出的均值和方差；
+2. 使用上述统计量对每个激活值进行规范化；
+3. 对规范化后的值进行缩放和平移；
+
+## Feed-forward Network
+
 两层的全连接。通过激活函数引入非线性变换，变换了Attention output的空间, 从而增加了模型的表现能力。
 
-# Decoder
-由两个部分组成：
-1. Masked Multi-Head Attention
-2. Encoder-Decoder Multi-Head Attention
+## Training
+
+Attention中可学习的参数有：
+1. Token的Embedding；
+2. 对输入的线性变换$W_Q$,$W_K$和$W_V$；
+3. Positional Embedding；
+4. LayerNorm的平移和缩放参数；
+5. FFN网络的参数；
+
+
+# Transformer-Encoder
+
+## Structure
+Encoder是由多个一样的结构堆叠而成，每个结构由下列模块组成：
+
+1. 输入嵌入（Input Embedding）：输入序列首先被转换成固定大小的向量，这一过程通过嵌入层完成。这些嵌入还会与位置编码（Positional Encoding）相结合，以保留序列中单词的顺序信息；
+2. 多头自注意力（Multi-Head Self-Attention）：在自注意力机制中，每个输入向量会转换成三个不同的向量，分别为查询（Query）、键（Key）和值（Value）。通过这三个向量的交互，模型能够确定输入序列中的每个元素应该给予其他元素多少“注意力”；
+3. 残差连接和层归一化（Residual Connection & Layer Normalization）：自注意力层的输出通过一个残差连接，然后进行层归一化。残差连接允许直接的梯度流，有助于训练深层网络。
+4. FFN：自注意力机制之后是一个前馈网络，它对每个位置应用相同的全连接层。前馈网络的输出也通过一个残差连接，随后是层归一化；
+
+## Property
+- Transformer编码器的这种设计使其能够并行处理数据，同时捕获序列内的复杂关系；
+- 编码器的最终输出捕捉了输入序列中每个元素周围的上下文，可以看作是整个输入序列的编码；
+- 在解码过程中，编码器的输出被用作解码器的自注意力层中的“键”和“值”，这样解码器就能够利用输入序列的上下文信息来生成目标序列；
+
+
+# Transformer-Decoder
+
+## Structure
+Decoder是由多个一样的结构堆叠而成，每个结构由下列模块组成：
+1. 遮掩多头自注意力机制（Masked Multi-Head Self-Attention）： 在解码器的自注意力层中，由于输出序列是逐项生成的，为了防止位置i的解码器看到位置i之后的数据（这些数据在实际预测时是未知的），需要使用一个遮掩（mask）来屏蔽未来的位置信息。这样，每个位置只能依赖于它之前的位置，保证了解码过程的自回归特性；
+    
+2. 编码器-解码器注意力机制（Encoder-Decoder Attention）： 这个子结构使得解码器能够关注（attend to）编码器的输出。在这个注意力机制中，查询（Q）来自于解码器的前一个子层的输出，而键（K）和值（V）来自于编码器的输出。这允许解码器的每个位置都能够访问整个输入序列的信息；
+    
+3. 位置全连接的前馈网络（Positionwise Feed-Forward Network）： 与编码器中的前馈网络类似，这个网络由两个线性变换组成，其中间插入了一个激活函数；
+
+## Property
+- 生成输出序列：基于编码器提供的输入序列信息以及到目前为止已经生成的输出序列部分，解码器逐步构造输出序列；
+- 保持自回归属性：通过遮掩机制，确保在生成序列的每一步只依赖于前面的输出，从而使模型能够进行自回归预测；
+- 值得注意的是，在有些应用场合，比如说基于Transformer的Object Detector（比如DETR）不是自回归的，也就是说，它不是逐步生成输出序列的每一个元素。相反，DETR的解码器在单个前向传递中并行生成所有输出；
+
+
 
