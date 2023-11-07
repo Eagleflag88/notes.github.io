@@ -25,13 +25,13 @@ EfficientNet使用了一种复合缩放方法，均衡地缩放网络的所有�
 2. 复合缩放（Compound Scaling）： 一旦确定了基线模型，就使用一个复合系数来统一缩放网络的深度、宽度和分辨率。这个缩放法则是基于以下公式的：
 
 $$
-\text{depth}: d = \alpha^\phi
+depth: d = \alpha^\phi
 $$
 $$
-\text{width}: w = \beta^\phi
+width: w = \beta^\phi
 $$
 $$
-\text{resolution}: r = \gamma^\phi
+resolution: r = \gamma^\phi
 $$
 
 其中，$\phi$是用户定义的复合系数，决定了网络缩放的总量；$\alpha$，$\beta$和$\gamma$是根据原始网络调整得到的常数，它们控制着深度、宽度和分辨率如何随着 $\phi$的增加而缩放。
