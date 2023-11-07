@@ -48,13 +48,13 @@ nav:
       - DETR: DETR.md
       - Deformable Detr: Deformable Detr.md
       - BEVFormer: BEVFormer.md
-  - CNN:
-      - Basics: Convolution.md
-      - ResNet: ResNet.md
-      - FPN: Feature Pyramid Networks.md
-      - EfficientNet: EfficientNet.md
-      - FCOS: FCOS.md
-      - Deformable Convolution: Deformable Convolution.md
+    - CNN:
+        - Basics: Convolution.md
+        - ResNet: ResNet.md
+        - FPN: Feature Pyramid Networks.md
+        - EfficientNet: EfficientNet.md
+        - FCOS: FCOS.md
+        - Deformable Convolution: Deformable Convolution.md
   - SLAM:
       - GNSS and IMU: GNSS and IMU.md
       - Visual SLAM Basics: Visual SLAM Basics.md
