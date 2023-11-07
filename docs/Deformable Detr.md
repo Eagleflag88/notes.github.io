@@ -61,3 +61,7 @@ $\underline{Process}$
 4. 最后输出的是每一层的Object Query和参考点；
 
 ## Head
+
+一次性预测N个object，然后使用匈牙利算法寻找和GT之间的最佳匹配，其中的cost包含BoundingBox和class loss
+- Bounding Box loss：IoU + L1 loss
+- Classification：negative log-likelihood
