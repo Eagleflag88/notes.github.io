@@ -45,7 +45,6 @@ nav:
     - Transformer:
       - Basics: Transformer.md
       - Swin Transformer: Swin-Transformer.md
-      - DETR: DETR.md
       - Deformable Detr: Deformable Detr.md
       - BEVFormer: BEVFormer.md
     - CNN:
