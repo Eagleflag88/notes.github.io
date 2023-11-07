@@ -36,7 +36,7 @@ query_positional_embedding： query的位置编码 [num_layer(6), num_query(100)
 key_positional_embedding：key的位置编码,即feature map的位置编码 [W_feat*H_feat, B, 256]
 key_padding_mask：key，即feature map的有效padding mask [B, W_feat*H_feat]
 
-## Ref
+#Ref
 [代码解析](https://zhuanlan.zhihu.com/p/348060767)
 
 ## Feature Extraction
