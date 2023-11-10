@@ -4,7 +4,7 @@ share: true
 
 # Ref
 
-Original Paper -> EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.pdf
+Original Paper -> EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks.pdf, 2019
 
 # Problem
 
