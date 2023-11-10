@@ -42,18 +42,24 @@ theme:
 nav:
   - Home: index.md
   - Deep Learning:
+    - Basics: Deep Learning Basics.md
     - Transformer:
       - Basics: Transformer.md
-      - Swin Transformer: Swin-Transformer.md
-      - Deformable Detr: Deformable Detr.md
-      - BEVFormer: BEVFormer.md
+      - Swin Transformer: 2021-Swin-Transformer.md
+      - BEVFormer: 2022-BEVFormer.md
     - CNN:
         - Basics: Convolution.md
         - ResNet: ResNet.md
         - FPN: Feature Pyramid Networks.md
         - EfficientNet: EfficientNet.md
-        - FCOS: FCOS.md
         - Deformable Convolution: Deformable Convolution.md
+    - Detection:
+        - Faster R-CNN: 2016-Faster R-CNN.md
+        - FCOS: 2019-FCOS.md
+        - EfficientDet: 2020-EfficientDet.md
+        - Deformable Detr: 2021-Deformable Detr.md
+        - YoloV5: 2021-YoloV5.md
+        - RTMDet: 2022-RTMDet.md
   - SLAM:
       - GNSS and IMU: GNSS and IMU.md
       - Visual SLAM Basics: Visual SLAM Basics.md
