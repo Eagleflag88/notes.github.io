@@ -16,10 +16,11 @@ share: true
 ### Process
 BN在每个mini-batch的数据通过以下步骤进行：
 
-1. 计算均值：计算当前mini-batch的均值；
+1. 计算均值：计算当前mini-batch的均值。
 2. 计算方差：计算当前mini-batch的方差；
-3. 归一化：使用上述均值和方差对输入数据进行归一化处理，确保输出数据的均值为0，方差为1；
-4. 缩放和偏移：对归一化后的数据进行缩放和偏移变换，这里引入了两个可学习参数，即γ（缩放因子）和β（偏移因子）；
+3. 这里的计算范围是特征图的某一个通道，比如说特征图的维度是50x60x8，那么均值是在某一个通道的特征图层内计算的，即是计算比如说50x60个数的均值和方差；如果batch_size=8，则是计算50x60x8个数的均值和方差；
+4. 归一化：使用上述均值和方差对输入数据进行归一化处理，确保输出数据的均值为0，方差为1；
+5. 缩放和偏移：对归一化后的数据进行缩放和偏移变换，这里引入了两个可学习参数，即γ（缩放因子）和β（偏移因子）；
 
 In Training using the mean and variance of the mini batches, at inference the mean and variance of the whole training set will be used.
 
@@ -28,6 +29,7 @@ Batch Normalization 有两组可学习参数：
 
 1. γ（Gamma）: 缩放参数，用于对归一化后的数据进行缩放。
 2. β（Beta）: 偏移参数，用于对归一化后的数据进行平移。
+3. 每个通道会有一组参数；
 
 ## Batch ReNormalization
 
@@ -273,6 +275,9 @@ Dice Loss本身不可导，一般用作Eval的指标。但是如果一定要用�
 
 # Evaluation
 
+## Classfication
+- Top1 Accuracy: 通常指模型预测的最高置信度类别是否与真实类别匹配的准确性；
+- Top5 Accuracy: 指的是模型预测的前五个最高置信度的类别中是否包含了真实的类别。换句话说，如果真实的类别出现在模型预测的置信度最高的前五个类别中的任何一个，那么这个预测就被认为是正确的;
 
 
 
