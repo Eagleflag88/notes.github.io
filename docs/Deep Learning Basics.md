@@ -3,7 +3,8 @@ share: true
 ---
 # Ref
 [各种卷积操作](https://zhuanlan.zhihu.com/p/70703846) 
-[Weight Init](https://pouannes.github.io/blog/initialization/)
+[权重初始化](https://pouannes.github.io/blog/initialization/)
+[交叉熵损失](https://blog.csdn.net/tsyccnh/article/details/79163834)
 
 # Normalization
 
@@ -50,7 +51,7 @@ GN背后的关键概念包括：
 4. 独立于批量大小：由于GN在通道组内计算统计数据，它不需要大批量大小。这对于需要高分辨率输入图像的任务或当可用内存有限时特别有用。
 5. 训练稳定性：GN可以导致深度学习模型的训练更加稳定，特别是在BN可能不适用的小批量大小或需要跨不同样本一致归一化的任务中。
 
-GN在各种任务中得到应用，如图像识别、目标检测和语义分割，并且在批量大小受到硬件限制的场景中特别有益。
+GN在各种任务中得到应用，如图像识别、目标检测和语义分割，并且在批量大小受到硬件限制的场景中特别有益。如Faster R-CNN、Mask R-CNN和其他3D任务，由于计算和内存限制，可能无法使用较大的批量。GN在这些模型中可以提供有效的归一化，而不受批量大小的影响；
 
 ## Layer Normalization
 详见[[Transformer#Layer Normalization|Transformer > Layer Normalization]]
@@ -59,23 +60,47 @@ GN在各种任务中得到应用，如图像识别、目标检测和语义分割
 
 ## Cross-Entropy Loss
 
-交叉熵损失（Cross-Entropy Loss）是评估分类模型性能的一种常用方法，特别是在二分类和多分类问题中。它衡量的是模型预测的概率分布与实际标签的概率分布之间的差异。对于二分类问题，交叉熵损失可以定义为：
+交叉熵损失（Cross-Entropy Loss）是评估分类模型性能的一种常用方法，特别是在二分类和多分类问题中。它衡量的是模型预测的概率分布与实际标签的概率分布之间的差异。
+
+$\underline{Preliminaries}$
+
+- **概率分布$p\left(x\right)$的熵**：
 
 $$
-L(y, p) = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(p_i) + (1 - y_i) \log(1 - p_i)]
+H(X)=-\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(p\left(x_{i}\right)\right)
+$$
+其中，$p\left(x_{i}\right)$是某个事件发生的概率，而$\log \left(p\left(x_{i}\right)\right)$则是这个事件发生所包含的信息量；所以概率分布的熵可以理解为信息量的期望；
+
+- **两个概率分布$p(x)$和$q(x)$的DL散度**：
+
+$$
+D_{K L}(p \| q)=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i}\right)}{q\left(x_{i}\right)}\right)
+$$
+DL散度描述了两个概率分布$p(x)$和$q(x)$之间的距离。简化了之后得到：
+$$
+D_{KL}(p||q) = \sum_{i=1}^{n} p(x_i)\log(p(x_i)) - \sum_{i=1}^{n} p(x_i)\log(q(x_i))
+
+= -H(p(x)) + \left[ -\sum_{i=1}^{n} p(x_i)\log(q(x_i)) \right]
+
+$$
+上式中第一部分是$p(x)$的熵，第二部分是$p(x)$和$q(x)$之间的交叉熵。那么，预测概率$q$和真值标签$p$之间的交叉熵损失为：
+
+$$
+L(p,q)= -\sum_{i=1}^{n} p(x_i)\log(q(x_i))
 $$
 
-其中：
+$\underline{Example}$
 
-- N 是样本数量；
-- $y_i$ 是样本i的实际标签；
-- $p_i$ 是模型预测样本 i 为类别 1 的概率；
-
-在实际应用中，交叉熵损失函数通常与softmax激活函数一起使用，后者用于多分类问题的输出层，将模型的原始输出转换为概率分布。
+对一个3个类别的分类问题的一个样本来说
+- Input：
+	1. 样本的真值概率：$p_{gt}=(0, 0, 1)$；
+	2. 样本的预测概率：$p_{pred}=(0.1, 0.2, 0.7)$；
+- Process：按照上式计算交叉熵Loss；
+- Output：交叉熵Loss；
 
 ## Softmax
 
-交叉熵损失（Cross-Entropy Loss）后面通常会跟一个softmax操作，尤其是在处理多分类问题时。这样做的原因是交叉熵损失要求输入是概率分布，而模型的原始输出，通常称为logits，通常并不满足这一点。softmax函数将logits转换为概率分布，这样就可以与真实的标签概率分布进行比较了。
+交叉熵损失（Cross-Entropy Loss）的计算之前通常会需要softmax操作，尤其是在处理多分类问题时。这样做的原因是交叉熵损失要求输入是概率分布，而模型的原始输出，通常称为logits，通常并不满足这一点。softmax函数将logits转换为概率分布，这样就可以与真实的标签概率分布进行比较了。上面的$p_{pred}$即是softmax的操作的结果；
 
 softmax函数的定义是：
 $$
@@ -91,7 +116,7 @@ $$
 - Approach：把$z_i$替换为$z_i-\max(z_i)$；
 
 ## Focal Loss
-Focal Loss是一种专门为解决类别不平衡问题而设计的损失函数，由Kaiming He等人在2017年提出。它是交叉熵损失函数的一个变种，通过增加一个因子来减少易分类样本的相对损失，从而使模型更加关注难分类或者错误分类的样本。
+Focal Loss是一种专门为解决类别不平衡问题而设计的损失函数。它是交叉熵损失函数的一个变种，通过增加一个因子来减少易分类样本的相对损失，从而使模型更加关注难分类或者错误分类的样本。
 
 Focal Loss的数学定义为：
 
@@ -180,8 +205,8 @@ Dice Loss本身不可导，一般用作Eval的指标。但是如果一定要用�
 
 权重初始化在深度学习模型的训练中非常关键，它可以显著影响模型的收敛速度和最终性能。以下是一些权重初始化的关键点：
 
-1. 避免权重初始值过大或过小：权重过大可能导致神经元饱和，梯度消失或爆炸；权重过小也可能导致梯度消失。
-2. 随机初始化：通常权重是随机初始化的，以打破对称性并确保不同的神经元可以学习不同的特征。
+1. 避免权重初始值过大或过小：权重过大可能导致神经元饱和，梯度消失或爆炸；权重过小也可能导致梯度消失；
+2. 随机初始化：通常权重是随机初始化的，以打破对称性并确保不同的神经元可以学习不同的特征；
 3. 基于输入和输出尺寸的初始化（如Xavier/Glorot初始化）：适用于tanh激活函数，初始化时考虑到前一层的神经元数量，以保持激活和梯度的分布稳定。它的结果是一个以0为均值的高斯分布，$D_{in}$是某一层的输入维度：
 	$$
 	W = \mathcal{N}(0, \sqrt{\frac{1}{D_{in}}})
@@ -190,9 +215,6 @@ Dice Loss本身不可导，一般用作Eval的指标。但是如果一定要用�
 	$$
 	W = \mathcal{N}(0, \sqrt{\frac{2}{D_{in}}})
   $$
-5. 稀疏初始化：只为每个神经元设置少量的非零权重，可以帮助减少早期训练中的过拟合风险。
-6. 正交初始化：对于循环神经网络（RNN）特别有用，可以帮助减少梯度消失或爆炸的问题。
-7. 使用预训练权重：在可能的情况下，可以使用在相似任务上训练过的模型权重，这种迁移学习方法可以加速学习过程并提高模型性能。
 
 权重初始化的选择应考虑到所使用的激活函数、网络架构和任务的特性。正确的初始化方法可以确保梯度的良好流动，防止训练初期的梯度问题，并有助于模型更快地收敛。
 
@@ -205,14 +227,13 @@ Dice Loss本身不可导，一般用作Eval的指标。但是如果一定要用�
 3. Dropout：在训练过程中随机丢弃（即设置为零）网络中的一些神经元输出，以减少神经元之间复杂的共适应。
 	- 在训练的每次迭代中，每个神经元都有一定概率（通常设为 0.5）被随机丢弃，即它在前向传播和反向传播时暂时不参与计算；
 	- 实际上等同于每次都在训练不同的网络；
-	- 由于在训练时某些神经元被丢弃，因此在预测时需要对神经元的输出进行缩放，以补偿那些在训练时未被激活的神经元。如果在训练时使用了p的丢弃概率，则在预测时，网络的权重通常会乘以1−p（这个过程有时也被称为"inverted dropout"）。
+	- 由于在训练时某些神经元被丢弃，因此在预测时需要对神经元的输出进行缩放，以补偿那些在训练时未被激活的神经元。如果在训练时使用了p的丢弃概率，则在预测时，网络的权重通常会乘以1−p（这个过程有时也被称为"inverted dropout"）；
+	- Dropout一般在卷积过后的全连接层使用；
 1. 数据增强：通过对训练数据进行旋转、缩放、裁剪等变换来人为增加样本多样性，提高模型的泛化能力。
 2. 早停（Early Stopping）：在验证集上的性能不再提升时停止训练，防止过拟合。
-3. BN：通过对每个小批量的数据进行归一化，减少内部协变量偏移，可以作为一种正则化效果。详见[[Deep Learning Basics#Batch Normalization|Deep Learning Basics > Batch Normalization]]
-4. LayerNorm：与BN类似，但是在单个样本的所有激活上进行归一化，与批大小无关。详见[[Transformer#Layer Normalization|Transformer > Layer Normalization]]
-5. Group Normalization：一种中间方案，它在LayerNorm和BN之间提供一个折中方案，通过对通道分组来进行归一化。详见[[Deep Learning Basics#Group Normalization|Deep Learning Basics > Group Normalization]]
-6. 梯度剪切（Gradient Clipping）：限制梯度更新的步长，防止梯度爆炸。
-7. 学习率衰减：随着时间的推移逐渐减小学习率，有助于模型在训练后期稳定。
+3. Normalization：BN，GN和LN。详见[[Deep Learning Basics#Batch Normalization|Deep Learning Basics > Batch Normalization]]，[[Transformer#Layer Normalization|Transformer > Layer Normalization]]和[[Deep Learning Basics#Group Normalization|Deep Learning Basics > Group Normalization]]；
+4. 梯度剪切（Gradient Clipping）：限制梯度更新的步长，防止梯度爆炸；
+5. 学习率衰减：随着时间的推移逐渐减小学习率，有助于模型在训练后期稳定；
 
 这些技术可以单独使用，也可以组合使用，以达到最好的正则化效果。选择哪种技术通常取决于具体任务、模型复杂性和训练数据的特性。
 
@@ -230,13 +251,13 @@ Dice Loss本身不可导，一般用作Eval的指标。但是如果一定要用�
 	2. 超参数batch size，一般选32；
 -  SGD+Momentum：
 	1. Get over with saddle points with velocity (initial 0)；
-	2. Nesterov Momentum；
+	2. Nesterov Momentum，它不是在当前位置计算梯度，而是在当前动量方向上提前一步的位置计算梯度；
 - AdaGrad：
 	1. 缓解各方向梯度不均匀的问题；
 	2. Approach：主要特点是在训练过程中累积了一个参数的历史梯度的平方和，然后用这个信息来调整每个参数的学习率；
 	3. Issue：时间久了，增量容易变为0；
 - RMSProp-AdaGrad：添加一个decay rate来缓解增量变0的问题；
-- Adam：Combination of SGD-Momentum and AdaGrad；
+- Adam：Combination of SGD-Momentum and RMSProp；
 
 ## 	Learning Rate
 

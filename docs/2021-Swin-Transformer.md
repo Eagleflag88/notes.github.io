@@ -2,7 +2,7 @@
 share: true
 ---
 # Ref
-- Original Paper: Swin Transformer: Hierarchical Vision Transformer using Shifted Windows.pdf
+- Original Paper: Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
 
 # Problem
 - 视觉模态中我们需要关注各个尺度的问题；
