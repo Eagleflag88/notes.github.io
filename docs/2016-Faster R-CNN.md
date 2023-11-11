@@ -4,7 +4,7 @@ share: true
 
 # Ref
 
-- Original Paper: Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks.pdf
+- Original Paper: Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks
 
 # Problem
 
