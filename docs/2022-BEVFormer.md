@@ -3,7 +3,7 @@ share: true
 ---
 # Ref
 
-- Original Paper: BEVFormer: Learning Bird’s-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers.pdf
+- Original Paper: BEVFormer: Learning Bird’s-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers
 
 # Architecture
 
