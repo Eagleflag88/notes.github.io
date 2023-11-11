@@ -5,7 +5,7 @@ share: true
 # Standard Convolution
 
 - Input
-	1. Image Tensor: 维度 → B, C, H, W。H高，W宽，C通道数, B sample数。
+	1. Image Tensor: 维度 → B, C, H, W。H高，W宽，C通道数, B, sample数。
 	2. Conv Kernel: 维度 → N, N, D。N是长宽，D是深度（要求和C一样大，如果是图片作输入，C是3。）。一般会有K个Kernel；单个Kernel我们记为W；
 - Process
 	1. 在Image Tensor上提取出一块, I。跟Kernel的维度一致N, N, C；
@@ -36,6 +36,7 @@ $\underline{优化实现}$
 - Property
 	1. im2col本身需要花时间，且$F_{col}$和$K_{col}$相比原来占空间；
 	2. 但是gemm计算很快；
+- 具体细节可以参考[Im2Col](https://zhuanlan.zhihu.com/p/70703846)
 
 # Group Convolution
 
