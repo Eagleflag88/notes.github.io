@@ -49,10 +49,11 @@ nav:
       - BEVFormer: 2022-BEVFormer.md
     - CNN:
         - Basics: Convolution.md
-        - ResNet: ResNet.md
-        - FPN: Feature Pyramid Networks.md
-        - EfficientNet: EfficientNet.md
-        - Deformable Convolution: Deformable Convolution.md
+        - ResNet: 2015-ResNet.md
+        - Deformable Convolution: 2017-Deformable Convolution.md
+        - FPN: 2017-Feature Pyramid Networks.md
+        - EfficientNet: 2019-EfficientNet.md
+
     - Detection:
         - Faster R-CNN: 2016-Faster R-CNN.md
         - FCOS: 2019-FCOS.md
