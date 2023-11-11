@@ -4,7 +4,7 @@ share: true
 
 # Ref
 
-- Original Paper:RTMDet: An Empirical Study of Designing Real-Time Object Detectors.pdf
+- Original Paper:RTMDet: An Empirical Study of Designing Real-Time Object Detectors
 - [原理和结构详解](https://mmyolo.readthedocs.io/zh-cn/latest/recommended_topics/algorithm_descriptions/rtmdet_description.html)
 
 # Problem
