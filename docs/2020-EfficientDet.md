@@ -4,7 +4,7 @@ share: true
 
 # Ref
 
-- Original Paper: EfficientDet: Scalable and Efficient Object Detection.pdf
+- Original Paper: EfficientDet: Scalable and Efficient Object Detection
 
 # Problem
 - 之前的OD模型计算量太大；
@@ -23,7 +23,7 @@ BiFPN（双向特征金字塔网络）是在特征金字塔网络（FPN）的基
 
 BiFPN的主要优点包括：
 
-1. **双向交叉尺度连接**：传统的FPN是单向的，自上而下地进行特征融合，详见[[Feature Pyramid Networks#Top-down Path|Feature Pyramid Networks > Top-down Path]]。BiFPN引入了双向路径（自下而上和自上而下），允许信息在不同尺度的特征层之间更自由地流动。
+1. **双向交叉尺度连接**：传统的FPN是单向的，自上而下地进行特征融合，详见[[2017-Feature Pyramid Networks#Top-down Path|2017-Feature Pyramid Networks > Top-down Path]]。BiFPN引入了双向路径（自下而上和自上而下），允许信息在不同尺度的特征层之间更自由地流动。
     
 2. **高效的特征融合**：BiFPN使用了加权特征融合，这意味着来自不同来源的特征会根据它们的重要性被不同地加权。这比简单的加法或者连接操作更有效。
     
