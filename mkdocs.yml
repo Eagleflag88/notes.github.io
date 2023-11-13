@@ -42,18 +42,23 @@ theme:
 nav:
   - Home: index.md
   - Deep Learning:
-    - Basics: Deep Learning Basics.md
+    - Basics: 
+      - Normalization: Normalization.md
+      - Loss: Loss.md
+      - Training: Training.md
+      - Evaluation: Evaluation.md
     - Transformer:
       - Basics: Transformer.md
+      - ViT: 2020-ViT.md
       - Swin Transformer: 2021-Swin-Transformer.md
       - BEVFormer: 2022-BEVFormer.md
     - CNN:
         - Basics: Convolution.md
         - ResNet: 2015-ResNet.md
+        - U-Net: 2015-UNet.md
         - Deformable Convolution: 2017-Deformable Convolution.md
         - FPN: 2017-Feature Pyramid Networks.md
         - EfficientNet: 2019-EfficientNet.md
-
     - Detection:
         - Faster R-CNN: 2016-Faster R-CNN.md
         - FCOS: 2019-FCOS.md
@@ -66,6 +71,7 @@ nav:
       - Visual SLAM Basics: Visual SLAM Basics.md
   - Math Basics:
       - Assignment Problem: Assignment Problem.md
+
 
 # Extensions
 markdown_extensions:
