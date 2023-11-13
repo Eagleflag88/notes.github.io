@@ -18,13 +18,16 @@ share: true
 ## Patch Partition
 - 把RGB划成一个个Patch（4x4），而且不能重合；
 - 每个Patch相当于一个token，他的特征就是pixel的cat；
-- 然后把通过linear embedding layer投影到一个维度C；
+- 然后通过linear embedding layer投影到一个维度C；
 
 ## Swin Transformer block
-- 在patch层面做self attention。分为普通的Window-based MultiHeadSelfAttetion（W-MSA）和Shifted-WMSA；
-- SW-MSA是W-MSA经过Patch Partition Shift之后得到的；
-- 一般的组合方式是一个W-MSA之后接一个SW-MSA，这样能够实现patch之间的信息交流；
-- 每个MSA模块之后会接上一个LayerNormlization + 两层的MLP(之间使用GeLU)；
+- 本文最重要的模块是Window-based MultiHeadAttention模块；
+- 其中，输入特征图会被均匀的划分为MxM个不重叠的Patch，然后我们只在Patch内部做Attention操作，这样计算量的增长不会像传统transformer一样随着特征图解析度的平方增长，而是线性增长；
+- 每个MSA模块之后会接上一个LayerNormlization + 两层的MLP。MLP的激活函数使用GeLU，详见[[Deep Learning Basics#Activation|Deep Learning Basics > Activation]]；
+
+## Successive  Swin Transformer blocks
+- 在整个结构之中，我们会交替使用普通和Shifted-WMSA；
+- Shifted-WMSA是W-MSA经过Patch Partition Shift之后得到的。窗口会被沿着图像的垂直和水平方向移动一定距离。这种移动窗口的机制允许跨越窗口边界的交互，同时保持计算量相对固定；
 - Shifting带来的extra计算开销可以通过论文里提出的Cyclic Shift解决；
 - 值得注意的是，这里attention的计算过程中会使用relative postion bias。详见[[Transformer#Relative Position Bias|Transformer > Relative Position Bias]]
 
