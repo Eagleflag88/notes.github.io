@@ -23,7 +23,7 @@ share: true
 ## Swin Transformer block
 - 本文最重要的模块是Window-based MultiHeadAttention模块；
 - 其中，输入特征图会被均匀的划分为MxM个不重叠的Patch，然后我们只在Patch内部做Attention操作，这样计算量的增长不会像传统transformer一样随着特征图解析度的平方增长，而是线性增长；
-- 每个MSA模块之后会接上一个LayerNormlization + 两层的MLP。MLP的激活函数使用GeLU，详见[[Deep Learning Basics#Activation|Deep Learning Basics > Activation]]；
+- 每个MSA模块之后会接上一个LayerNormlization + 两层的MLP。MLP的激活函数使用GeLU，详见[[Normalization#Activation|Normalization > Activation]]；
 
 ## Successive  Swin Transformer blocks
 - 在整个结构之中，我们会交替使用普通和Shifted-WMSA；
