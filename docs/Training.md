@@ -70,6 +70,9 @@ share: true
 	3. Issue：时间久了，增量容易变为0；
 - RMSProp-AdaGrad：添加一个decay rate来缓解增量变0的问题；
 - Adam：Combination of SGD-Momentum and RMSProp；
+- AdamW：
+	1. 核心改进在于它更有效地处理权重衰减（Weight Decay）；
+	2. 它在更新参数前应用了权重衰减，这使得权重衰减与梯度更新分开；
 
 # 	Learning Rate
 
