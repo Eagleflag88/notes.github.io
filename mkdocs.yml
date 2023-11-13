@@ -71,6 +71,14 @@ nav:
       - Visual SLAM Basics: Visual SLAM Basics.md
   - Math Basics:
       - Assignment Problem: Assignment Problem.md
+  - Paper Reading:
+    - Online HDMap Construction:
+      - HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
+      - VectorMapNet: 2022-VECTORMAPNET END-TO-END VECTORIZED HD MAP LEARNING.md
+      - MapTRV1: 2023-MAPTR STRUCTURED MODELING AND LEARNING FOR ONLINE VECTORIZED HD MAP CONSTRUCTION.md
+      - BeMapNet: 2023-End-to-End Vectorized HD-Map Construction With Piecewise Bezier Curve.md
+      - MachMap: 2023-MachMap End-to-End Vectorized Solution for Compact HD-Map Construction.md
+      - MapVR: 2023-Online Map Vectorization for Autonomous Driving A Rasterization Perspective.md
 
 
 # Extensions
