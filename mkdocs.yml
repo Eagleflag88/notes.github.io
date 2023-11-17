@@ -66,6 +66,11 @@ nav:
         - Deformable Detr: 2021-Deformable Detr.md
         - YoloV5: 2021-YoloV5.md
         - RTMDet: 2022-RTMDet.md
+    - NeRF:
+        - Basics: Basics.md
+        - 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis: 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis.md
+        - 2022-Instant-NGP: 2022-Instant-NGP.md
+        - 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering: 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering.md
   - SLAM:
       - GNSS and IMU: GNSS and IMU.md
       - Visual SLAM Basics: Visual SLAM Basics.md
@@ -73,12 +78,33 @@ nav:
       - Assignment Problem: Assignment Problem.md
   - Paper Reading:
     - Online HDMap Construction:
-      - HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
-      - VectorMapNet: 2022-VECTORMAPNET END-TO-END VECTORIZED HD MAP LEARNING.md
-      - MapTRV1: 2023-MAPTR STRUCTURED MODELING AND LEARNING FOR ONLINE VECTORIZED HD MAP CONSTRUCTION.md
-      - BeMapNet: 2023-End-to-End Vectorized HD-Map Construction With Piecewise Bezier Curve.md
-      - MachMap: 2023-MachMap End-to-End Vectorized Solution for Compact HD-Map Construction.md
-      - MapVR: 2023-Online Map Vectorization for Autonomous Driving A Rasterization Perspective.md
+      - 2022-HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
+      - 2022-VectorMapNet: 2022-VECTORMAPNET END-TO-END VECTORIZED HD MAP LEARNING.md
+      - 2023-MapTRV1: 2023-MAPTR STRUCTURED MODELING AND LEARNING FOR ONLINE VECTORIZED HD MAP CONSTRUCTION.md
+      - 2023-BeMapNet: 2023-End-to-End Vectorized HD-Map Construction With Piecewise Bezier Curve.md
+      - 2023-MachMap: 2023-MachMap End-to-End Vectorized Solution for Compact HD-Map Construction.md
+      - 2023-MapVR: 2023-Online Map Vectorization for Autonomous Driving A Rasterization Perspective.md
+      - 2023-StreamMapNet: 2023-StreamMapNet Streaming Mapping Network for Vectorized Online HD Map Construction.md
+    - Map Merging:
+      - 2017-3D Map Merging on Pose Graphs: 2017-3D Map Merging on Pose Graphs.md
+      - 2019-Crowd-sourced Semantic Edge Mapping for Autonomous Vehicles: 2019-Crowd-sourced Semantic Edge Mapping for Autonomous Vehicles.md
+      - 2020-Kimera-Multi a System for Distributed Multi-Robot Metric-Semantic Simultaneous Localization and Mapping: 2020-Kimera-Multi a System for Distributed Multi-Robot Metric-Semantic Simultaneous Localization and Mapping.md
+      - 2021-A General Framework for Lifelong Localization and Mapping in Changing Environment: 2021-A General Framework for Lifelong Localization and Mapping in Changing Environment.md
+      - 2021-DARE-SLAM: 2021-DARE-SLAM Degeneracy-Aware and Resilient Loop Closing in Perceptually-Degraded Environments.md
+      - 2021-Kimera-Multi: 2021-Kimera-Multi Robust, Distributed, Dense Metric-Semantic SLAM for Multi-Robot Systems.md
+      - 2021-LT-mapper: 2021-LT-mapper A Modular Framework for LiDAR-based Lifelong Mapping.md
+      - 2022-AutoMerg: 2022-AutoMerg A Framework for Map Assembling and Smoothing in City-scale Environments.md
+      - 2022-Crowdsourced Road Semantics Mapping Based on Pixel‐Wise Confdence Level: 2022-Crowdsourced Road Semantics Mapping Based on Pixel‐Wise Confdence Level.md
+      - 2022-Crowdsourcing-Based Indoor Semantic Map Construction and Localization Using Graph Optimization: 2022-Crowdsourcing-Based Indoor Semantic Map Construction and Localization Using Graph Optimization.md
+      - 2022-LAMP 2.0: 2022-LAMP 2.0 A Robust Multi-Robot SLAM System for Operation in Challenging Large-Scale Underground Environments.md
+      - 2023-A Lightweight High Definition Mapping Method Based on Multi-Source Data Fusion Perception: 2023-A Lightweight High Definition Mapping Method Based on Multi-Source Data Fusion Perception.md
+      - 2023-Multi-Session, Localization-oriented and Lightweight LiDAR Mapping Using Semantic Lines and Planes: 2023-Multi-Session, Localization-oriented and Lightweight LiDAR Mapping Using Semantic Lines and Planes.md
+      - 2023-Swarm-SLAM: 2023-Swarm-SLAM Sparse Decentralized Collaborative Simultaneous Localization and Mapping Framework for Multi-Robot Systems.md
+      - 2023-VMA: 2023-VMA Divide-and-Conquer Vectorized Map Annotation System for Large-Scale Driving Scene.md
+      - 2023-maplab 2.0: 2023-maplab 2.0 – A Modular and Multi-Modal Mapping Framework.md
+    - Object Detection:
+      - Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md 
+    
 
 
 # Extensions
