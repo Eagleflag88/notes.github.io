@@ -17,7 +17,7 @@ share: true
  \end{bmatrix}
  $$
 其中，$\alpha_x$和$\alpha_y$是x和y轴的scaling factor，$x_0$和$y_0$是光轴和归一化平面的交点在归一化平面的坐标点
-只能和归一化的空间点相乘得到像素坐标
+只能和归一化的空间点相乘得到像素坐标。
 
 ### Usage
 
@@ -123,7 +123,116 @@ $\underline{Usage}$
 - 当在优化问题中使用时，会因为本身是带约束的变量，会把无约束优化问题变为有约束的优化问题
 
 ## Transform Matrix, T
-	T = [R t; 0 1]
-	与齐次坐标配合使用可以表示连续的坐标变换
-		T1*T2*a
-		a是齐次坐标
+- Transform可以用4x4矩阵表示：
+$$
+\left[\begin{array}{ll}
+\boldsymbol{R} & \boldsymbol{t} \\
+\mathbf{0}^{T} & 1
+\end{array}\right]
+$$
+
+- 与齐次坐标配合使用可以表示连续的坐标变换，比如$a^\prime=T_1T_2a$；
+- 上式描述利用$T_1$和$T_2$对空间点a进行变换，成为$a^\prime$，其中a是齐次坐标：
+$$
+a=
+\begin{bmatrix} 
+	x \\
+	y \\
+	z \\
+	1
+\end{bmatrix}
+$$
+
+## Rotation Vector
+
+- 也被称为轴角Axis-Angle；
+- Idea：任何旋转都可以通过一个旋转轴和旋转角来刻画；
+- Property：方向与旋转轴一致，大小等于旋转角，通过下式定义：
+$$
+v=\theta n
+$$
+其中，
+1. $\theta$表示旋转角度，标量，DoF=1；
+2. $n$是与旋转轴一致的单位向量，DoF = 2。$n$是旋转矩阵R在特征值为1时的特征向量，在旋转轴上的向量经过旋转之后不会发生变化，满足$Rn = n$
+3. 实际上就是旋转矩阵的李代数，可以用罗德里格斯公式转换为旋转矩阵；
+
+## 欧拉角
+$\underline{Idea}$
+- 使用分离的三个角度，把一个旋转分解为围绕三个轴的转动；
+
+$\underline{Property}$
+- Pitch, Roll, Yaw
+- 会有万向锁引起的奇异性问题，当pitch等于$\frac{\pi}{2}$时，经过roll，pitch和yaw的旋转后，最终的旋转矩阵只和(roll - yaw)有关，即丢失了一个自由度；
+- 欧拉角是旋转的最小的参数化表示，但是有奇异性；
+- 很难/几乎不可能用来表示旋转组合；
+- Ref：https://www.euclideanspace.com/maths/geometry/rotations/euler/index.htm
+
+# Quaternion
+$\underline{Idea}$
+- 通过复数来表示旋转
+
+$\underline{Property}$
+- 由一个实部和三个虚部组成，每个虚部代表一个轴，定义
+$$\mathbf{q} = q_0 + q_1i + q_2j + q_3k$$
+所有的三维旋转都可以由一个单位四元数表示
+q和-q表示同一个旋转，实质上是多转了2*pi
+Identity Quaternion
+	实部为1，虚部为0
+		表示没有旋转
+单位四元数和轴角的关系
+	q = [cos(theta/2); sin(theta/2)*n]
+	四元数只表示了一半的旋转
+最小的过参数化定义
+Operation
+	加，减
+		Trivial
+	两个四元数相乘
+		不满足交换律
+	共轭
+		congj(q)，虚部取反
+	模
+		所有系数的平方根
+	逆
+		inv(q) = q*/|q|^2
+			inv(q)*q = q*inv(q) = 1
+			inv(q)表示q的反向旋转
+		对单位四元数来说，inv(q)和q*一样
+	指数映射
+		e^q = (e^q0)*[cos|q_v|, q_w*sin(|q_v|)/|q_v|]
+			还是一个四元数
+	对数映射
+		如果q是单位四元数
+		log(q) = [0, u*sin(theta)]
+			是纯虚四元数
+Usage
+	初始化
+		q = Eigen::Quaterniond(w, x, y, z)
+		q = quaternion(w, x, y, z)
+			matlab
+		初始化之后尽量normalize
+	Point Rotation
+		被转换的点a = [x, y, z]
+			a转化为一个虚四元数
+		旋转
+			q = cos(theta/2) + sin(theta/2)*u
+			q表示一个围绕向量u旋转theta/2角的旋转
+		a_rotated = q*a*conj(q)
+			这个操作表示一个围绕向量u旋转theta角的旋转
+			Ref
+				Quaternions and Rotations
+	Rotation Combination
+		先p后q的旋转组合
+			如果是对空间点的旋转
+				等效于q*p的旋转
+			如果是对坐标轴的旋转
+				等效于q*p的旋转
+	Convention
+		i^2 = j^2 = k^2 = -1
+		Hamilton
+			ijk = -1
+			Prefered
+			右手系
+		JPL
+			ijk = 1
+	Ref
+		https://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/transforms/index.htm
