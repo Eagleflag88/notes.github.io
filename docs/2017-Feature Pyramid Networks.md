@@ -7,7 +7,7 @@ share: true
 Original Paper: Feature Pyramid Networks for Object Detection
 
 # Problem
-- Object Detection任务需要检出多尺度的物体；使用单层的
+- Object Detection任务需要检出多尺度的物体；
 
 # Current Solutions
 - 方案1：构建图像金字塔，在每一层上面进行检测。问题是训练和检测都需要计算资源；
