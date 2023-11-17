@@ -24,7 +24,7 @@ Faster R-CNN 主要由两个部分组成：
 
 ## Backbone
 
-这是一个预训练的卷积神经网络，如VGG16、ResNet-50等，用于从输入图像中提取特征图（feature maps）。这个网络通常去除了用于分类的全连接层，只使用其卷积层来作为特征提取器。
+这是一个预训练的卷积神经网络，如VGG16、ResNet-50等，用于从输入图像中提取特征图。
 
 ## Region Proposal Network
 
