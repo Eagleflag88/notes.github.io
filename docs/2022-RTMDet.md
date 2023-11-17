@@ -25,7 +25,7 @@ The macro architecture of RTMDet is a typical one-stage object detector
 
 - 基本思路：One can enlarge the receptive field with a reasonable computational cost through depth-wise convolution；
 - 结构：
-	1. 3x3 Conv + BN + SiLU，SiLU详见[[Convolution#Activation|Convolution > Activation]]；
+	1. 3x3 Conv + BN + SiLU，SiLU详见[[CNN Basics#Activation|CNN Basics > Activation]]；
 	2. 5x5 Depthwise Conv；
 	3. 1x1 Pointwise Conv；
 	4. BN + SiLU；
