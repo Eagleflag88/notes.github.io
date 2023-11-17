@@ -29,7 +29,7 @@ share: true
 - 在整个结构之中，我们会交替使用普通和Shifted-WMSA；
 - Shifted-WMSA是W-MSA经过Patch Partition Shift之后得到的。窗口会被沿着图像的垂直和水平方向移动一定距离。这种移动窗口的机制允许跨越窗口边界的交互，同时保持计算量相对固定；
 - Shifting带来的extra计算开销可以通过论文里提出的Cyclic Shift解决；
-- 值得注意的是，这里attention的计算过程中会使用relative postion bias。详见[[Transformer#Relative Position Bias|Transformer > Relative Position Bias]]
+- 值得注意的是，这里attention的计算过程中会使用relative postion bias。详见[[Transformer Basics#Relative Position Bias|Transformer Basics > Relative Position Bias]]
 
 ## Patch Merging
 - 把相邻的patch（2x2）连接成一个patch；
