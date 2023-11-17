@@ -39,7 +39,7 @@ The macro architecture of RTMDet is a typical one-stage object detector
 
 The neck takes the multi-scale feature pyramid from the backbone and uses the same basic building blocks as the backbone with bottom-up and top-down feature propogation；
 - 接收Stage 2，3，4的输出，进行从上到下和从下到上两轮拼接，卷积操作；
-- 最后得到3个Scale的特征图，他们的维度是一样的；
+- 最后得到3个Scale的特征图，他们的长宽不一样，但是通道数一致；
 
 ## Head
 

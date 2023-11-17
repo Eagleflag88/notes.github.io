@@ -9,17 +9,10 @@ share: true
 
 # Deformable Attention
 
-- 输入：
-1. Feature map，维度CxHxW。
-2. Query element: $z_q$。
-3. Reference Point: $p_q$。
-- 采样：在$p_q$点周维采样K个点，这K个点的偏移量（相对于参考点）和权重是通过一个MLP来生成的。权重生成后还会通过一个softmax来归一化。这个MLP是学习出来的。
-- 权重求和。
-
 1. Reference point是提前得到的，然后送入Deformable Attention模块直接使用；
 2. Offest是输入query通过一个Linear线性层学习得到的；
-3. Attention Weight是输入query通过一个Linear和Softmax学习得到的；
-4. Value是通过Input feature map经过一个线性层后，再通过reference point和offest选取特定位置的特征得到的；
+3. Attention Weight是输入query通过一个Linear和Softmax学习得到的。相当于Q和K的点乘结果；
+4. Value是通过Input feature map经过一个线性层后，再通过reference point和offest选取特定位置的特征得到的。相当于标准attention的Value；
 5. Output是将Value与Attention Weight相乘后，经过一个线性层得到的;
 
 
@@ -70,4 +63,5 @@ $\underline{Process}$
 # Training
 
 ## Label Assignment Strategy
+- 匈牙利算法寻找和GT之间的最佳匹配
 
