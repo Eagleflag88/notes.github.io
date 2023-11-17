@@ -94,7 +94,7 @@ nav:
       - 2021-DARE-SLAM: 2021-DARE-SLAM Degeneracy-Aware and Resilient Loop Closing in Perceptually-Degraded Environments.md
       - 2021-Kimera-Multi: 2021-Kimera-Multi Robust, Distributed, Dense Metric-Semantic SLAM for Multi-Robot Systems.md
       - 2021-LT-mapper: 2021-LT-mapper A Modular Framework for LiDAR-based Lifelong Mapping.md
-      - 2022-AutoMerg: 2022-AutoMerg A Framework for Map Assembling and Smoothing in City-scale Environments.md
+      - 2022-AutoMerge: 2022-AutoMerge A Framework for Map Assembling and Smoothing in City-scale Environments.md
       - 2022-Crowdsourced Road Semantics Mapping Based on Pixel‐Wise Confdence Level: 2022-Crowdsourced Road Semantics Mapping Based on Pixel‐Wise Confdence Level.md
       - 2022-Crowdsourcing-Based Indoor Semantic Map Construction and Localization Using Graph Optimization: 2022-Crowdsourcing-Based Indoor Semantic Map Construction and Localization Using Graph Optimization.md
       - 2022-LAMP 2.0: 2022-LAMP 2.0 A Robust Multi-Robot SLAM System for Operation in Challenging Large-Scale Underground Environments.md
@@ -104,7 +104,11 @@ nav:
       - 2023-VMA: 2023-VMA Divide-and-Conquer Vectorized Map Annotation System for Large-Scale Driving Scene.md
       - 2023-maplab 2.0: 2023-maplab 2.0 A Modular and Multi-Modal Mapping Framework.md
     - Object Detection:
-      - 2023-Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md 
+      - 2023-Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md
+    - Point Cloud Registration:
+      - 2020-Graduated Non-Convexity for Robust Spatial Perception From Non-Minimal Solvers to Global Outlier Rejection: 2020-Graduated Non-Convexity for Robust Spatial Perception From Non-Minimal Solvers to Global Outlier Rejection.md
+      - 2020-TEASER: 2020-TEASER Fast and Certifiable Point Cloud Registration.md
+      - 2021-CLIPPER: 2021-CLIPPER A Graph-Theoretic Framework for Robust Data Association.md
     
 
 
