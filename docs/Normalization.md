@@ -47,7 +47,7 @@ GN背后的关键概念包括：
 GN在各种任务中得到应用，如图像识别、目标检测和语义分割，并且在批量大小受到硬件限制的场景中特别有益。如Faster R-CNN、Mask R-CNN和其他3D任务，由于计算和内存限制，可能无法使用较大的批量。GN在这些模型中可以提供有效的归一化，而不受批量大小的影响；
 
 # Layer Normalization
-详见[[Transformer#Layer Normalization|Transformer > Layer Normalization]]
+详见[[Transformer Basics#Layer Normalization|Transformer Basics > Layer Normalization]]
 
 # Activation
 
