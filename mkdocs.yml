@@ -48,26 +48,26 @@ nav:
       - Training: Training.md
       - Evaluation: Evaluation.md
     - Transformer:
-      - Basics: Transformer.md
-      - ViT: 2020-ViT.md
-      - Swin Transformer: 2021-Swin-Transformer.md
-      - BEVFormer: 2022-BEVFormer.md
+      - Basics: Transformer Basics.md
+      - 2020-ViT: 2020-ViT.md
+      - 2021-Swin Transformer: 2021-Swin-Transformer.md
+      - 2022-BEVFormer: 2022-BEVFormer.md
     - CNN:
-        - Basics: Convolution.md
-        - ResNet: 2015-ResNet.md
-        - U-Net: 2015-UNet.md
-        - Deformable Convolution: 2017-Deformable Convolution.md
-        - FPN: 2017-Feature Pyramid Networks.md
-        - EfficientNet: 2019-EfficientNet.md
+        - Basics: CNN Basics.md
+        - 2015-ResNet: 2015-ResNet.md
+        - 2015-U-Net: 2015-UNet.md
+        - 2017-Deformable Convolution: 2017-Deformable Convolution.md
+        - 2017-FPN: 2017-Feature Pyramid Networks.md
+        - 2019-EfficientNet: 2019-EfficientNet.md
     - Detection:
-        - Faster R-CNN: 2016-Faster R-CNN.md
-        - FCOS: 2019-FCOS.md
-        - EfficientDet: 2020-EfficientDet.md
-        - Deformable Detr: 2021-Deformable Detr.md
-        - YoloV5: 2021-YoloV5.md
-        - RTMDet: 2022-RTMDet.md
+        - 2016-Faster R-CNN: 2016-Faster R-CNN.md
+        - 2019-FCOS: 2019-FCOS.md
+        - 2020-EfficientDet: 2020-EfficientDet.md
+        - 2021-Deformable Detr: 2021-Deformable Detr.md
+        - 2021-YoloV5: 2021-YoloV5.md
+        - 2022-RTMDet: 2022-RTMDet.md
     - NeRF:
-        - Basics: Basics.md
+        - Basics: NeRF Basics.md
         - 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis: 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis.md
         - 2022-Instant-NGP: 2022-Instant-NGP.md
         - 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering: 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering.md
@@ -81,6 +81,7 @@ nav:
       - 2022-HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
       - 2022-VectorMapNet: 2022-VECTORMAPNET END-TO-END VECTORIZED HD MAP LEARNING.md
       - 2023-MapTRV1: 2023-MAPTR STRUCTURED MODELING AND LEARNING FOR ONLINE VECTORIZED HD MAP CONSTRUCTION.md
+      - 2023-MapTRv2: 2023-MapTRv2 An End-to-End Framework for Online Vectorized HD Map Construction.md
       - 2023-BeMapNet: 2023-End-to-End Vectorized HD-Map Construction With Piecewise Bezier Curve.md
       - 2023-MachMap: 2023-MachMap End-to-End Vectorized Solution for Compact HD-Map Construction.md
       - 2023-MapVR: 2023-Online Map Vectorization for Autonomous Driving A Rasterization Perspective.md
@@ -103,7 +104,7 @@ nav:
       - 2023-VMA: 2023-VMA Divide-and-Conquer Vectorized Map Annotation System for Large-Scale Driving Scene.md
       - 2023-maplab 2.0: 2023-maplab 2.0 – A Modular and Multi-Modal Mapping Framework.md
     - Object Detection:
-      - Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md 
+      - 2023-Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md 
     
 
 
