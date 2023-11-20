@@ -59,10 +59,13 @@ nav:
         - 2017-Deformable Convolution: 2017-Deformable Convolution.md
         - 2017-FPN: 2017-Feature Pyramid Networks.md
         - 2019-EfficientNet: 2019-EfficientNet.md
+        - 2022-ConvNeXt: 2022-ConvNeXt.md
     - Detection:
         - 2016-Faster R-CNN: 2016-Faster R-CNN.md
         - 2019-FCOS: 2019-FCOS.md
         - 2020-EfficientDet: 2020-EfficientDet.md
+        - 2020-LSS: 2020-LSS.md
+        - 2022-BEVDet: 2022-BEVDet.md
         - 2021-Deformable Detr: 2021-Deformable Detr.md
         - 2021-YoloV5: 2021-YoloV5.md
         - 2022-RTMDet: 2022-RTMDet.md
@@ -104,6 +107,7 @@ nav:
       - 2023-VMA: 2023-VMA Divide-and-Conquer Vectorized Map Annotation System for Large-Scale Driving Scene.md
       - 2023-maplab 2.0: 2023-maplab 2.0 A Modular and Multi-Modal Mapping Framework.md
     - Object Detection:
+      - 2022-BEVDepth: 2022-BEVDepth Acquisition of Reliable Depth for Multi-view 3D Object Detection.md
       - 2023-Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md
     - Point Cloud Registration:
       - 2020-Graduated Non-Convexity for Robust Spatial Perception From Non-Minimal Solvers to Global Outlier Rejection: 2020-Graduated Non-Convexity for Robust Spatial Perception From Non-Minimal Solvers to Global Outlier Rejection.md
