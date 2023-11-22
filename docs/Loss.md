@@ -9,34 +9,38 @@ share: true
 
 交叉熵损失（Cross-Entropy Loss）是评估分类模型性能的一种常用方法，特别是在二分类和多分类问题中。它衡量的是模型预测的概率分布与实际标签的概率分布之间的差异。
 
-$\underline{Preliminaries}$
+## Preliminaries
 
 - **概率分布$p\left(x\right)$的熵**：
 
 $$
 H(X)=-\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(p\left(x_{i}\right)\right)
 $$
-其中，$p\left(x_{i}\right)$是某个事件发生的概率，而$\log \left(p\left(x_{i}\right)\right)$则是这个事件发生所包含的信息量；所以概率分布的熵可以理解为信息量的期望；
+其中，$p\left(x_{i}\right)$是某个事件发生的概率，而这件事发生所包含的信息量定义如下：
+$$
+-\log \left(p\left(x_{i}\right)\right)
+$$
+所以概率分布的熵可以理解为信息量的期望；
 
 - **两个概率分布$p(x)$和$q(x)$的DL散度**：
 
 $$
 D_{K L}(p \| q)=\sum_{i=1}^{n} p\left(x_{i}\right) \log \left(\frac{p\left(x_{i}\right)}{q\left(x_{i}\right)}\right)
 $$
-DL散度描述了两个概率分布$p(x)$和$q(x)$之间的距离。简化了之后得到：
+DL散度描述了两个概率分布$p(x)$（真值）和$q(x)$（预测概率）之间的距离。简化了之后得到：
 $$
 D_{KL}(p||q) = \sum_{i=1}^{n} p(x_i)\log(p(x_i)) - \sum_{i=1}^{n} p(x_i)\log(q(x_i))
 
 = -H(p(x)) + \left[ -\sum_{i=1}^{n} p(x_i)\log(q(x_i)) \right]
 
 $$
-上式中第一部分是$p(x)$的熵，第二部分是$p(x)$和$q(x)$之间的交叉熵。那么，预测概率$q$和真值标签$p$之间的交叉熵损失为：
+上式中第一部分是$p(x)$的熵，第二部分是$p(x)$和$q(x)$之间的交叉熵。那么，真值标签$p$和预测概率$q$之间的交叉熵损失为：
 
 $$
 L(p,q)= -\sum_{i=1}^{n} p(x_i)\log(q(x_i))
 $$
 
-$\underline{Example}$
+## Example
 
 对一个3个类别的分类问题的一个样本来说
 - Input：
@@ -45,9 +49,15 @@ $\underline{Example}$
 - Process：按照上式计算交叉熵Loss；
 - Output：交叉熵Loss；
 
+## Application
+
+1. 在分类问题中直接使用；
+2. 在Object Detection中的分类branch使用；
+3. 在语义分割问题中使用；
+
 # Softmax
 
-交叉熵损失（Cross-Entropy Loss）的计算之前通常会需要softmax操作，尤其是在处理多分类问题时。这样做的原因是交叉熵损失要求输入是概率分布，而模型的原始输出，通常称为logits，通常并不满足这一点。softmax函数将logits转换为概率分布，这样就可以与真实的标签概率分布进行比较了。上面的$p_{pred}$即是softmax的操作的结果；
+Cross-Entropy Loss的计算之前通常会需要softmax操作，尤其是在处理多分类问题时。这样做的原因是交叉熵损失要求输入是概率分布，而模型的原始输出（称为logits）通常并不满足这一点。softmax函数将logits转换为概率分布，这样就可以与真实的标签概率分布进行比较了。上面的$p_{pred}$即是softmax的操作的结果；
 
 softmax函数的定义是：
 $$
@@ -56,11 +66,20 @@ $$
 
 这里，$z$ 是模型的logits向量，$z_i$​ 是该向量中的第i个元素。
 
-数值计算：
+直接按公式计算会有数值问题：
 - 问题1：
 	1. 当$z_i$太大且大于0，直接计算$z_i$的指数会让计算Overflow；
 	2. 当$z_i$是负数且很大，会让$z_i$的指数趋近于0。如果在分母发生会导致除零。如果在分子发生会导致取log之后输出负无穷；
 - Approach：把$z_i$替换为$z_i-\max(z_i)$；
+
+## Logistic Regression
+
+- 在二元分类问题中，有时候会采用sigmoid函数来转化logit，其能够把线性层的输出转化为0到1之间的值：
+$$
+\sigma(z)=\frac{1}{1+\exp(-z)}
+$$
+- 上式的输出可以被认为是样本属于某个类别的概率；
+- 之后会利用交叉熵Loss跟真值计算损失；
 
 # Focal Loss
 Focal Loss是一种专门为解决类别不平衡问题而设计的损失函数。它是交叉熵损失函数的一个变种，通过增加一个因子来减少易分类样本的相对损失，从而使模型更加关注难分类或者错误分类的样本。
