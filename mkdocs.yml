@@ -75,8 +75,8 @@ nav:
         - 2022-Instant-NGP: 2022-Instant-NGP.md
         - 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering: 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering.md
   - SLAM:
+      - Transform: Transform.md
       - GNSS and IMU: GNSS and IMU.md
-      - Visual SLAM Basics: Visual SLAM Basics.md
   - Math Basics:
       - Assignment Problem: Assignment Problem.md
   - Paper Reading:
