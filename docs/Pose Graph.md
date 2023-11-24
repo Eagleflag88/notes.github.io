@@ -27,7 +27,7 @@ share: true
 # Approach
 - Frontend: Generate Edge through data association
 - Backend: Maximum Likelihood
-	- 测量值: $z_k+1$, 两个结点之间的位姿变化值 → 通过配准方法获得
+	- 测量值: $z_{k+1}$, 两个结点之间的位姿变化值 → 通过配准方法获得
 	- 估计值: $f(x_k, x_{k+1}) = x_{k+1} - x_k$
 	- 残差: $z_{k+1} - (x_{k+1} - x_k)$
 - Relative Uncertainty: Through marginalization
