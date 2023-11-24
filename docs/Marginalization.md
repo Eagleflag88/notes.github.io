@@ -2,27 +2,52 @@
 share: true
 ---
 # Multivariate Gaussian Distribution
-- p(X) = exp[trans(X - MIU)*inv(COV(X, X))*(X - MIU)*(-0.5)]
-- X：多元变量
+- $p(X) = \exp[-0.5*(X - \mu)^T \Sigma^{-1}(X, X)(X - \mu)]$
+- $X$：多元变量
 - 在SLAM中很多时候应该处理成0均值的变量
-- MIU：均值向量
-- COV(X, X)：协方差矩阵
-- 信息矩阵，LAMBDA = inv(COV) → 信息矩阵的元素如果为零表明其代表的变量不相关
+- $\mu$：均值向量
+- $\Sigma(X, X)$：协方差矩阵
+- 信息矩阵，$\Lambda = \Sigma^{-1}$ → 信息矩阵的元素如果为零表明其代表的变量不相关
 
 # 舒尔补
 ## Idea
-- 考虑任意方阵M = [A B; C D]
-- 通过定义舒尔补可以快速求得M的逆阵
-- 条件是A和D矩阵可逆
+- 考虑任意方阵
+ $$ 
+ M=\begin{bmatrix} 
+   A & B  \\
+   C & D
+ \end{bmatrix}
+ $$
+- 通过定义舒尔补可以快速求得$M$的逆阵
+- 条件是$A$和$D$矩阵可逆
 
 ## Derivation
-- 考虑线性系统M*[x; y] = [c; d]
-- 利用消元法求解线性系统，得到x和y的表达式
-	- x = inv(A - B*inv(D)*C)*c - inv(A - B*inv(D)*C)*B*inv(D)*d
-	- y = -inv(D)*C*inv(A - B*inv(D)*C)*c + (inv(D) + 
-      inv(D)*C*inv(A - B*inv(D)*C)*B*inv(D))*d
-- 观察上式可获得inv(M)，因为[x; y] = inv(M)*[c; d]
-- Ref: The Schur Complement and Symmetric Positive Semidenite (and Denite) Matrices.pdf
+- 考虑线性系统
+ $$ 
+ M\begin{bmatrix} 
+   x  \\
+   y
+ \end{bmatrix}
+ =\begin{bmatrix} 
+   c  \\
+   d
+ \end{bmatrix}
+ $$
+- 利用消元法求解线性系统，得到$x$和$y$的表达式
+	- $x = (A - BD^{-1}C)^{-1}c - (A - BD^{-1}C)^{-1}BD^{-1}d$
+	- $y = -D^{-1}C(A - BD^{-1}C)^{-1}c + (D^{-1} + D^{-1}C(A - BD^{-1}C)^{-1}BD^{-1})d$
+- 观察上式可获得$M^{-1}$，因为
+$$ 
+ \begin{bmatrix} 
+   x  \\
+   y
+ \end{bmatrix}
+ =M^{-1}\begin{bmatrix} 
+   c  \\
+   d
+ \end{bmatrix}
+ $$
+- Ref: The Schur Complement and Symmetric Positive Semidefinite (and Definite) Matrices
 
 ## Property
 - 实际上就是Variable elimination in a probabilisitic view
@@ -33,49 +58,58 @@ share: true
 # Application
 ## 滑窗管理
 - Problem
-	- 滑窗中a和b分别是需要被marg和留下的状态
-	- p(a, b)的协方差矩阵
-		- M = [A, B; C, D]
-		- A = COV(a, a)
-		- D = COV(b, b)
+	- 滑窗中$a$和$b$分别是需要被marg和留下的状态
+	- $p(a, b)$的协方差矩阵
+	$$ 
+ M=\begin{bmatrix} 
+   A & B  \\
+   C & D
+ \end{bmatrix}
+ $$
+	- 其中$A = \Sigma(a, a)$, $D = \Sigma(b, b)$
 	- 目标
-		- 条件概率：p(b|a) → 即边缘化后的概率分布
-		- 边际概率：p(a) → 副产品
+		- 条件概率：$p(b|a)$ → 即边缘化后的概率分布
+		- 边际概率：$p(a)$ → 副产品
 - Usage
 	- 从协方差矩阵M中获得概率分布
-		- p(a)的协方差矩阵是A
-		- p(b|a)的协方差矩阵是A的舒尔补 → D - C*inv(A)*B
+		- $p(a)$的协方差矩阵是$A$
+		- $p(b|a)$的协方差矩阵是$A$的舒尔补 → $D - CA^{-1}B$
 		- Ref：vio_course 第四节 eq32
-	- 从信息矩阵inv(M)中获得概率分布
-		- inv(M) = [LAMBDA_aa LAMBA_ab; 
-                LAMBDA_ba LAMBA_bb] → 可以通过舒尔补快速获得
-            - p(a)的协方差矩阵是A → LAMBDA_aa - LAMBDA_ab*inv(LAMBDA_bb)*LAMBDA_ba
-            - p(b|a)的信息矩阵是LAMBDA_bb → 我们想要的
+	- 从信息矩阵inv(M)中获得概率分布 
+$$ 
+ M^{-1}=\begin{bmatrix} 
+   \Lambda_{aa} & \Lambda_{ab}  \\
+   \Lambda_{ab} & \Lambda_{bb}
+ \end{bmatrix}
+ $$
+可以通过舒尔补快速获得
+            - $p(a)$的协方差矩阵是$A = \Lambda_{aa} - \Lambda_{ab}\Lambda_{bb}^{-1}\Lambda_{ba}$
+            - $p(b|a)$的信息矩阵是$\Lambda_{aa}$ → 我们想要的
             - Ref：vio_course 第四节 eq 37，38
-- 同时会让BA的normal matrix变得更稠密
+			 - 同时会让BA的normal matrix变得更稠密
 
 ## BA
-- Problem：求解H*delta_X = G
-	- H: Normal Matrix：H = [B E; trans(E) C]
-		- B为位姿矩阵
-		- C为路标
-		- B比C的维数小很多
-	- delta_X = [delta_c; delta_p]
-	- G = [v; w]
+- Problem：求解$H\Delta X = G$
+	- $H$: Normal Matrix：$H = [B \ E; E^T \ C]$
+		- $B$为位姿矩阵
+		- $C$为路标
+		- $B$比$C$的维数小很多
+	- $\Delta X = [\Delta c; \Delta p]$
+	- $G = [v; w]$
 - Approach
 	- Idea：求解reduced linear system, 减少计算量
 		- pose的数量比feature数量少很多
 		- Reduced linear system就是关于pose的
 	- Process
-		- 求C的逆阵inv(C)
+		- 求$C$的逆阵$C^{-1}$
 		- 利用舒尔补获得关于位姿的增量方程
-			1. [B - E*inv(C)*trans(E)]*delta_c = v - E*inv(C)*w，reduce camera system。S = [B - E*inv(C)*trans(E)] → 一个半正定矩阵
-			2. 问题规模与B一样，规模不大
-			3. 根据S的稀疏性，ceres求解器会选择dense/sparse solver
+			1. $[B - EC^{-1}E^T]\Delta c = v - EC^{-1}w$，reduce camera system。$S = [B - EC^{-1}E^T]$ → 一个半正定矩阵
+			2. 问题规模与$B$一样，规模不大
+			3. 根据$S$的稀疏性，ceres求解器会选择dense/sparse solver
 				- Sparse cholesky decomposition
 				- Preconditioned conjugate gradient
 			4. Ref：十四讲 eq 10.59
-		- 得关于路标的增量方程 → $\Delta p = inv(C)*(w - trans(E)*delta_c)$
+		- 得关于路标的增量方程 → $\Delta p = C^{-1}(w - E^T\Delta c)$
 ## Null-space operation
 - 对需要被边缘化的变量的residual jacobian利用其null space vector来消除，MSCKF
 - Ref: Null-Space-based Marginalization Analysis and Algorithm

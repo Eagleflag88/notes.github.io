@@ -16,17 +16,17 @@ share: true
 # Problem
 
 ## 观测方程
-- Z = f(X)：$P_{uv} = KTP_w$
+- $Z = f(X)$：$P_{uv} = KTP_w$
 - 3D空间点投影到图像像素点
 - $P_{uv}$: 特征点的像素坐标 → 2维
 
 ## 优化参数, X
-- Pose 6, T
+- Pose 6, $T$
 - Point 3, $P_w$
 
 ## 目标
 - Maximum Likelihood
-	- $L = trans(Z - f(X))\Omega^{-1}(Z - f(X))$
+	- $L = (Z - f(X))^T\Omega^{-1}(Z - f(X))$
 	- $\Omega$是协方差矩阵
 - $\min L → X$
 - 信息矩阵是亏秩的，因为系统有不可观的自由度:
@@ -42,13 +42,13 @@ share: true
 - $J^T\Omega^{-1}J\Delta X = -Jf(X)$ → 求解$\Delta X$
 
 ## Process
-- Step 1: 建立Jacobian Matrix，J
+- Step 1: 建立Jacobian Matrix，$J$
 	- row → 观测数x2
 	- col → pose数量x6 + 路点数量x3
-- Step 2：根据每个测量点关联的优化变量把jacobian填入J中，每一行包含
+- Step 2：根据每个测量点关联的优化变量把jacobian填入$J$中，每一行包含
 	- 2x6 Block for pose
 	- 2x3 Block for 3d路点
-- Step 3：求信息矩阵H
+- Step 3：求信息矩阵$H$
 	- $H = J^T\Omega^{-1}J$
 	- $\Omega$误差的协方差矩阵
 - Step 4: 利用H的稀疏性求解 → 参见本文档的Marginalization→Application→BA

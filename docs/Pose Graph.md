@@ -7,9 +7,9 @@ share: true
 - 只考虑pose本身 → 减少计算量，使SLAM问题能够real time运行
 
 # Structure
-- Node: 仅仅是Pose → state, x
+- Node: 仅仅是Pose → state, $x$
 - Edge
-	- Constraint: 	z → real observation
+	- Constraint: 	$z$ → real observation
 	- Observation or odometry measurements
 		- 2D: Image Registration
 		- 3D: Point Cloud Registration
@@ -18,7 +18,7 @@ share: true
  # Problem
  - The system is described by observation function z = f(x)
  - Residual: 
-	 - z - f(x)
+	 - $z - f(x)$
 	 - variance: $\sigma$
 - Loss function
 	- $L = (Z - f(X))^T*\Omega^{-1}(Z - f(X))$

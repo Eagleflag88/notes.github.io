@@ -39,7 +39,7 @@ share: true
 	- Step 4 → 令$x_{k+1|k+1} = x_{k+1|k} + K(z_{k+1} - Fx_{k+1|k+1})$，然后求$x_{k+1|k+1}$的均值和方差
 	- Step 5 
 		- 利用导数使$x_{k+1|k+1}$的方差最小
-		- 获得K → kalman增益
+		- 获得$K$ → kalman增益
 - Ref: 十四讲 eq 10.27
 
 ## Unscented Kalman Filter
