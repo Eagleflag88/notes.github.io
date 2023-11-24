@@ -92,7 +92,10 @@ nav:
         - IMU Pre-Integration: IMU Pre-Integration.md
         - Factor Graph: Factor Graph.md
         - Marginalization: Marginalization.md
+        - Estimator Consistency: Estimator Consistency.md
   - Math Basics:
+      - Least Square Problem: Least Square Problem.md
+      - Numeric Optimization: Numeric Optimization.md
       - Assignment Problem: Assignment Problem.md
       - Matrix Decomposition: Matrix Decomposition.md
       - Solving Linear System: Solving Linear System.md
