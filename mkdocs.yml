@@ -75,10 +75,27 @@ nav:
         - 2022-Instant-NGP: 2022-Instant-NGP.md
         - 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering: 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering.md
   - SLAM:
-      - Transform: Transform.md
-      - GNSS and IMU: GNSS and IMU.md
+      - Basics: 
+        - Camera Model: Camera Model.md
+        - Transform: Transform.md
+        - Lie Algebra: Lie Algebra.md
+        - Outlier Rejection: Outlier Rejection.md
+        - State Estimation: State Estimation.md
+        - Gaussian Filter: Gaussian Filter.md
+        - Nonparametric Filter: Nonparametric Filter.md
+      - Front-End:
+        - Motion Estimation: Motion Estimation.md
+        - GNSS and IMU: GNSS and IMU.md
+      - Back-End:
+        - Pose Graph: Pose Graph.md
+        - Bundle Adjustment: Bundle Adjustment.md
+        - IMU Pre-Integration: IMU Pre-Integration.md
+        - Factor Graph: Factor Graph.md
+        - Marginalization: Marginalization.md
   - Math Basics:
       - Assignment Problem: Assignment Problem.md
+      - Matrix Decomposition: Matrix Decomposition.md
+      - Solving Linear System: Solving Linear System.md
   - Paper Reading:
     - Online HDMap Construction:
       - 2022-HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
