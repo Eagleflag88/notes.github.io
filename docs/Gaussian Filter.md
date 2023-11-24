@@ -31,11 +31,11 @@ share: true
 		- $v_{k+1}$的均值和方差
 	- Step 1 → 对eq1在$x_k$的均值处线性化
 		- $x_{k+1} = f(mean(x_k)) + F(x_k - mean(x_k))$
-		- F是f在$mean(x_k)$的偏导
+		- $F$是$f$在$mean(x_k)$的偏导
 	- Step 2 → 利用上式和输入推导$x_{k+1|k}$的均值和方差
 	- Step 3 → 在$x_{k+1|k}$的均值处线性化eq2
 		- $z_{k+1} = h(mean(x_{k+1|k})) + H(x_{k+1|k} - mean(x_{k+1|k}))$
-		- H是h在$mean(x_{k+1|k})$的偏导
+		- $H$是$h$在$mean(x_{k+1|k})$的偏导
 	- Step 4 → 令$x_{k+1|k+1} = x_{k+1|k} + K(z_{k+1} - Fx_{k+1|k+1})$，然后求$x_{k+1|k+1}$的均值和方差
 	- Step 5 
 		- 利用导数使$x_{k+1|k+1}$的方差最小
@@ -47,10 +47,10 @@ share: true
 	1. probes the function to be linearized at selected points and calculates a linearized approximation based on the outcomes of these probes.
 	2. 相比EKF不需要线性化工作点
 - Unscented Transform
-	- 一种计算经过非线性系统传播过后的随机变量的统计量的方法 → y = f(x)
+	- 一种计算经过非线性系统传播过后的随机变量的统计量的方法 → $y = f(x)$
 	- Process
-		1. 计算x的sigma point → 根据x的均值和协方差生成一些sigma point
-		2. 计算y的统计量 → 把x的sigma point放入f获得对应的y, 并计算y的均值和协方差
+		1. 计算$x$的sigma point → 根据$x$的均值和协方差生成一些sigma point
+		2. 计算$y$的统计量 → 把$x$的sigma point放入$f$获得对应的$y$, 并计算$y$的均值和协方差
 		3. Ref：The unscented kalman filter.pdf，eq 7.30 - 7.34
 - Process
 	- Prediction
