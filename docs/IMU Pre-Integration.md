@@ -22,7 +22,7 @@ share: true
 - Angular velocity
 	- $w = [w_1, w_2, w_3]^T$
 	- 在imu的局部坐标系的测量值
-	- 可以理解为旋转矩阵R的李代数
+	- 可以理解为旋转矩阵$R$的李代数
 		- $R' = Rw^\wedge$
 		- $R = \exp(w^\wedge)$
 - Zero Velocity Update
@@ -38,22 +38,22 @@ share: true
 - Integration Model
 	- 利用运动模型对每一个新增的测量值都进行积分，$\Delta t$
 	- Forster eq 31:
-		- 描述了在一段时间之后的PVQ关于一段时间之前的PVQ之间的关系
+		- 描述了在一段时间之后的$PVQ$关于一段时间之前的$PVQ$之间的关系
 		- $PVQ(t+\Delta t) = F(PVQ(t), M(\Delta t))$
 		- $M(\Delta t)$是imu测量值
 		- 当把多个测量值合成到一起 →Forster eq 32
-		- 在优化过程中，每一次PVQ的估计值的变化都会使eq 32需要重新算一遍，不经济
+		- 在优化过程中，每一次$PVQ$的估计值的变化都会使eq 32需要重新算一遍，不经济
 
 # IMU Pre-Integration
 ## Idea
-- 获得PVQ在delta_t中的变化量，跟PVQ的估计量解耦 → 
+- 获得$PVQ$在$\Delta t$中的变化量，跟$PVQ$的估计量解耦 → 
 					$\Delta PVQ = F(M(\Delta t))$
 - 同时，残差函数的构造方式也不同
-	- 之前是直接对比某个时间的PVQ，计算残差
-	- 现在是使用两个时间段之间的PVQ的变换量的差别作为残差
+	- 之前是直接对比某个时间的$PVQ$，计算残差
+	- 现在是使用两个时间段之间的$PVQ$的变换量的差别作为残差
 
 ## Preintegrated measurement model
-- 考虑计算imu在i和i+1时刻之间的$\Delta R$, $\Delta V$和$\Delta P$
+- 考虑计算imu在$i$和$i+1$时刻之间的$\Delta R$, $\Delta V$和$\Delta P$
 - 基于eq 32，在等式左右分别左乘一个$(R_i)^{-1}$，得到$\Delta R$，eq33；同时，$\Delta V$和$\Delta P$也可以通过$\Delta R$表示，获得eq33
 	- 之所以是左乘是因为此时的$R$表示一个世界坐标系下的旋转量
 	- $PVQ$的增量是相对于imu坐标的增量不是相对于世界坐标的增量
