@@ -2,7 +2,7 @@
 share: true
 ---
 # Multivariate Gaussian Distribution
-- $p(X) = \exp[-0.5*(X - \mu)^T \Sigma^{-1}(X, X)(X - \mu)]$
+- $p(X) = \exp[-(X - \mu)^T \Sigma^{-1}(X, X)(X - \mu)/2]$
 - $X$：多元变量
 - 在SLAM中很多时候应该处理成0均值的变量
 - $\mu$：均值向量
