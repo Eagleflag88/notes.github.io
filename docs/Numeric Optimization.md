@@ -37,7 +37,7 @@ share: true
 - Damped Method
 	- 引入阻尼因子$\mu$
 		- $L = F(X + \Delta X) + \mu\Delta X^T\Delta X$
-		- 对过大的\Delta X是一种惩罚 → 相当于正则化
+		- 对过大的$\Delta X$是一种惩罚 → 相当于正则化
 	- 对$L$进行泰勒一阶展开 → 求导，置零
 	- 迭代求解$(J^TJ + \mu I)\Delta X = -JF(X)$
 	- Ref：vio_course, lecture 3, p12

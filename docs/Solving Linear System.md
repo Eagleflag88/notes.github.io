@@ -4,7 +4,7 @@ share: true
 
 # Problem Formulation
 - $AX = B$
-- $A$: mxn, X: nx1, B: mx1
+- $A$: mxn, $X$: nx1, $B$: mx1
 - $m < n$
 	- 欠定：方程数小于未知数个数
 	- 有无穷个解，添加约束，然后求解最小二乘法
@@ -43,7 +43,7 @@ share: true
 		2. 计算$d = A^Tb$
 		3. 计算Cholesky分解 $C = GG^T$
 	- Property
-		1. 当A比较病态时，normal equation会让情况以两倍的程度变得更糟
+		1. 当$A$比较病态时，normal equation会让情况以两倍的程度变得更糟
 		2. 速度最快但是数值上最不稳定
 	- Ref: https://fncbook.github.io/v1.0/leastsq/normaleqns.html
 

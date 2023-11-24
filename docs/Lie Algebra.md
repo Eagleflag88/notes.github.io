@@ -28,9 +28,9 @@ share: true
 $$
 \Phi=\phi^\wedge=
 \begin{bmatrix} 
-	0, & -\phi_3, & \phi_2 \\
-	\phi_3, & 0, & -\phi_1 \\
-	-\phi_2, & \phi_1, & 0
+	0 & -\phi_3 & \phi_2 \\
+	\phi_3 & 0 & -\phi_1 \\
+	-\phi_2 & \phi_1 & 0
 \end{bmatrix}
 $$
 - $\phi$可以理解为是瞬时角速度；
@@ -50,7 +50,7 @@ $\underline{微分模型}$
 $$
 \frac{(R + \Delta R)p - Rp}{\Delta R}
 $$
-- 因为R上没有定义加法，上式无法计算；
+- 因为$R$上没有定义加法，上式无法计算；
 - 李代数上定义了加法，我们可以对李代数的变化量$\delta\phi$求导，而不是对旋转矩阵的变化量$\Delta R$，获得下式：
 $$
 \frac{\partial(\exp(\phi^\wedge)p)}{\partial\phi}=\lim_{\delta\phi \to 0}\frac{\exp((\phi + \delta\phi)^\wedge)p - \exp(\phi^\wedge)p}{\delta\phi}
@@ -64,7 +64,7 @@ $$
 $$
 - 推导过程:
 	- 对上式使用Tayler展开：$\exp(\delta\phi) = I + \exp(\delta\phi)$;
-	- 最后利用性质 a^b = -b^a消去上式中的$\delta\phi$
+	- 最后利用性质 $a^\wedge b = -b^\wedge a$消去上式中的$\delta\phi$
 - Ref: 十四讲 eq 4.41
 
 ## Implementation

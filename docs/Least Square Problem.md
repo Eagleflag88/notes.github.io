@@ -31,7 +31,7 @@ share: true
 - Solution
 	- 在$W$已知的情况下，通过对$L$函数求$\beta$向量的偏导
 	- $XWX^T \beta = X^TWY$ → weighted normal equation
-	- Ref: https://en.wikipedia.org/wiki/Weighted_least_squares
+	- Ref: [wiki](https://en.wikipedia.org/wiki/Weighted_least_squares)
 
 ## Generalized
 - Problem: 
@@ -44,7 +44,7 @@ share: true
 - Solution
 	- 在W已知的情况下，通过对L函数求\beta向量的偏导
 	- $XWX^T \beta = XWY$
-	- Ref： https://en.wikipedia.org/wiki/Generalized_least_squares#Feasible_generalized_least_squares
+	- Ref：[wiki](https://en.wikipedia.org/wiki/Generalized_least_squares#Feasible_generalized_least_squares)
 
 # Nonlinear Case
 ## Problem
@@ -60,7 +60,7 @@ share: true
 		- 求令$L$最小的$\Delta X$
 		- $f(X + \Delta X)$可以利用泰勒展开近似
 	- 对$f(X + \Delta X)$进行泰勒展开，然后对$L$求导，得到增量方程 → $J^TJ \Delta X = -J^Tf(X)$
-	- $J^TJ$矩阵有可能比较病态，$Delta X$的解数值上可能会不稳定
+	- $J^TJ$矩阵有可能比较病态，$\Delta X$的解数值上可能会不稳定
 	- Ref：十四讲，eq 6.20
 	- Variant → 在损失函数中增加超参数$\alpha$，$L = (Y - f(X + \alpha\Delta X))^T(Y - f(X + \alpha\Delta X))$
 
