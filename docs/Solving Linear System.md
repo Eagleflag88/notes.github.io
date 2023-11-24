@@ -69,7 +69,6 @@ share: true
 		- The Least Squares Solution of Linear Systems.pdf
 		
 - Conjaguted Gradient → 优化的方法，迭代求解超大稀疏的矩阵
-- 
 - Ref
 	- NUMERICALLY EFFICIENT METHODS FOR SOLVING LEAST SQUARES PROBLEMS.pdf
 	- https://blog.csdn.net/wangshuailpp/article/details/80209863
