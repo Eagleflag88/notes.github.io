@@ -21,7 +21,7 @@ share: true
 	 - $z - f(x)$
 	 - variance: $\sigma$
 - Loss function
-	- $L = (Z - f(X))^T*\Omega^{-1}(Z - f(X))$
+	- $L = (Z - f(X))^T\Omega^{-1}(Z - f(X))$
 	- $\Omega$: 残差的协方差矩阵
 
 # Approach
