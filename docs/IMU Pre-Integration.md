@@ -8,12 +8,12 @@ share: true
 	- Gravity分量的存在使得imu设备的绝对rotation（相对大地坐标系，但不包含yaw）变得可观
 	- Error Model
 		- 确定性误差
-			1. $l = sa + b$, a真值，l测量值
-			2. Bias: b
+			1. $l = sa + b$, $a$真值，$l$测量值
+			2. Bias: $b$
 				- 随时间变化，其变化可由维纳过程建模，离散情况下为random walk
 				- 第二节IMU传感器->测量方程， eq 12
 				- 艾伦方差标定
-			3. Scale: s → 真实值和测量值的斜率，通常为1
+			3. Scale: $s$ → 真实值和测量值的斜率，通常为1
 			4. 标定
 				- 第二节IMU传感器->测量方程， eq 7
 				- 6面法: 标定s和b, 通过最小二乘法
@@ -55,8 +55,8 @@ share: true
 ## Preintegrated measurement model
 - 考虑计算imu在i和i+1时刻之间的$\Delta R$, $\Delta V$和$\Delta P$
 - 基于eq 32，在等式左右分别左乘一个$(R_i)^{-1}$，得到$\Delta R$，eq33；同时，$\Delta V$和$\Delta P$也可以通过$\Delta R$表示，获得eq33
-	- 之所以是左乘是因为此时的R表示一个世界坐标系下的旋转量
-	- PVQ的增量是相对于imu坐标的增量不是相对于世界坐标的增量
+	- 之所以是左乘是因为此时的$R$表示一个世界坐标系下的旋转量
+	- $PVQ$的增量是相对于imu坐标的增量不是相对于世界坐标的增量
 - 描述两个关键帧之间的状态变化的测量值和他们的噪声模型 Forster eq 38
 - preintegrated mean
 	- preintegrated rotation measurement: Forster eq 35
