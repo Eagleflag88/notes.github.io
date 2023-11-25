@@ -34,7 +34,7 @@ $$
 \end{bmatrix}
 $$
 - $\phi$可以理解为是瞬时角速度；
-- 反对称矩阵可以表达R的导数，$R' = \Phi R$；
+- 反对称矩阵可以表达$R$关于时间的导数，$R'(t) = R \Phi$，注意这里的结果是在主动旋转的假设下推到出来的，即旋转的是物体本身，而不是坐标系；如果旋转的是坐标系，则$R'(t) = \Phi R$。
 - 如果是用四元数表示旋转，$\mathfrak{so}(3)$对应的是纯四元数的空间；
 - 指数映射：描述了李代数和旋转矩阵R的关系：
 $$
@@ -42,6 +42,7 @@ R = \exp(\phi^\wedge)
 $$
 - 当使用轴角来表达旋转时，即获得了罗德里格斯公式；
 - 指数映射$\Phi=\log(R)$；
+- Ref: Time Derivative of Rotation Matrices: A Tutorial.pdf
 
 ## 对旋转求导
 
@@ -58,7 +59,7 @@ $$
 - Ref: 十四讲 eq 4.40
 
 $\underline{扰动模型}$
-- 变化之后的位姿不用$\exp((\phi + \delta\phi)^\wedge)$而是用$\exp(\varphi^\wedge) \exp(\phi^\wedge)$计算
+- 变化之后的位姿不用$\exp((\phi + \delta\phi)^\wedge)$而是用$\exp(\varphi^\wedge) \exp(\phi^\wedge)$计算（左扰动）
 $$
 \frac{\partial (Rp)}{\partial \varphi} = \lim_{\varphi \to 0} \frac{\exp(\varphi^\wedge) \exp(\phi^\wedge) p - \exp(\phi^\wedge) p}{\varphi}
 $$
