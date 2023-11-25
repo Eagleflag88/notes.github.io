@@ -41,11 +41,14 @@ share: true
 	- 实际上等同于每次都在训练不同的网络；
 	- 由于在训练时某些神经元被丢弃，因此在预测时需要对神经元的输出进行缩放，以补偿那些在训练时未被激活的神经元。如果在训练时使用了p的丢弃概率，则在预测时，网络的权重通常会乘以1−p（这个过程有时也被称为"inverted dropout"）；
 	- Dropout一般在卷积过后的全连接层使用；
-1. 数据增强：通过对训练数据进行旋转、缩放、裁剪等变换来人为增加样本多样性，提高模型的泛化能力。
-2. 早停（Early Stopping）：在验证集上的性能不再提升时停止训练，防止过拟合。
-3. Normalization：BN，GN和LN。详见[[Normalization#Batch Normalization|Normalization > Batch Normalization]]，[[Normalization#Group Normalization|Normalization > Group Normalization]]和[[Normalization#Layer Normalization|Normalization > Layer Normalization]]；
-4. 梯度剪切（Gradient Clipping）：限制梯度更新的步长，防止梯度爆炸；
-5. 学习率衰减：随着时间的推移逐渐减小学习率，有助于模型在训练后期稳定；
+4. 数据增强：通过对训练数据进行旋转、缩放、裁剪等变换来人为增加样本多样性，提高模型的泛化能力；
+5. 早停（Early Stopping）：在验证集上的性能不再提升时停止训练，防止过拟合；
+6. Normalization：BN，GN和LN。详见[[Normalization#Batch Normalization|Normalization > Batch Normalization]]，[[Normalization#Group Normalization|Normalization > Group Normalization]]和[[Normalization#Layer Normalization|Normalization > Layer Normalization]]；
+7. 梯度剪切（Gradient Clipping）：限制梯度更新的步长，防止梯度爆炸；
+8. 学习率衰减：随着时间的推移逐渐减小学习率，有助于模型在训练后期稳定；
+9. Label Smoothing: 
+	- 通过将一部分概率分配给非目标类别，来对这些硬标签进行软化；
+	- 比如一个$K$分类问题，我们可以把GT的标签从0和1改为$\frac{\epsilon}{K-1}$和$1-\epsilon$，$\epsilon$是一个小的常数，比如0.01；
 
 这些技术可以单独使用，也可以组合使用，以达到最好的正则化效果。选择哪种技术通常取决于具体任务、模型复杂性和训练数据的特性。
 
