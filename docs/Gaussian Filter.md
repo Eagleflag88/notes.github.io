@@ -3,9 +3,9 @@ share: true
 ---
 # Linear Kalman Filter
 ## Property
-- Linearity assumption for the motion and meausrement equation
-- All states and measurements are reprensented by moments of gaussians
-- Update and Correction formulas in close-form
+- Linearity assumption for the motion and meausrement equation;
+- All states and measurements are reprensented by moments of gaussians;
+- Update and Correction formulas in close-form;
 
 ## Derivation
 - Ref：十四讲 eq 10.9

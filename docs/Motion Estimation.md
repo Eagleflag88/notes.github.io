@@ -5,8 +5,8 @@ share: true
 # 2D-2D
 ## Fundamental Matrix
 $\underline{Property}$
-- encode relative orientation between two uncalibrated images, 3x3 Matrix
-- describe coplanarity constraint of the feature points
+- Encode relative orientation between two uncalibrated images, 3x3 Matrix;
+- Describe coplanarity constraint of the feature points;
 - $x^TFx'=0$：
 	1. homogenous coordinate $x$ and $x'$ in pixel plane；
 	2. $x = [u, v, 1]$
