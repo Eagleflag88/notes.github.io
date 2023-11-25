@@ -33,8 +33,8 @@ $$
 - 反对称矩阵: $a^\wedge$，定义如下：
 $$
 a^\wedge=\begin{bmatrix} 
-   0 & a_1 & -a_2  \\
-   -a_1 & 0 & a_3  \\
+   0 & a_1 & -a_2  \\\
+   -a_1 & 0 & a_3  \\\
    -a_2 & -a_3 & 0  \\
  \end{bmatrix}
 $$
@@ -67,9 +67,9 @@ $$
 $$
 a=
 \begin{bmatrix} 
-	x \\
-	y \\
-	z \\
+	x \\\
+	y \\\
+	z \\\
 	1
 \end{bmatrix}
 $$
@@ -112,9 +112,9 @@ $$\mathbf{q} = q_0 + q_1i + q_2j + q_3k$$
 $$
 \mathbf{q} = 
 \begin{bmatrix} 
-	cos(\theta/2) \\
-	sin(\theta/2)n_x \\
-	sin(\theta/2)n_y \\
+	cos(\theta/2) \\\
+	sin(\theta/2)n_x \\\
+	sin(\theta/2)n_y \\\
 	sin(\theta/2)n_z 
 \end{bmatrix}
 $$
@@ -122,8 +122,8 @@ $$
 $$
 n=
 \begin{bmatrix} 
-	n_x \\
-	n_y \\
+	n_x \\\
+	n_y \\\
 	n_z 
 \end{bmatrix}
 $$
@@ -147,7 +147,7 @@ $$
 $$
 q=
 \begin{bmatrix} 
-	cos(\theta/2) \\
+	cos(\theta/2) \\\
 	sin(\theta/2)u
 \end{bmatrix}
 $$
