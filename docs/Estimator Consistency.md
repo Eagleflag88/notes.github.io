@@ -25,8 +25,8 @@ share: true
 
 ## Solution
 - FEJ-EKF
-	- pose使用上一次的propagated state来进行线性化
-	- Landmark使用第一次线性化时的state
+	- Pose使用上一轮完结之后的state来进行线性化，而不是本轮经过motion equation预测来的pose；
+	- Landmark使用第一次线性化时的state；
 - Observability-Constraint EKF → 在imu covariance propagation的transition中，保持null space，而不是修改线性化的点
 
 ## Ref
