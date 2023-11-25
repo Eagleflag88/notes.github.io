@@ -14,8 +14,8 @@ share: true
 - 考虑任意方阵
  $$ 
  M=\begin{bmatrix} 
-   A & B  \\
-   C & D
+   A & B \\
+   C & D 
  \end{bmatrix}
  $$
 - 通过定义舒尔补可以快速求得$M$的逆阵
