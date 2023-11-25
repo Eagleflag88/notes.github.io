@@ -14,7 +14,7 @@ share: true
 - 考虑任意方阵
  $$ 
  M=\begin{bmatrix} 
-   A & B \\
+   A & B \\\
    C & D 
  \end{bmatrix}
  $$
