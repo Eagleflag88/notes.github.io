@@ -28,8 +28,8 @@ share: true
 $$
 \Phi=\phi^\wedge=
 \begin{bmatrix} 
-	0 & -\phi_3 & \phi_2 \\
-	\phi_3 & 0 & -\phi_1 \\
+	0 & -\phi_3 & \phi_2 \\\
+	\phi_3 & 0 & -\phi_1 \\\
 	-\phi_2 & \phi_1 & 0
 \end{bmatrix}
 $$

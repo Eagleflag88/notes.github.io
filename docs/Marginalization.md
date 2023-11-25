@@ -25,11 +25,11 @@ share: true
 - 考虑线性系统
  $$ 
  M\begin{bmatrix} 
-   x  \\
+   x  \\\
    y
  \end{bmatrix}
  =\begin{bmatrix} 
-   c  \\
+   c  \\\
    d
  \end{bmatrix}
  $$
@@ -39,11 +39,11 @@ share: true
 - 观察上式可获得$M^{-1}$，因为
 $$ 
  \begin{bmatrix} 
-   x  \\
+   x  \\\
    y
  \end{bmatrix}
  =M^{-1}\begin{bmatrix} 
-   c  \\
+   c  \\\
    d
  \end{bmatrix}
  $$
@@ -62,7 +62,7 @@ $$
 	- $p(a, b)$的协方差矩阵
 	$$ 
  M=\begin{bmatrix} 
-   A & B  \\
+   A & B  \\\
    C & D
  \end{bmatrix}
  $$
@@ -78,7 +78,7 @@ $$
 	- 从信息矩阵inv(M)中获得概率分布 
 $$ 
  M^{-1}=\begin{bmatrix} 
-   \Lambda_{aa} & \Lambda_{ab}  \\
+   \Lambda_{aa} & \Lambda_{ab}  \\\
    \Lambda_{ab} & \Lambda_{bb}
  \end{bmatrix}
  $$
