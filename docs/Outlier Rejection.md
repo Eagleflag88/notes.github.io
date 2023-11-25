@@ -12,34 +12,35 @@ share: true
 	- $k$是其自由度；
 	- $Q = \sum(Z_i^2)$, $k$个$Z_i$，$Q \sim X^2(k)$
 - Usage:
-	- 用来决定这两者之间是否有明显区别，或者说这些sample数据是不是来自同一个分布
-	- 一种关于error的平方和的hypothesis test
+	- 用来决定这两者之间是否有明显区别，或者说这些sample数据是不是来自同一个分布；
+	- 一种关于error的平方和的hypothesis test；
 - Ref
 	- https://zhuanlan.zhihu.com/p/58556978
 	- Wiki - Pearson's chi-squared test, Chi-squared distribution
 
 # RANSAC
 ## Idea
-- Seperate the outlier from the inlier
-- 解决数据匹配的问题
+- Seperate the outlier from the inlier；
+- 解决数据匹配的问题；
 	
 ## Approach
 - Input
 	1. data points：$D$
-	2. 一个可以解释观测数据的参数化模型
+	2. 一个可以解释观测数据的参数化模型；
 	3. Hyperparameter
 		- 模型需要多少点来做model fitting, $s$
 		- 最大循环次数, $k$
 		- fitness的阈值, $t$
 		- inliner的个数阈值, $n$
 - Process
-	1. Sample the data points (s) from $D$ to get the inliers
-	2. Model Fitting using sampled inliers
-	3. 计算剩余的点的fitness
-	4. 把fitness大于t的点放入inliner，当局内点过少，废弃这轮获得的内点，跳回第一步
-	5. repeat 1,2,3,4
-	6. 当inlier超过n时即认为算法成功
-- Output：最佳匹配的inlier和模型，或者失败
+	1. Sample the data points ($s$) from $D$ to get the inliers;
+	2. Model Fitting using sampled inliers;
+	3. 计算剩余的点的fitness;
+	4. 把fitness大于$t$的点放入inliner，当inliner过少，废弃这轮获得的内点，跳回第一步;
+	5. repeat 1,2,3,4;
+	6. 当inlier超过$n$时即认为算法成功;
+	7. 当尝试的次数多于$k$时，则认为失败；
+- Output：最佳匹配的inlier和模型，或者失败;
 	
 ## 实验次数k的确定
 - 输入
@@ -50,7 +51,7 @@ share: true
 	1. 最终没有一个有用的模型的概率，$1 - p$；
 	2. 在一次model fitting中全抽到inlier的概率，$e^s$；
 	3. 一次model fitting失败的概率：即抽到的sample含有outlier的概率，$1 - e^s$
-	4. k次model fitting失败的概率：$(1 - e^s)^k$，$1 - p = (1 - e^s)^k$
+	4. $k$次model fitting失败的概率：$(1 - e^s)^k$，$1 - p = (1 - e^s)^k$
 - Instance
 	1. ORBSLAM：
 		- 在计算匹配时使用了ransac
