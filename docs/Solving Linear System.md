@@ -21,8 +21,8 @@ share: true
 		- 但是直接使用$LU$分解不能处理对角线元素有0的情况
 	- Row Pivoting能处理上述状况
 		- 代数上引入了一个permutation matrix， $P$ → $PA = LU$
-		- Ref: wiki Pivot_element
-- $A$是对称矩阵: 使用LDL分解 → 计算量小
+		- Ref: [wiki](https://en.wikipedia.org/wiki/Pivot_element)
+- $A$是对称矩阵: 使用$LDL^T$分解 → 计算量相对于高斯消元法小；
 - $A$ is symmetric positive definite matrix: 使用Cholesky分解 → 计算量小，不需要pivoting
 - Ref：https://fncbook.github.io/v1.0/linsys/lu.html
 
@@ -52,7 +52,7 @@ share: true
 		1. 求解$A$的QR分解 → 一般用houser holder
 		2. 计算$d = Q^Tb$
 		3. 求解$Rx = d$ → 这是一个square linear system，而且$R$是上三角矩阵
-	- QR 算法比较稳定, 但不是能解决Rank deficiency的问题；是求解最小二乘问题的首选方法，但是比较慢
+	- QR 算法比较稳定, 但是不能解决Rank deficiency的问题；是求解最小二乘问题的首选方法，但是比较慢
 	- Ref: https://fncbook.github.io/v1.0/leastsq/qr.html
 		
 - SVD Decomposition
@@ -76,7 +76,7 @@ share: true
 # 欠定问题
 - Idea
 	- 问题应该有无穷多个解
-	- 增加限制已获得唯一的解
+	- 增加限制以获得唯一的解
 - Approach
 	- 正则化
 	- SVD Decomposition
