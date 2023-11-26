@@ -9,21 +9,21 @@ $\underline{Property}$
 - Describe coplanarity constraint of the feature points;
 - $x^TFx'=0$：
 	1. homogenous coordinate $x$ and $x'$ in pixel plane；
-	2. $x = [u, v, 1]$
-- Rank(F) = 2：因为Rank(E) = 2
+	2. $x = [u, v, 1]$，$x' = [u', v', 1]$
+- Rank(F) = 2：因为Rank(E) = 2;
 - DoF(F) = 7：
-	1. Scale的模糊性减去一个
-	2. $\det(F) = 0$减去一个
+	1. Scale的模糊性减去一个;
+	2. $\det(F) = 0$减去一个;
 
 $\underline{8 \ Point \ Algorithm}$
-- Turn matrix to vector of unknowns
-- 只利用了线性关系：理论上需要8个点，去除scale模糊性；
-- 求解齐次线性系统$AF = 0$
+1. Turn matrix to vector of unknowns -> 获得齐次线性系统，$AF = 0$;
+2. 只利用了线性关系：理论上需要8个点，去除scale模糊性；
+3. 求解齐次线性系统$AF = 0$:
 	1. 通过在$||F|| = 1$的框架下最小化$||AF||^2$；
 	2. 使用SVD
-		- $A = UDV^T$
-		- $F$是$V$的最后一列
-- 修正$F$
+		- $A = UDV^T$；
+		- $F$是$V$的最后一列；
+4. 修正$F$
 	1. 测量数据会有噪声，导致Rank(F) != 2
 	2. 算是通过这种方式变相利用了奇异限制，因为$D$的非零对角线元素就是$F$的奇异值；
 	3. Calculate SVD of $F$，$F = UDV^T$;
