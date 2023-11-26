@@ -26,7 +26,7 @@ share: true
 		- Uncorrelated Variance
 	- $L = (Y - X \beta)^TW(Y - X \beta)$
 		- Weighted Square Sum
-		- 其中Covariance Matrix: $W = diag(1/\epsilon)$
+		- 其中Covariance Matrix: $W = diag(1/\epsilon^2)$
 		- $W$的非对角线元素为0
 - Solution
 	- 在$W$已知的情况下，通过对$L$函数求$\beta$向量的偏导
@@ -41,6 +41,7 @@ share: true
 	- $L = (Y - X \beta)^TW(Y - X \beta)$
 		- Square Mahalanobis Sum of Residual Vector
 		- 其中$W$是Information Matrix，是协方差矩阵的逆
+		- $W$的非对角线元素不为0；
 - Solution
 	- 在W已知的情况下，通过对L函数求\beta向量的偏导
 	- $XWX^T \beta = XWY$
@@ -56,7 +57,7 @@ share: true
 	- 属于迭代法
 		- 且专门用来解最小二乘法
 		- 先找到迭代方向，再求得步长
-	- 每一代，定义损失函数：$L = (Y - f(X + \Delta X))^T(Y - f(X + \Delta X))$
+	- 每一次迭代，定义损失函数：$L = (Y - f(X + \Delta X))^T(Y - f(X + \Delta X))$
 		- 求令$L$最小的$\Delta X$
 		- $f(X + \Delta X)$可以利用泰勒展开近似
 	- 对$f(X + \Delta X)$进行泰勒展开，然后对$L$求导，得到增量方程 → $J^TJ \Delta X = -J^Tf(X)$
