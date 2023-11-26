@@ -30,17 +30,17 @@ share: true
 		1. 并令其为0
 		2. 获得迭代量 → $H(X)\Delta X = -J(X)$
 	- $H(X)$对大规模问题来说比较难以计算
-- Gaussian-Newton
-	- 仅用于quadratic形式的优化问题：$\Delta X = \arg \min || F(X + \Delta X) ||^2$
-	- 保留一阶泰勒展开
-	- 迭代求解$J^TJ\Delta X = -JF(X)$ → 形式上对上式左侧加上一个阻尼因子就会变成LM法，但是实际上不一样，因为GN没有信任域的概念
-- Damped Method
-	- 引入阻尼因子$\mu$
-		- $L = F(X + \Delta X) + \mu\Delta X^T\Delta X$
-		- 对过大的$\Delta X$是一种惩罚 → 相当于正则化
-	- 对$L$进行泰勒一阶展开 → 求导，置零
-	- 迭代求解$(J^TJ + \mu I)\Delta X = -JF(X)$
-	- Ref：vio_course, lecture 3, p12
+	- Gauss-Newton
+		- 仅用于quadratic形式的优化问题：$\Delta X = \arg \min || F(X + \Delta X) ||^2$
+		- 保留一阶泰勒展开
+		- 迭代求解$J^TJ\Delta X = -JF(X)$ → 形式上对上式左侧加上一个阻尼因子就会变成LM法，但是实际上不一样，因为GN没有信任域的概念
+	- Damped Method
+		- 引入阻尼因子$\mu$
+			- $L = F(X + \Delta X) + \mu\Delta X^T\Delta X$
+			- 对过大的$\Delta X$是一种惩罚 → 相当于正则化
+		- 对$L$进行泰勒一阶展开 → 求导，置零
+		- 迭代求解$(J^TJ + \mu I)\Delta X = -JF(X)$
+		- Ref：vio_course, lecture 3, p12
 
 ## Trust Region
 - Idea：对被优化的函数进行使用二阶泰勒展开去近似

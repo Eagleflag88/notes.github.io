@@ -4,7 +4,7 @@ share: true
 # Problem Formulation
 
 ## Hidden Markov model
-- Initial density for state
+- Initial density for state；
 - Motion transition → State at time $k$ is stochastically dependent on the state at time $k-1$ and the control $u$
 	- 通过全概率定理和$p(x_k|x_{k-1})$的条件概率通过积分可获得$p(x_k)$
 	- $p(x_k) = \int p(x_k|x_{k-1})p(x_{k-1}|z_{k-1})dx$
