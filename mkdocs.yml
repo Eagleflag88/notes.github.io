@@ -99,6 +99,16 @@ nav:
       - Assignment Problem: Assignment Problem.md
       - Matrix Decomposition: Matrix Decomposition.md
       - Solving Linear System: Solving Linear System.md
+  - Computer Science:
+    - Python:
+      - 基本概念: 基本概念-Python.md
+      - 基本数据类型: 基本数据类型.md
+      - 关键字: 关键字.md
+      - Function: Function.md
+      - Class: Class.md
+      - Module: Module.md
+      - 多任务模式: 多任务模式.md
+      - 内存管理: 内存管理.md
   - Paper Reading:
     - Online HDMap Construction:
       - 2022-HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
