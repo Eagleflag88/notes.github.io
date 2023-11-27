@@ -109,6 +109,16 @@ nav:
       - Module: Module.md
       - 多任务模式: 多任务模式.md
       - 内存管理: 内存管理.md
+    - C++:
+      - 基本概念-C++: 基本概念-C++.md
+      - 多态: 多态.md
+      - 智能指针: 智能指针.md
+      - 序列式容器: 序列式容器.md
+      - 关联式容器: 关联式容器.md
+      - 设计模式: 设计模式.md
+      - 并发编程: 并发编程.md
+    - Basics:
+      - 数据结构: 数据结构.md
   - Paper Reading:
     - Online HDMap Construction:
       - 2022-HDMapNet: 2022-HDMapNet An Online HD Map Construction and Evaluation.md
@@ -139,6 +149,7 @@ nav:
     - Object Detection:
       - 2022-BEVDepth: 2022-BEVDepth Acquisition of Reliable Depth for Multi-view 3D Object Detection.md
       - 2023-Co-Detr: 2023-DETRs with Collaborative Hybrid Assignments Training.md
+      - 2023-Fast-BEV: 2023-Fast-BEV.md
     - Point Cloud Registration:
       - 2020-Graduated Non-Convexity for Robust Spatial Perception From Non-Minimal Solvers to Global Outlier Rejection: 2020-Graduated Non-Convexity for Robust Spatial Perception From Non-Minimal Solvers to Global Outlier Rejection.md
       - 2020-TEASER: 2020-TEASER Fast and Certifiable Point Cloud Registration.md
