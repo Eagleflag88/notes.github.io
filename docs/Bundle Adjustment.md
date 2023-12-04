@@ -51,12 +51,21 @@ share: true
 - Step 3：求信息矩阵$H$
 	- $H = J^T\Omega^{-1}J$
 	- $\Omega$误差的协方差矩阵
-- Step 4: 利用H的稀疏性求解 → 参见本文档的Marginalization→Application→BA
-		
-		
+- Step 4: 利用H的稀疏性求解 → 参见[[Marginalization#Application|Marginalization > Application]]的BA部分；
+
 ## Ref
 - Bundle adjustment gone public.pdf, p11
 - 第4节：滑动窗口理论.pdf, p30
+
+# 核函数
+- Idea
+	- 使损失函数在误差(e)较大的时候增长减慢
+	- 把二范数度量换成增长不那么快的函数
+- Variante
+	- Huber核: 超过一定阈值后变为线性增长
+	- Cauchy核: $\log(1 + e^2)$
+- 使用95%有效性来选择核函数中的参数
+- Ref: 第3节：基于优化的IMU预积分与视觉信息融合.pdf
 
 # Initial Guesses (Frontend)
 ## Idea
@@ -74,13 +83,3 @@ share: true
 	- Only use features observed by a sequence of 3-6 images 
 	- Using RANSAC
 	- Use robust kernel to reduce the penalty for big errors, actually lead to a weighted LS problem
-	
-## 核函数
-- Idea
-	- 使损失函数在误差(e)较大的时候增长减慢
-	- 把二范数度量换成增长不那么快的函数
-- Variante
-	- Huber核: 超过一定阈值后变为线性增长
-	- Cauchy核: $\log(1 + e^2)$
-- 使用95%有效性来选择核函数中的参数
-- Ref: 第3节：基于优化的IMU预积分与视觉信息融合.pdf
