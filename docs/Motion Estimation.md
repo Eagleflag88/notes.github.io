@@ -10,8 +10,8 @@ $\underline{Property}$
 - $x^TFx'=0$：
 	1. homogenous coordinate $x$ and $x'$ in pixel plane；
 	2. $x = [u, v, 1]$，$x' = [u', v', 1]$
-- Rank(F) = 2：因为Rank(E) = 2;
-- DoF(F) = 7：
+- Rank($F$) = 2：因为Rank($E$) = 2;
+- DoF($F$) = 7：
 	1. Scale的模糊性减去一个;
 	2. $\det(F) = 0$减去一个;
 
@@ -24,7 +24,7 @@ $\underline{8 \ Point \ Algorithm}$
 		- $A = UDV^T$；
 		- $F$是$V$的最后一列；
 4. 修正$F$
-	1. 测量数据会有噪声，导致Rank(F) != 2
+	1. 测量数据会有噪声，导致Rank($F$) != 2
 	2. 算是通过这种方式变相利用了奇异限制，因为$D$的非零对角线元素就是$F$的奇异值；
 	3. Calculate SVD of $F$，$F = UDV^T$;
 	4. Enforcing Rank of $F$ to 2, 置零最小的奇异值;
@@ -54,7 +54,7 @@ $\underline{Property}$
 - $E = t^\wedge R$
 	1. 奇异值一定是$[d, d, 0]$，因为$t^\wedge$的结构导致奇异值如此分布；
 	2. Rank(E) = 2，因为尺度模糊性，Rank($t^\wedge$) = 2
-- $F=K^{-1}EK^{-1}$
+- $F=(K^{-1})^T EK^{-1}$
 - 5 DoF: 表达旋转和平移加起来有6个DoF，由于尺度不变形，减一个；
 
 $\underline{8 \ Point \ Algorithm}$
@@ -106,7 +106,7 @@ $\underline{运动恢复}$
 	- 当内参已知，2D点为归一化平面的坐标，$P_c = [u, v, 1]$
 	- 当内参未知，2D点为像素平面的坐标，$P_{uv} = [u, v]$
 	- 以下推导为假设内参$K$已知
-- 对每一个点对，$P_w$, $P_c$, $s$: $sP_c = KPP_w$
+- 对每一个点对，$P_w$, $P_c$, $s$: 满足$sP_c = KPP_w$
 - $P$是形式为$[R|t]$的3x4的投影矩阵
 	1. 注意不是变换矩阵
 	2. 尽管P的自由度只有6，但是我们先按有12个未知数计算
