@@ -2,29 +2,32 @@
 share: true
 ---
 # Measurement
-- Rotation velocity in body frame from Gyroscope → Infer the relative rotation of the IMU between two time instances
-- Acceleration
-	- Must be “gravity-compensated” before use for state propagation
-	- Gravity分量的存在使得imu设备的绝对rotation（相对大地坐标系，但不包含yaw）变得可观
-	- Error Model
-		- 确定性误差
-			1. $l = sa + b$, $a$真值，$l$测量值
-			2. Bias: $b$
-				- 随时间变化，其变化可由维纳过程建模，离散情况下为random walk
-				- 第二节IMU传感器->测量方程， eq 12
-				- 艾伦方差标定
-			3. Scale: $s$ → 真实值和测量值的斜率，通常为1
-			4. 标定
-				- 第二节IMU传感器->测量方程， eq 7
-				- 6面法: 标定s和b, 通过最小二乘法
-		- 随机误差 → 均值为 0，方差为σ的白噪声
-		- bias和高斯噪声的variance无法单纯通过自己的测量值获得，可以在vio的框架下通过visual cue来估计
-- Angular velocity
-	- $w = [w_1, w_2, w_3]^T$
-	- 在imu的局部坐标系的测量值
-	- 可以理解为旋转矩阵$R$的李代数
-		- $R' = Rw^\wedge$
-		- $R = \exp(w^\wedge)$
+- Rotation velocity in body frame from Gyroscope
+- Infer the relative rotation of the IMU between two time instances
+
+## Acceleration
+- Must be “gravity-compensated” before use for state propagation
+- Gravity分量的存在使得imu设备的绝对rotation（相对大地坐标系，但不包含yaw）变得可观
+- Error Model
+	- 确定性误差
+		1. $l = sa + b$, $a$真值，$l$测量值
+		2. Bias: $b$
+			- 随时间变化，其变化可由维纳过程建模，离散情况下为random walk
+			- 第二节IMU传感器->测量方程， eq 12
+			- 艾伦方差标定
+		3. Scale: $s$ → 真实值和测量值的斜率，通常为1
+		4. 标定
+			- 第二节IMU传感器->测量方程， eq 7
+			- 面法: 标定s和b, 通过最小二乘法
+	- 随机误差 → 均值为 0，方差为$\sigma$的白噪声
+	- bias和高斯噪声的variance无法单纯通过自己的测量值获得，可以在vio的框架下通过visual cue来估计
+
+## Angular velocity
+- $w = [w_1, w_2, w_3]^T$
+- 在imu的局部坐标系的测量值
+- 可以理解为旋转矩阵$R$的李代数
+	- $R' = Rw^\wedge$
+	- $R = \exp(w^\wedge)$
 - Zero Velocity Update
 	- Idea: 当发现系统处于stationary的状态时，人工合成零速的imu测量值来更新系统
 	- Ref: https://docs.openvins.com/update-zerovelocity.html
@@ -33,6 +36,7 @@ share: true
 			- 设定线性加速度和角速度的真实值为零 → 不会直接强迫速度本身为零，因为imu不会直接获得速度
 			- 获得Residual和Jacobian来更新系统
 		- Zero Velocity Detection：Threshold-based → Velocity Resisual < Chi-squared error
+
 # IMU Integration
 - Kinematic Model → Forster eq 29
 - Integration Model
@@ -46,11 +50,10 @@ share: true
 
 # IMU Pre-Integration
 ## Idea
-- 获得$PVQ$在$\Delta t$中的变化量，跟$PVQ$的估计量解耦 → 
-					$\Delta PVQ = F(M(\Delta t))$
+- 获得$PVQ$在$\Delta t$中的变化量，跟$PVQ$的估计量解耦 → $\Delta PVQ = F(M(\Delta t))$
 - 同时，残差函数的构造方式也不同
-	- 之前是直接对比某个时间的$PVQ$，计算残差
-	- 现在是使用两个时间段之间的$PVQ$的变换量的差别作为残差
+	1. 之前是直接对比某个时间的$PVQ$，计算残差
+	2. 现在是使用两个时间段之间的$PVQ$的变换量的差别作为残差
 
 ## Preintegrated measurement model
 - 考虑计算imu在$i$和$i+1$时刻之间的$\Delta R$, $\Delta V$和$\Delta P$
@@ -67,24 +70,13 @@ share: true
 	- zero-mean normally distributed
 	- Forster eq 42-43
 - Bias Update
-	- 当Bias的增量比较小 →利用$\Delta PVQ$增量关于Bias的线性化来更新$\Delta PVQ$, Forster eq 44
+	- 当Bias的增量比较小 → 利用$\Delta PVQ$增量关于Bias的线性化来更新$\Delta PVQ$, Forster eq 44
 	- 当Bias变化量比较大 
 		- 重新计算$\Delta PVQ$
 		- 在vins-mono中在初始化求解solveGyroscopeBias()之后
 - 积分过程可用的欧拉积分或中值积分
 - Ref: On-Manifold Preintegration for Real-Time Visual-Inertial Odometry.pdf
 		
-		
 ## Residual
 - 两个pose之间的imu测量值减去两个pose之间之差
 - 定义与pose graph里一致
-
-# Camera
-- Reprojection Measurement Model
-	
-# Representation of the states
- - Error or the state itself
- - Feature point
-	 - xyz coordinate →bad for nonlinearity in camera measurement
-	 - inverse depth parametrization
-	 - anchored homogeneous parametrization
