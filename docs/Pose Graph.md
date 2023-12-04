@@ -4,7 +4,7 @@ share: true
 
 # Idea
 - 在对特征点进行初始化之后，不再把他们放进优化问题进行考虑;
-- 只考虑pose本身 → 减少计算量，使SLAM问题能够real time运行
+- 只考虑pose本身 → 减少计算量，使SLAM问题能够real-time运行
 
 # Structure
 - Node: 仅仅是Pose → state, $x$
@@ -16,7 +16,7 @@ share: true
 	- Should be specified with uncertainty
 
  # Problem
- - The system is described by observation function z = f(x)
+ - The system is described by observation function $z = f(x)$
  - Residual: 
 	 - $z - f(x)$
 	 - variance: $\sigma$
