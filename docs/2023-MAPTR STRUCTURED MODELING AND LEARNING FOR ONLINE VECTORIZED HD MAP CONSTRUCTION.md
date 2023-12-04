@@ -7,8 +7,26 @@ share: true
 - Polygon and Polyline，由有序点集组成。不同方向的地图元素的表示的是同一个地图元素，即所谓permutation-equivalence。
 
 # Architecture:
-- Encoder: Feature Extraction (ResNet) + 2D-BEV Transformation (GKT/LSS) -> BEV Feature （HxWxC）
-- Decoder: 固定数量的ins queries + 固定数量的pt queries（这个是跟所有instance共享的）
+
+## Encoder
+- Feature Extraction (ResNet)
+- 2D-BEV Transformation (GKT/LSS)
+- BEV Feature （HxWxC）
+
+## Decoder: 
+
+- Input：
+	1. 固定数量的ins queries + 固定数量的pt queries（这个是跟所有instance共享的）
+	2. Encoder输出的BEV Feature;
+- Process：
+	1. Multi-Head Self Attention：Object Query；
+	2. Deformable Cross-Attention: Object Query和Encoder的Feature；
+- Output：
+	1. BEV Feature
+
+## Head
+- Cls_Head
+- Reg_Head
 
 # Training
 Classification Cost + Point2point Cost + Edge Dir Cost，他们有各自的系数。
