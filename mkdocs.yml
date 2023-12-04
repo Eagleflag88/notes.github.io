@@ -53,6 +53,8 @@ nav:
       - 2015-U-Net: 2015-UNet.md
       - 2017-Deformable Convolution: 2017-Deformable Convolution.md
       - 2017-FPN: 2017-Feature Pyramid Networks.md
+      - 2017-MobileNet: 2017-MobileNet.md
+      - 2017-ShuffleNet: 2017-ShuffleNet.md
       - 2019-EfficientNet: 2019-EfficientNet.md
       - 2022-ConvNeXt: 2022-ConvNeXt.md
     - Transformer:
@@ -69,7 +71,10 @@ nav:
     - BEV:
       - 2020-LSS: 2020-LSS.md
       - 2022-BEVDet: 2022-BEVDet.md
+      - 2022-BEVDistill: 2022-BEVDistill.md
       - 2022-BEVFormer: 2022-BEVFormer.md
+      - 2022-BEVFusion: 2022-BEVFusion.md
+      - 2022-SoloFusion: 2022-SoloFusion.md
     - NeRF:
       - Basics: NeRF Basics.md
       - 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis: 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis.md
