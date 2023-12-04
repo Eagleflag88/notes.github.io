@@ -46,7 +46,7 @@ share: true
 - Ref: https://pytorch.org/docs/master/tensor_view.html
 
 ## Ref
-https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py
+[Pytorch_Tutorial](https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py)
 
 # Autograd
 
@@ -103,7 +103,7 @@ https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-begin
 - 在计算图中代表一个节点
 
 ## Ref
-- https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html
+- [Autograd_Tutorial](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html)
 
 # Model Construction
 
@@ -161,7 +161,7 @@ https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-begin
 - Ref: https://github.com/Swall0w/torchstat
 
 ## Ref
-- https://jhui.github.io/2018/02/09/PyTorch-neural-networks/
+- [NeuralNetwork](https://jhui.github.io/2018/02/09/PyTorch-neural-networks/)
 
 # Data Preparation
 
@@ -232,7 +232,7 @@ https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-begin
 		- 进行back prop → loss.backward()
 		- 调整参数 → optimizer.step()
 	- update learning rate
-	- Ref: https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
+	- Ref: [QuickStart](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html)
 
 ## Testing
 - 把model调整到评估模式 → model.eval()
