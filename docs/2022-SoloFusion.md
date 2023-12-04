@@ -23,16 +23,20 @@ share: true
 - MVS temporal stereo pipeline using two consecutive frames
 - Input: 连续两帧Image
 - Process：
-	1. Stereo matching with the previous frame image features，depth guided;
-	2. A plane-sweep volume in the reference view at 1/4 resolution，形成本帧的depth map
-	3. 输出本帧的BEV Feature 
+	1. 对图片进行特征抽取（CNN）；
+	2. Stereo matching with the previous frame image features;
+	3. A plane-sweep volume in the reference view at 1/4 resolution，形成本帧的depth map
+	4. 利用图片特征和depth map进行投影计算出本帧的BEV Feature；
+- output：本帧的BEV Feature
 
 ## LOW-RESOLUTION, LONG-TERM OBJECT DETECTION TEMPORAL STEREO
 - Input：
-	1. 1/16 Feature Map，维持一个比较长的窗口，比如说16帧；
-	2. 低分辨率Depth Map；
+	1. BEV Map的序列，维持一个比较长的窗口，比如说16帧；
 - Process
-	- Align and Concat
+	- 把时间窗口之内的所有bev map进行Align and Concat
 - Output
 	- fused bev feature
-	
+
+## Head
+
+- 在BEV Feature平面上用CenterHead做检测；
