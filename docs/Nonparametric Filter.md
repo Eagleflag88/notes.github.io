@@ -36,8 +36,10 @@ share: true
 		- 实际上importance factor就是每个点的likelihood，用以把测量值的信息融入后验概率 → $w_{k,i} = p(z_k|x_{k,i})$
 	- Step 3 → Importance Resampling
 		- 从$p(x_k)$中重采样$M$个sample
-			- 每个particle被采到的概率跟importance相关
-			- 获得$p(x_k|z_k)$
+			- 每个particle被采到的概率跟importance相关；
+			- 使得高权重的粒子更有可能被选择，低权重的粒子被淘汰，从而保持样本的多样性和避免样本退化；
+	- Step 4 -> 根据重采样出来的粒子更新状态
+		- 获得$p(x_k|z_k)$
 		- 实质上就是利用Likelihood进行Correction
 		- Alternative: 不进行resampling而是直接利用likelihood更新权重 → $w_{k,i} = p(z_k|x_{k,i})w_{k-1,i}$
 		- Ref: Probabilistic Robotics.pdf，p79
@@ -46,19 +48,20 @@ share: true
 		- $f$此时是未知的
 		- 我们只能计算$\frac{f(x)}{g(x)}$
 	- Approach
-		- 当我们知道每个sample的权重时，我们可以获得符合f的概率分布
+		- 当我们知道每个sample的权重时，我们可以获得符合$f$的概率分布
 		- Input
 			1. target distribution → $f$
 			2. proposal distribution → $g$
 				- 应用条件：当$f$ > 0时，$g$ > 0 → 我们能$g$中直接生成样本
 		- Process
-			1. 从$g$中采样：	获得采样点集，$S_g$
+			1. 从$g$中采样：	
+				- 获得采样点集，$S_g$
 				- $s = [x, pdf]$: $pdf = g(x)$
 				- pdf描述的是随机变量X分布在这个位置的概率
 				- 每个采样点由其位置和pdf的值组成
-			2. 计算点集的权重: $w_i = \frac{f(s_i)}{g(s_i)}$ → 其实每个采样点的$x$是没变的，改变的只是他的pdf的值
-			3. 利用权重更新$S_f = WS_g$
-			4. $S_f$即可以认为是从f中采样出来的点集 →这样可以获得f的分布
+			3. 计算点集的权重: $w_i = \frac{f(s_i)}{g(s_i)}$ → 其实每个采样点的$x$是没变的，改变的只是他的pdf的值
+			4. 利用权重更新$S_f = WS_g$
+			5. $S_f$即可以认为是从f中采样出来的点集 →这样可以获得$f$的分布
 	- Particle Filter
 		- 经过prediction之后的$p(x_k)$为proposal分布
 		- $p(x_k|z_k)$为target分布
