@@ -11,7 +11,7 @@ share: true
 - For timestamp $t$, feature extraction using ResNet101 + FPN，每个视角产生一个feature map，维度是CxHxW；
 - 我们把各个视角的特征图stack到一起，然后进行flatten操作；
 
-## Temporal Attention
+## Temporal Self-Attention
 - 输入：
 	1. BEV Query：维度H, W, num_query。这是一种学习出来的特征。此外，针对每个query还添加了可学习的positional embedding。
 	2. 历史BEV Feature，$B_{t-1}$维度H, W, num_query。
@@ -22,7 +22,7 @@ share: true
 - Output：
 	1. BEV Query和前一个时刻BEV Feature之间的相互关系，可以认为是临时的memory，也会被用作下一次Attention操作的Query；
 
-## Spatial Attention
+## Spatial Cross-Attention
 - 输入：
 	1. BEV Query；
 	2. 每一个view的feature map；

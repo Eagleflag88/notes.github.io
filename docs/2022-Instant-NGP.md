@@ -2,16 +2,12 @@
 share: true
 ---
 
-# Ref
-
-- Original Paper: Instant Neural Graphics Primitives with a Multiresolution Hash Encoding
-
 # Problem
 - 直接用Nerf的方法，需要太多次query MLP，时间上耗不起；
 
 # Potential Solution
 - 在超/空间中的Grid点上面直接存储相关特征向量，同时，原始的MLP被大幅度的缩小。这样的方法有如下好处：
-	1. 训练的时候因为可以直到一次参数更新的空间范围，可以只更新在涉及范围内的参数；
+	1. 训练的时候因为可以知道一次参数更新的空间范围，可以只更新在涉及范围内的参数；
 	2. 推理的时候可以直接内插获得结果，不需要query MLP；
 - 但是也有缺点→不够自适应，在空的地方也存储大量特征向量，只有很少一部分可见表面被编码了；
 
@@ -30,6 +26,6 @@ share: true
 - Lastly, the feature vectors at each corner are d-linearly interpolated according to the relative position of x within its hypercube；
 - 各层的结果concat到一起，然后输入到MLP；
 
-
 # Ref
+- Original Paper: Instant Neural Graphics Primitives with a Multiresolution Hash Encoding
 - [知乎详解](https://zhuanlan.zhihu.com/p/631284285)

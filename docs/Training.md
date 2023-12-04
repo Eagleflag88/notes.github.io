@@ -49,6 +49,7 @@ share: true
 9. Label Smoothing: 
 	- 通过将一部分概率分配给非目标类别，来对这些硬标签进行软化；
 	- 比如一个$K$分类问题，我们可以把GT的标签从0和1改为$\frac{\epsilon}{K-1}$和$1-\epsilon$，$\epsilon$是一个小的常数，比如0.01；
+10. Exponential Moving Average：computes the weighted mean of all the previous data points and the weights decay exponentially，stablizing the training process. [Ref](https://leimao.github.io/blog/Exponential-Moving-Average/)
 
 这些技术可以单独使用，也可以组合使用，以达到最好的正则化效果。选择哪种技术通常取决于具体任务、模型复杂性和训练数据的特性。
 

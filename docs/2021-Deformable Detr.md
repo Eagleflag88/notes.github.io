@@ -2,17 +2,12 @@
 share: true
 ---
 
-# Ref 
-- Original Paper: DEFORMABLE DETR: DEFORMABLE TRANSFORMERS FOR END-TO-END OBJECT DETECTION
-- [详解](https://zhuanlan.zhihu.com/p/520666550)
-- [DeformableDetr_CallGraph.xmind](https://1drv.ms/u/s!AoE-r_P7l4j3gv5X5XwlX-VIGStRjQ?e=He2fwW)
-
 # Deformable Attention
 
-1. Reference point是提前得到的，然后送入Deformable Attention模块直接使用；
-2. Offest是输入query通过一个Linear线性层学习得到的；
-3. Attention Weight是输入query通过一个Linear和Softmax学习得到的。相当于Q和K的点乘结果；
-4. Value是通过Input feature map经过一个线性层后，再通过reference point和offest选取特定位置的特征得到的。相当于标准attention的Value；
+1. Attention Weight是输入query通过一个Linear和Softmax学习得到的。相当于Q和K的点乘结果；
+2. Value是通过Input feature map经过一个线性层后，再通过reference point和offest选取特定位置的特征得到的。相当于标准attention的Value；
+3. Reference point是提前得到的，基本上就是均匀采样，然后送入Deformable Attention模块直接使用；
+4. Offest是输入query通过一个Linear线性层学习得到的；
 5. Output是将Value与Attention Weight相乘后，经过一个线性层得到的;
 
 
@@ -64,4 +59,9 @@ $\underline{Process}$
 
 ## Label Assignment Strategy
 - 匈牙利算法寻找和GT之间的最佳匹配
+
+# Ref 
+- Original Paper: DEFORMABLE DETR: DEFORMABLE TRANSFORMERS FOR END-TO-END OBJECT DETECTION
+- [详解](https://zhuanlan.zhihu.com/p/520666550)
+- [DeformableDetr_CallGraph.xmind](https://1drv.ms/u/s!AoE-r_P7l4j3gv5X5XwlX-VIGStRjQ?e=He2fwW)
 

@@ -20,6 +20,7 @@ RGB
 
 # Implementation
 - Positional encoding：Model the high-frequent part of the scene using triangular function；
+	- 对位置和视角的输入都会先做一个位置编码，然后再输入到网络；
 - Hierarchical volume sampling：训练一粗一细两个模型，通过粗模型获得合理的sampling分布；
 
 # Training:
@@ -39,3 +40,8 @@ RGB
 5. 过拟合和正则化：
     - 由于训练数据可能有限，NeRF 模型可能面临过拟合的风险。为此，可能需要使用正则化技术（如权重衰减）。
     - 在某些情况下，也可以使用数据增强技术来增加训练数据的多样性。
+
+# Ref
+
+- Original Paper: NeRF Representing Scenes as Neural Radiance Fields for View Synthesis
+- [知乎](https://zhuanlan.zhihu.com/p/631284285)
