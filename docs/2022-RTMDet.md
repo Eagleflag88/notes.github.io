@@ -2,11 +2,6 @@
 share: true
 ---
 
-# Ref
-
-- Original Paper:RTMDet: An Empirical Study of Designing Real-Time Object Detectors
-- [原理和结构详解](https://mmyolo.readthedocs.io/zh-cn/latest/recommended_topics/algorithm_descriptions/rtmdet_description.html)
-
 # Problem
 - 之前的检测器的backbone和neck的结构不够高效；
 - 在训练过程中，传统的target匹配方法比如说基于IoU的方法不够好；
@@ -102,3 +97,8 @@ RTMDet 采用了多种数据增强的方式来增加模型的性能，主要包�
 5. NMS
 
 进行 nms 操作，最终预测得到的返回值为经过后处理的每张图片的检测结果，包含分类置信度，框的 labels，框的四个坐标
+
+# Ref
+
+- Original Paper:RTMDet: An Empirical Study of Designing Real-Time Object Detectors
+- [原理和结构详解](https://mmyolo.readthedocs.io/zh-cn/latest/recommended_topics/algorithm_descriptions/rtmdet_description.html)
