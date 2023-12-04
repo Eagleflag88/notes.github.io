@@ -50,4 +50,7 @@ share: true
 	- Direction
 - 参考PointPillar
 
+# Ref
+- Fast-BEV: A Fast and Strong Bird’s-Eye View Perception Baseline
+
 
