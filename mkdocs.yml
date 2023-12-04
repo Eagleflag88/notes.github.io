@@ -47,58 +47,64 @@ nav:
       - Loss: Loss.md
       - Training: Training.md
       - Evaluation: Evaluation.md
+    - CNN:
+      - Basics: CNN Basics.md
+      - 2015-ResNet: 2015-ResNet.md
+      - 2015-U-Net: 2015-UNet.md
+      - 2017-Deformable Convolution: 2017-Deformable Convolution.md
+      - 2017-FPN: 2017-Feature Pyramid Networks.md
+      - 2019-EfficientNet: 2019-EfficientNet.md
+      - 2022-ConvNeXt: 2022-ConvNeXt.md
     - Transformer:
       - Basics: Transformer Basics.md
       - 2020-ViT: 2020-ViT.md
       - 2021-Swin Transformer: 2021-Swin-Transformer.md
-      - 2022-BEVFormer: 2022-BEVFormer.md
-    - CNN:
-        - Basics: CNN Basics.md
-        - 2015-ResNet: 2015-ResNet.md
-        - 2015-U-Net: 2015-UNet.md
-        - 2017-Deformable Convolution: 2017-Deformable Convolution.md
-        - 2017-FPN: 2017-Feature Pyramid Networks.md
-        - 2019-EfficientNet: 2019-EfficientNet.md
-        - 2022-ConvNeXt: 2022-ConvNeXt.md
     - Detection:
-        - 2016-Faster R-CNN: 2016-Faster R-CNN.md
-        - 2019-FCOS: 2019-FCOS.md
-        - 2020-EfficientDet: 2020-EfficientDet.md
-        - 2020-LSS: 2020-LSS.md
-        - 2022-BEVDet: 2022-BEVDet.md
-        - 2021-Deformable Detr: 2021-Deformable Detr.md
-        - 2021-YoloV5: 2021-YoloV5.md
-        - 2022-RTMDet: 2022-RTMDet.md
+      - 2016-Faster R-CNN: 2016-Faster R-CNN.md
+      - 2019-FCOS: 2019-FCOS.md
+      - 2020-EfficientDet: 2020-EfficientDet.md
+      - 2021-Deformable Detr: 2021-Deformable Detr.md
+      - 2021-YoloV5: 2021-YoloV5.md
+      - 2022-RTMDet: 2022-RTMDet.md
+    - BEV:
+      - 2020-LSS: 2020-LSS.md
+      - 2022-BEVDet: 2022-BEVDet.md
+      - 2022-BEVFormer: 2022-BEVFormer.md
     - NeRF:
-        - Basics: NeRF Basics.md
-        - 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis: 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis.md
-        - 2022-Instant-NGP: 2022-Instant-NGP.md
-        - 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering: 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering.md
+      - Basics: NeRF Basics.md
+      - 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis: 2020-NeRF Representing Scenes as Neural Radiance Fields for View Synthesis.md
+      - 2022-Instant-NGP: 2022-Instant-NGP.md
+      - 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering: 2023-3D Gaussian Splatting for Real-Time Radiance Field Rendering.md
+    - Software:
+      - Pytorch: Pytorch.md
   - SLAM:
-      - Basics: 
-        - Camera Model: Camera Model.md
-        - Transform: Transform.md
-        - Lie Algebra: Lie Algebra.md
-        - Outlier Rejection: Outlier Rejection.md
-        - State Estimation: State Estimation.md
-        - Gaussian Filter: Gaussian Filter.md
-        - Nonparametric Filter: Nonparametric Filter.md
-      - Front-End:
-        - Motion Estimation: Motion Estimation.md
-        - GNSS and IMU: GNSS and IMU.md
-      - Back-End:
-        - Pose Graph: Pose Graph.md
-        - Bundle Adjustment: Bundle Adjustment.md
-        - IMU Pre-Integration: IMU Pre-Integration.md
-        - Factor Graph: Factor Graph.md
-        - Marginalization: Marginalization.md
-        - Estimator Consistency: Estimator Consistency.md
+    - Basics: 
+      - Camera Model: Camera Model.md
+      - Transform: Transform.md
+      - Lie Algebra: Lie Algebra.md
+      - Outlier Rejection: Outlier Rejection.md
+    - Front-End:
+      - Motion Estimation: Motion Estimation.md
+      - GNSS and IMU: GNSS and IMU.md
+    - Back-End:
+      - Pose Graph: Pose Graph.md
+      - Bundle Adjustment: Bundle Adjustment.md
+      - IMU Pre-Integration: IMU Pre-Integration.md
+      - Factor Graph: Factor Graph.md
+      - Marginalization: Marginalization.md
+      - Estimator Consistency: Estimator Consistency.md
   - Math Basics:
+    - Estimation:
+      - State Estimation: State Estimation.md
+      - Gaussian Filter: Gaussian Filter.md
+      - Nonparametric Filter: Nonparametric Filter.md
       - Least Square Problem: Least Square Problem.md
-      - Numeric Optimization: Numeric Optimization.md
-      - Assignment Problem: Assignment Problem.md
+    - Linear Algebra:
       - Matrix Decomposition: Matrix Decomposition.md
       - Solving Linear System: Solving Linear System.md
+    - Optimization:
+      - Numeric Optimization: Numeric Optimization.md
+    - Assignment Problem: Assignment Problem.md  
   - Computer Science:
     - Python:
       - 基本概念: 基本概念-Python.md
