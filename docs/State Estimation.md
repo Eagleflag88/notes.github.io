@@ -17,11 +17,23 @@ share: true
 - posterior probabilities over state variables($x_k$) conditioned on the available $data(z_{1:k})$ →$bel_k = p(x_k|z_{1:k})$
 
 # Approach
-## Maximum Likelihood
-- Actually a frequntic approach
-- The state is taken as constant not a distribution
-- No Prior can be included
-- Covariance Matrix
+
+## Likelihood Function
+- 似然函数（Likelihood Function）: The probability density of observed data $x$ viewed as a function of the parameters $\theta$ of a statistical model -> $L(\theta | x)$；
+- 对随机变量$x$来说，它的似然函数可以认为是它的固定参数下的密度函数；
+$$
+L(\theta | x) = f_{\theta}(x)
+$$
+
+## Maximum Likelihood Estimation
+
+- 它基于一个假设，即当从模型总体随机抽取$n$组样本观测值后$\textbf{x}=[x_0, x_1, ..., x_n]$，最合理的参数估计量应该使得从模型中抽取该$n$组样本观测值的概率最大：
+$$
+\hat{\theta}=arg max \prod_0^n L_n(\theta, \textbf{x})
+$$
+- 是一种的点估计法，跟Uniform Prior的MAP估计等价；
+- The state is taken as constant not a distribution；
+- No Prior can be included；
 
 ## Bayesian Approach
 - Bayesian Law for state estimation $p(x|z)$ → 最小化Risk Function
