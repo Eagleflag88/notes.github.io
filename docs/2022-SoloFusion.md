@@ -24,9 +24,10 @@ share: true
 - Input: 连续两帧Image
 - Process：
 	1. 对图片进行特征抽取（CNN）；
-	2. Stereo matching with the previous frame image features;
-	3. A plane-sweep volume in the reference view at 1/4 resolution，形成本帧的depth map
-	4. 利用图片特征和depth map进行投影计算出本帧的BEV Feature；
+	2. 利用网络估计每个特征的深度；
+	3. Stereo matching with the previous frame image features， depth guided;
+	4. A plane-sweep volume in the reference view at 1/4 resolution，形成本帧的depth map
+	5. 利用图片特征和depth map进行投影计算出本帧的BEV Feature；
 - output：本帧的BEV Feature
 
 ## LOW-RESOLUTION, LONG-TERM OBJECT DETECTION TEMPORAL STEREO
