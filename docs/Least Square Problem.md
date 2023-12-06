@@ -50,9 +50,6 @@ share: true
 # Nonlinear Case
 ## Problem
 
-- 优化问题中的形式 → $Y = f(X + \Delta X, \beta) + \epsilon$
-
-
 -  一般形式 → $Y = f(X, \beta) + \epsilon$
 - $L =  (Y - f(X, \beta))^T(Y - f(X, \beta))$
 	- 表示误差的平方和
