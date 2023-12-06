@@ -54,5 +54,23 @@ share: true
 	3. 求解子问题：在给定的信任域内，求解近似模型的最优点，得到一个候选解。这个过程通常涉及到求解一个约束优化问题，其中约束是信任域半径。    
 	4. 接受或拒绝：比较候选解和当前解的目标函数值，如果候选解比当前解更好，则接受候选解作为新的当前解，并扩大信任域半径以在下一轮迭代中探索更大的区域。否则，保持当前解不变，并缩小信任域半径以在下一轮迭代中更加集中地搜索。    
 	5. 终止条件：重复上述步骤，直到满足某个终止条件，例如达到最大迭代次数、目标函数的改进小于某个阈值或者信任域半径小于某个阈值等。
-- Instance
-	1. Dog Leg，详见[[Least Square Problem#Nonlinear Case|Least Square Problem > Nonlinear Case]]的Dog Leg；
+- Dog Leg
+	- Idea
+		1. 显性的使用trust region的概念
+		2. 结合GN和Steep Descent(SD)
+		3. 在Trust Region中，目标函数被利用泰勒展开所近似
+	- Process
+		1. 在确定的Trust Region中
+		2. 首先尝试用GN来获得增量
+			- 一般认为GN的解比SD的解大
+			- 当增量在Trust Region之内时，则使用GN的增量
+			- 当增量超出Trust Region，则使用Steep Descent来求解
+		3. 然后使用SD来求解
+			- 单纯用SD求出来的增量为Cauchy Point
+			- 当Cauchy Point在Trust Region之内，则接受
+			- 当Cauchy Point在Trust Region之外，则使用Cauchy Point和GN解组成的直线和trust region边缘的相交点作为下一个迭代点
+	- Trust Region更新策略：跟Marquadt方法类似
+	- Performance：LM每次失败之后需要修改damping factor之后重新求解 → 理论上DL会更快
+	- Ref
+		1. Dog Leg Wiki
+		2. Is Levenberg-Marquardt the Most Efficient Optimization Algorithm for Implementing Bundle Adjustment?.pdf
