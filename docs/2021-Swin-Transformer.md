@@ -39,5 +39,5 @@ share: true
 - stage 2, ..., n：Patch Merging + Swin Transformer block
 
 # Ref
-- Original Paper: Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
+- Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
 
