@@ -25,15 +25,14 @@ share: true
 		2. 获得迭代量 → $\Delta X = -J(X)$
 	- 因为过于贪心，迭代次数太多，收敛慢
 - 二阶梯度法(牛顿法)
-	- 保留一阶和二阶项 → $F(X + \Delta X) = F(X) + J\Delta X + (\Delta X^TH\Delta X)/2$
+	- 保留一阶和二阶项 → $F(X + \Delta X) = F(X) + J\Delta X + \frac{1}{2}\Delta X^TH\Delta X$
 	- 求上式关于$\Delta X$的导数
 		1. 并令其为0
-		2. 获得迭代量 → $H(X)\Delta X = -J(X)$
+		2. 获得迭代量 → $H(X)\Delta X = -J^T(X)$
 	- $H(X)$对大规模问题来说比较难以计算
 	- Gauss-Newton
-		- 仅用于quadratic形式的优化问题：$\Delta X = \arg \min || F(X + \Delta X) ||^2$
-		- 保留一阶泰勒展开
-		- 迭代求解$J^TJ\Delta X = -JF(X)$ → 形式上对上式左侧加上一个阻尼因子就会变成LM法，但是实际上不一样，因为GN没有信任域的概念
+		- 基本上仅用于求解最小二乘法；
+		- 可以理解为牛顿法的简化版本，把海森矩阵$H(X)$用$J^TJ$近似，参见[[Least Square Problem#Solution|Least Square Problem > Solution]]；
 	- Damped Method
 		- 引入阻尼因子$\mu$
 			- $L = F(X + \Delta X) + \mu\Delta X^T\Delta X$
