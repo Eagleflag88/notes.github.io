@@ -2,11 +2,6 @@
 share: true
 ---
 
-# Ref
-
-- Deep Residual Learning for Image Recognition
-- [ResNet50_Callgraph](https://1drv.ms/u/s!AoE-r_P7l4j3g4UzBhJaMvPuopq9og?e=YNsjQ2)
-
 # Problem
 
 - 模型随着深度增加性能降级：
@@ -40,5 +35,10 @@ $$
 ## Global Average Pooling
 
 - 在网络的末端，ResNet使用全局平均池化层而不是全连接层来减少模型参数数量和过拟合的风险。
+
+# Ref
+
+- Deep Residual Learning for Image Recognition
+- [ResNet50_Callgraph](https://1drv.ms/u/s!AoE-r_P7l4j3g4UzBhJaMvPuopq9og?e=YNsjQ2)
 
 
