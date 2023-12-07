@@ -32,5 +32,5 @@ share: true
 - Separate downsampling layers:原来的ResNet直接在一开始就降采样了，+0.5%； 
 
 # Ref
-- Original Paper: A ConvNet for the 2020s
+- A ConvNet for the 2020s
 
