@@ -48,23 +48,21 @@ $$
 		- Solution: mode of the distribution(MAP) → $\max(p(x|z))$
 	- 绝对值: $L(x, x') = |x - x'|$ →Solution: $median(p(x|z))$
 	- Ref: Diss_Xie.pdf, p25
-- Recursive Bayesian Filter
-	- Idea
+
+## Recursive Bayesian Filter
+- Idea
 		- Calculate the belief in a recursive way
 		- find relation between $bel_k$ and $bel_{k-1}$
-	- Derivation
-		- $p(x_k|z_{1:k}) = \frac{p(z_{1:k}|x_k)p(x_k)}{p(z_{1:k})}$
-		- $p(x_k|z_k)$和$p(x_{1:k}|z_{1:k})$做为推到起始点并不合适
-		- $p(z_{1:k}|x_k) = p(z_k|x_k)$
-			1. $z_k$仅跟$x_k$有关，$z_{1:k-1}$跟$x_k$无关
-			2. 获得$p(x_k|z_{1:k})=\frac{p(z_k|x_k)p(x_k)}{p(z_{1:k})}$
-			3. Correction
-		- Prediction →$p(x_k) = \int p(x_k|x_{k-1})p(x_{k-1}|z_{1:k-1})dx$
-		- 利用$bel$的定义可以看出整个estimator是使用递归的运行方式
-			- $bel_k = f(bel_{k-1}, z_k)$
-			- 实际上通过递归的方式获得了整个轨迹的估计值
-	- Ref
+		- $p(z_{1:k}|x_k) = p(z_k|x_k)$，$z_k$仅跟$x_k$有关，$z_{1:k-1}$跟$x_k$无关
+- Process
+	1. Prediction →$p(x_k) = \int p(x_k|x_{k-1})p(x_{k-1}|z_{1:k-1})dx$
+	2. Correction → $p(x_k|z_{1:k})=\frac{p(z_k|x_k)p(x_k)}{p(z_{1:k})}$，这个时候只是获得了后验概率，还需要使用相应的损失函数来获得点估计；
+- Recursion
+	- 利用$bel$的定义可以看出整个estimator是使用递归的运行方式
+	- $bel_k = f(bel_{k-1}, z_k)$
+	- 实际上通过递归的方式获得了整个轨迹的估计值
+- Ref
 		- Probabilistic Robotics, ch 2.4.3
 		- https://en.wikipedia.org/wiki/Recursive_Bayesian_estimation
 		- https://zhuanlan.zhihu.com/p/133862177 → 说明递归的意义
-	- 只有Filtering，之前的所有状态已经边缘化掉了，无法再被线性化获得信息
+		
