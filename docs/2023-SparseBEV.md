@@ -62,6 +62,6 @@ share: true
 - Regression
 
 # Ref
-- Original Paper: SparseBEV: High-Performance Sparse 3D Object Detection from Multi-Camera Videos
+- SparseBEV: High-Performance Sparse 3D Object Detection from Multi-Camera Videos
 - [知乎](https://zhuanlan.zhihu.com/p/654821380)
 
