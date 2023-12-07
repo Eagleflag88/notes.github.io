@@ -2,10 +2,6 @@
 share: true
 ---
 
-# Ref
-
-Original Paper -> EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
-
 # Problem
 
 Is there a principled method to scale up ConvNets that can achieve better accuracy and efficiency?
@@ -55,4 +51,8 @@ $$
 - Squeeze-and-excitation module：SE模块通过显式地建模输入特征之间的依赖关系，进一步提升模型的表示能力。
 	1. Squeeze操作：将每个通道的特征图压缩成一个数值，即全局平均池化（global average pooling），可以理解为对每个通道进行特征提取，得到该通道的重要性系数。这个操作可以看作是对输入特征图的“压缩”，从而得到通道级别的全局特征。
 	2. Excitation操作：根据Squeeze操作得到的通道重要性系数，对每个通道的特征图进行加权，即通过一个全连接层对重要性系数进行学习，得到一个权重向量，然后将该向量应用到原始的特征图上。这个操作可以看作是对通道级别的全局特征进行“激励”，使得重要的通道得到更大的权重，从而增强其在模型中的作用。
+
+# Ref
+
+EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
 
