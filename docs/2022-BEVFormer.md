@@ -1,9 +1,6 @@
 ---
 share: true
 ---
-# Ref
-
-- Original Paper: BEVFormer: Learning Bird’s-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers
 
 # Architecture
 
@@ -43,5 +40,9 @@ share: true
 - Neck：FPN；
 - BEV Feature：200x200x256；
 - Encoder：6 Layers的相同结构堆叠；
+
+# Ref
+
+- BEVFormer: Learning Bird’s-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers
 
 

@@ -57,5 +57,5 @@ BiFPN的工作机制可以大致分解为以下几个步骤：
 
 # Ref
 
-- Original Paper: EfficientDet: Scalable and Efficient Object Detection
+- EfficientDet: Scalable and Efficient Object Detection
 

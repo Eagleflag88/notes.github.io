@@ -32,7 +32,7 @@ share: true
 
 # Ref
 
-- Original Paper: BEVDet High-Performance Multi-Camera 3D Object Detection in Bird-Eye-View
-- Callgraph
+- BEVDet High-Performance Multi-Camera 3D Object Detection in Bird-Eye-View
+- [Callgraph]([BEVDet_CallGraph.xmind](https://1drv.ms/u/s!AoE-r_P7l4j3g6EcFFwfgcSnDDnP_A?e=cGNwAK))
 
 

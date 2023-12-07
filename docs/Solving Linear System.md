@@ -34,10 +34,12 @@ share: true
 	
 	
 ## 求解方法
-- Normal Equation
-	- Idea
-		1. 最小二乘的问题可以转化为求解normal equation：$A^TAX = A^TB$ → 等价于求解$MX = N$, 其中$M$是方阵;
-		2. 只要$A$是满秩的，此时的$A^TA$是一个SPD，可以利用Cholesky分解求解
+
+## Normal Equation
+- 最小二乘的问题可以转化为求解normal equation：$A^TAX = A^TB$ → 等价于求解$MX = N$, 其中$M$是方阵;
+
+
+- 只要$A$是满秩的，此时的$A^TA$是一个SPD，可以利用Cholesky分解求解
 	- Process
 		1. 计算 $C = A^TA$
 		2. 计算$d = A^Tb$

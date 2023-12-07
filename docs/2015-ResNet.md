@@ -4,8 +4,8 @@ share: true
 
 # Ref
 
-Original Paper: Deep Residual Learning for Image Recognition
-[ResNet50_Callgraph](https://1drv.ms/u/s!AoE-r_P7l4j3g4UzBhJaMvPuopq9og?e=YNsjQ2)
+- Deep Residual Learning for Image Recognition
+- [ResNet50_Callgraph](https://1drv.ms/u/s!AoE-r_P7l4j3g4UzBhJaMvPuopq9og?e=YNsjQ2)
 
 # Problem
 

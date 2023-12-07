@@ -61,7 +61,7 @@ $\underline{Process}$
 - 匈牙利算法寻找和GT之间的最佳匹配
 
 # Ref 
-- Original Paper: DEFORMABLE DETR: DEFORMABLE TRANSFORMERS FOR END-TO-END OBJECT DETECTION
+- DEFORMABLE DETR: DEFORMABLE TRANSFORMERS FOR END-TO-END OBJECT DETECTION
 - [详解](https://zhuanlan.zhihu.com/p/520666550)
 - [DeformableDetr_CallGraph.xmind](https://1drv.ms/u/s!AoE-r_P7l4j3gv5X5XwlX-VIGStRjQ?e=He2fwW)
 

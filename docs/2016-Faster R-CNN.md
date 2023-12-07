@@ -2,10 +2,6 @@
 share: true
 ---
 
-# Ref
-
-- Original Paper: Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks
-
 # Problem
 
 Faster R-CNN 是一种流行的目标检测算法，这个算法对之前的 R-CNN 和 Fast R-CNN 方法进行了改进，尤其是在生成区域提案（region proposals）这一步骤上实现了加速。
@@ -80,3 +76,7 @@ Faster R-CNN 的推理流程是将训练好的模型应用于新图像，以检�
 6. 最终检测结果：
 	- 模型的输出包括每个提案区域的类别标签和调整后的边界框坐标。
 	- 对于每个类别，可能会再次应用 NMS，以去除重叠的检测结果，确保每个物体只被检测一次。
+
+# Ref
+
+- Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks

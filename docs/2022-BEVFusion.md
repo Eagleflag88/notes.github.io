@@ -48,7 +48,7 @@ share: true
 - 详见[知乎](https://zhuanlan.zhihu.com/p/586637783)
 
 # Ref
-Original Paper：BEVFusion Multi-Task Multi-Sensor Fusion with Unified Bird’s-Eye View Representation
+- BEVFusion Multi-Task Multi-Sensor Fusion with Unified Bird’s-Eye View Representation
 
 
 

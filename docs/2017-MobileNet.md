@@ -2,10 +2,6 @@
 share: true
 ---
 
-# Ref
-
-Original Paper: MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications
-
 MobileNet是由Google的研究者Andrew G. Howard等人在2017年提出的一系列为移动和边缘设备优化的网络架构。MobileNet模型主要针对的是在计算能力、存储空间和能耗受限的设备上运行高效的深度学习模型。MobileNet架构的关键特点在于它的轻量级，这是通过使用深度可分离卷积（Depthwise Separable Convolution）实现的。
 
 # 深度可分离卷积
@@ -37,3 +33,7 @@ MobileNet系列适用于多种任务，包括但不限于：
 - 姿态估计
 
 MobileNet的设计哲学是在保持高效率的同时提供足够的准确性，使得它在移动设备、嵌入式系统和IoT设备中非常受欢迎。随着MobileNet系列的发展，例如MobileNetV2和MobileNetV3，它们引入了更多的改进，如线性瓶颈层、倒置残差结构等，以进一步优化性能和效率。
+
+# Ref
+
+- MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications

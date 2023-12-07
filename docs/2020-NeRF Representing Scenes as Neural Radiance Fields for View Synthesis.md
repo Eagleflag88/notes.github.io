@@ -43,5 +43,5 @@ RGB
 
 # Ref
 
-- Original Paper: NeRF Representing Scenes as Neural Radiance Fields for View Synthesis
+- NeRF Representing Scenes as Neural Radiance Fields for View Synthesis
 - [知乎](https://zhuanlan.zhihu.com/p/631284285)

@@ -2,10 +2,6 @@
 share: true
 ---
 
-# Ref
-
-Original Paper: Feature Pyramid Networks for Object Detection
-
 # Problem
 - Object Detection任务需要检出多尺度的物体；
 
@@ -36,3 +32,7 @@ FPN把单尺度的图片作为输入，通过Bottom-up Path，Top-down Path和la
 
 ## Head
 在每一个尺度的特征图上，我们都会进行Anchor或者RoI的提取，以进一步进行后续任务。
+
+# Ref
+
+- Feature Pyramid Networks for Object Detection

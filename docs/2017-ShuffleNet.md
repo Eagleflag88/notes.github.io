@@ -2,10 +2,6 @@
 share: true
 ---
 
-# Ref
-
-Original Paper: ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices
-
 ShuffleNet 是一个针对移动端设备优化的高效神经网络架构，由张宏伟等人于2017年提出。ShuffleNet 的主要创新点在于其使用分组卷积（Group Convolution）和通道重排（Channel Shuffle）来降低计算成本，同时保持网络性能。
 
 # 分组卷积
@@ -35,3 +31,7 @@ ShuffleNet经历了几个版本的演进，包括ShuffleNet V1和ShuffleNet V2�
 ShuffleNet因其高效性，在计算资源有限的场合尤其有用，比如在移动设备、嵌入式系统和物联网设备中的应用。它适用于包括但不限于图像分类、物体检测和人脸识别等任务。
 
 总的来说，ShuffleNet通过其创新的网络设计提供了一种节省资源且高效的解决方案，非常适合需要在边缘设备上进行实时计算的深度学习应用。
+
+# Ref
+
+- ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices

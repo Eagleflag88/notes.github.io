@@ -27,5 +27,5 @@ share: true
 - 各层的结果concat到一起，然后输入到MLP；
 
 # Ref
-- Original Paper: Instant Neural Graphics Primitives with a Multiresolution Hash Encoding
+- Instant Neural Graphics Primitives with a Multiresolution Hash Encoding
 - [知乎详解](https://zhuanlan.zhihu.com/p/631284285)
