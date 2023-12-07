@@ -2,10 +2,6 @@
 share: true
 ---
 
-# Ref
-- Original Paper: Deformable Convolutional Networks
-- Original Paper: Deformable ConvNets v2: More Deformable, Better Results
-
 # Problem
 - 固定的卷积组件无法适应图片中多变和不规则的几何变换；
 	1. A convolution unit samples the input feature map at fixed locations;
@@ -29,3 +25,7 @@ share: true
 
 - Modulated Deformable Convolutions: DCNv2 introduces modulated deformable convolutions that add an additional learnable parameter to control the contribution of each spatial sample point.
 - Learning to Deform: DCNv2 improves the mechanism through which the offsets are learned. 通过knowledge distillation的框架我们把R-CNN当作teacher让DCNv2学到更好的特征；
+
+# Ref
+- Deformable Convolutional Networks
+- Deformable ConvNets v2: More Deformable, Better Results
