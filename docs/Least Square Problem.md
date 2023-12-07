@@ -65,7 +65,7 @@ share: true
 		- 先找到迭代方向，再求得步长
 	- Process
 		1. 每一次迭代，定义损失函数：$L = (Y - f(X, \beta + \Delta \beta))^T(Y - f(X, \beta + \Delta \beta))$；
-		2. 对$f(X, \beta + \Delta \beta)$进行泰勒展开，然后对$L$求导，得到关于$\Delta \beta$的normal equation，即所谓增量方程 → $J^TJ \Delta \beta = -J^T\Delta Y$
+		2. 对$f(X, \beta + \Delta \beta)$进行泰勒展开，然后对$L$求导，得到关于$\Delta \beta$的normal equation，即所谓增量方程 → $J^TJ \Delta \beta = -J^T(Y - f(X, \beta))$
 		3. $J^TJ$矩阵有可能比较病态，$\Delta \beta$的解数值上可能会不稳定
 	- Ref：十四讲，eq 6.20
 
