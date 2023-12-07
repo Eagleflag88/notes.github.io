@@ -16,7 +16,9 @@ share: true
 - 仅仅针对方阵而言
 - $\det(M) = 0$
 - 不可逆
-	
+- 至少有一个线性相关的行和列
+- 从几何角度来看，奇异矩阵对应于将空间压缩至更低维度的转换。例如，一个将三维空间中的所有点压缩到一个平面上的转换对应于一个奇异矩阵。这种转换是不可逆的，因为一旦空间被压缩，就无法恢复原始的三维结构；
+
 ## Diagonal Matrix
 - 几何上来说，对角矩阵对每个坐标轴进行缩放
 	
@@ -26,7 +28,7 @@ share: true
 
 ## Symmetric Matrix
 - $A^T=A$
-- 能够利用LDLT分解达成LU的效果，而且只需要一般计算量;
+- 能够利用$LDL^T$分解达成$LU$的效果，而且只需要一般计算量;
 - 但是需要pivoting;
 
 ## Symmetric positive-definite Matrix
@@ -35,7 +37,7 @@ share: true
 	1. 不需要pivoting就能稳定;
 	2. 计算量是$LU$分解的一半;
 
-## psudoinverse
+## Psudoinverse
 - $pinv(A) = [A^TA]^{-1}A^T$
 - 当$A$是矩形矩阵时，形式上用来表示为$A$的逆阵;
 - 线性系统的解可以广义的利用$X = pinv(A)B$表示;
@@ -60,7 +62,7 @@ share: true
 - Used for solving linear least squares problem → $A^{-1} = (L^{-1})^TL^{-1}$;
 - 能够利用系统的稀疏性，是normal equation法的一个步骤
 - Ref:
-	- The Cholesky factorization.pdf
+	- 分解过程参考：The Cholesky factorization.pdf
 	- [Wiki](https://en.wikipedia.org/wiki/Cholesky_decomposition)
 
 # $LDL^T$ Decomposition
