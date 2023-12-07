@@ -63,6 +63,27 @@ share: true
 		2. 计算kalman增益（根据EKF的结果），并获得最终$x_{k+1|k+1}$的均值和协方差
 		3. Ref: The unscented kalman filter.pdf, eq 7.50 - 7.62
 
+## Iterated Kalman Filter
+
+- 迭代卡尔曼滤波器（Iterated Kalman Filter，IKF）是EKF的一个变体，用于非线性系统的状态估计。
+
+- Process
+	1. Prediction：与EKF一样，IKF的预测步骤使用系统的状态转移模型来预测下一个时间步的状态及其不确定性。
+	2. Update：
+	    - 在每个时间步，当新的观测数据到来时，IKF不是执行一次，而是多次执行更新步骤。
+	    - 在每次迭代中，使用当前的状态估计来线性化非线性观测模型。
+	    - 然后应用卡尔曼滤波器的更新公式来更新状态估计。
+	    - 这个过程重复进行，直到状态估计收敛，即连续迭代间的变化小于某个阈值。
+	3. 收敛判断：迭代继续进行，直到达到预定的迭代次数或状态估计的变化量小于设定的阈值。
+
+- 优点
+	1. 改善非线性处理：通过迭代更新，IKF能够更好地处理系统的非线性特性，提供比单次更新更精确的估计。
+	2. 灵活性：可以根据系统的特性和观测数据的质量调整迭代次数。
+
+- 缺点
+	1. 计算成本：迭代过程增加了计算负担，特别是在迭代次数较多时。
+	2. 收敛问题：在某些情况下，IKF可能不保证收敛，尤其是当非线性程度很高时。
+
 # Information Filter
 - Represent Gaussians in their canonical representation, information matrix and information vector, dual to moment representation as KF
 - Estimation based on IF
