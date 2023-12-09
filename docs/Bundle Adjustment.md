@@ -21,8 +21,8 @@ share: true
 - $P_{uv}$: 特征点的像素坐标 → 2维
 
 ## 优化参数, X
-- Pose 6, $T$
-- Point 3, $P_w$
+- Camera Pose 6, $T$
+- Map Point 3, $P_w$
 
 ## 目标
 - Maximum Likelihood
@@ -32,14 +32,15 @@ share: true
 - 信息矩阵是亏秩的，因为系统有不可观的自由度:
 	- 单目SLAM
 		- 绝对尺度不可观 → 1维
-		- 绝对位姿不可观 → 6维
+		- 绝对位姿不可观，只能得到相对于某个固定pose的位姿 → 6维
 	- VIO
 		- 绝对位姿部分不可观 → 4维
 		- pitch和roll由重力方向可观
 		- 尺度由加速度获得
 
 # Approach
-- $J^T\Omega^{-1}J\Delta X = -Jf(X)$ → 求解$\Delta X$
+- 根据上面的观测方程构建最小二乘问题，利用LM算法求解；
+- 最后的核心是增量方程$J^T\Omega^{-1}J\Delta X = -J(Z - f(X))$ → 求解$\Delta X$
 
 ## Process
 - Step 1: 建立Jacobian Matrix，$J$
@@ -51,7 +52,7 @@ share: true
 - Step 3：求信息矩阵$H$
 	- $H = J^T\Omega^{-1}J$
 	- $\Omega$误差的协方差矩阵
-- Step 4: 利用H的稀疏性求解 → 参见[[Marginalization#Application|Marginalization > Application]]的BA部分；
+- Step 4: 利用$H$的稀疏性求解 → 参见[[Marginalization#Application|Marginalization > Application]]的BA部分；
 
 ## Ref
 - Bundle adjustment gone public.pdf, p11
@@ -59,7 +60,7 @@ share: true
 
 # 核函数
 - Idea
-	- 使损失函数在误差(e)较大的时候增长减慢
+	- 使损失函数在误差$e$较大的时候增长减慢
 	- 把二范数度量换成增长不那么快的函数
 - Variante
 	- Huber核: 超过一定阈值后变为线性增长

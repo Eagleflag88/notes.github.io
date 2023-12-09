@@ -65,4 +65,5 @@ $$
 		- Probabilistic Robotics, ch 2.4.3
 		- https://en.wikipedia.org/wiki/Recursive_Bayesian_estimation
 		- https://zhuanlan.zhihu.com/p/133862177 → 说明递归的意义
+		- Introduction to recursive Bayesian filtering
 		

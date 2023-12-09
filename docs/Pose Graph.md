@@ -16,7 +16,7 @@ share: true
 	- Should be specified with uncertainty
 
  # Problem
- - The system is described by observation function $z = f(x)$
+ - The system is described by observation function $z = f(x)$，描述的一般是两个pose之间的变化量；
  - Residual: 
 	 - $z - f(x)$
 	 - variance: $\sigma$

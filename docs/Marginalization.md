@@ -2,9 +2,8 @@
 share: true
 ---
 # Multivariate Gaussian Distribution
-- $p(X) = \exp[-(X - \mu)^T \Sigma^{-1}(X, X)(X - \mu)/2]$
-- $X$：多元变量
-- 在SLAM中很多时候应该处理成0均值的变量
+- $p(X) = \exp[-\frac{(X - \mu)^T \Sigma^{-1}(X - \mu)}{2}]$
+- $X$：多元变量，在SLAM中很多时候应该处理成0均值的变量
 - $\mu$：均值向量
 - $\Sigma(X, X)$：协方差矩阵
 - 信息矩阵，$\Lambda = \Sigma^{-1}$ → 信息矩阵的元素如果为零表明其代表的变量不相关
@@ -46,14 +45,16 @@ $$
    c  \\\
    d
  \end{bmatrix}
- $$
+$$
+
+- 矩阵$A - BD^{-1}C$就是$D$的舒尔补；
 - Ref: The Schur Complement and Symmetric Positive Semidefinite (and Definite) Matrices
 
 ## Property
 - 实际上就是Variable elimination in a probabilisitic view
 - 消元之后，被边缘化的结点包含的信息被转移到剩余的结点中，总体的信息量保持不变
 - 但是消元之后，当有新的跟老的状态相关的测量值时，已经被丢弃的老的状态无法更新
-- 经过marginalization之后，保留的状态的信息矩阵会出现变化
+- 经过marginalization之后，保留的状态的信息矩阵会出现变化，原来不相关的变量可能会变得相关；
 
 # Application
 ## 滑窗管理
