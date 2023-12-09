@@ -147,7 +147,7 @@ share: true
 ## Null space
 - 如果$A$的秩为k, null space是由在$A$之中除了k之外的列向量组成的空间 → 矩阵的秩是矩阵中线性独立的向量的数量；
 - Nullity：Null space的维度
-- 在null space之中，$Ax = 0$ → 即$Ax = 0$解就是$A$的null space
+- 在null space之中，$Ax = 0$ → 即$Ax = 0$解就是$A$的null space，输出形式是Null space一对基向量；
 
 ## Application
 - Low Dimensional Approximation of Matrix:
