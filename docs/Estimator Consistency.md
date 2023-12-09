@@ -12,7 +12,7 @@ share: true
 	- 当可观性矩阵满秩时，所有状态都可观
 	- 系统中不可观的维度是可观性矩阵的零空间
 - 非线性系统 → 通过李代数定义的可观性矩阵
-- Ref：Wiki Observability
+- Ref：[Wiki](https://en.wikipedia.org/wiki/Observability)
 
 ## Consistency
 - 当随着测量量增加，估计值会收敛至真实值，则是一致的
