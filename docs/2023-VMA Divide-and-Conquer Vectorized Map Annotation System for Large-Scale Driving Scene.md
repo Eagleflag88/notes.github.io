@@ -6,7 +6,13 @@ share: true
 Lidar + IMU + Wheel + GPS
 
 # Single-session
-- Lidar  → Dynamic Point Removal (3D detection)→ Lidar Mapping (LIO-SAM) → Local Map;
+1. Dynamic Point Removal (3D detection，Afdetv2)
+2. 激光去畸变：利用IMU-Preintegration，计算激光帧间pose变化；
+3. Lidar Mapping (LIO-SAM) 
+	- Initial Prior Pose through imu integration
+	- Scan-matching using generalized-ICP among LiDAR frames
+	- GPS
+	- Loop Detection
 
 # Multi-session
 - Map Alignment: 
@@ -22,6 +28,13 @@ Lidar + IMU + Wheel + GPS
 	2. 长方形： 计算chamfer distance，当大于阈值，使用non-maximum suppression来融合；
 	3. 不规则形状：计算IoU，当大于阈值，使用Union操作来融合；
 - Point Sparsification: 使用Douglas-Peucker algorithm来对多边形和线进行降采样；
+
+# Experiment
+
+- 10231 urban scenes and 8334 highway scenes with map annotations are used to optimize the MapTR-based Unit Annotator
+- MapTR
+	- 50x50m的patch
+	- 50个点每个元素
 
 # Code
 
