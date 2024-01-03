@@ -51,3 +51,4 @@ share: true
 # Ref
 
 - FAST-LIO2: Fast Direct LiDAR-inertial Odometry
+- FAST-LIO: A Fast, Robust LiDAR-inertial Odometry Package by Tightly-Coupled Iterated Kalman Filter

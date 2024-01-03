@@ -14,6 +14,9 @@ share: true
 		- 2D: Image Registration
 		- 3D: Point Cloud Registration
 	- Should be specified with uncertainty
+	- 分类 → 按照约束所涉及的变量数目可以分为：
+		- 一元边：只涉及一个变量，通常表示节点的估计位姿和某个绝对参考（如GPS测量或已知地标）之间的差异；
+		- 二元边：涉及两个变量，可以表示两个节点之间估计位姿的相对关系和实际测量（如从里程计或激光扫描器得到的）之间的差异；
 
  # Problem
  - The system is described by observation function $z = f(x)$，描述的一般是两个pose之间的变化量；
