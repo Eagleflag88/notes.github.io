@@ -40,7 +40,7 @@ $$
 $$
 R = \exp(\phi^\wedge)
 $$
-- 当使用轴角来表达旋转时，$R=\exp(\theta v^\wedge)$，即获得了罗德里格斯公式；
+- 当使用轴角来表达旋转时，$R=\exp(\theta n^\wedge)$，即获得了罗德里格斯公式；
 - 指数映射$\Phi=\log(R)$；
 - Ref: Time Derivative of Rotation Matrices: A Tutorial.pdf
 
