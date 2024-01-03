@@ -83,7 +83,7 @@ $\underline{Property}$
 - 描述两个平面之间的关系
 - 适用于特征点在一个平面的情况
 - 对同一个平面上的两个特征点有$p_1 = Hp_2$
-	- $p_1$和$p_2$为像素点；
+	- $p_1$和$p_2$为像素点，齐次坐标；
 	- $H$为3x3的单应矩阵；
 	- DoF为8，因为尺度不变性；
 
@@ -144,7 +144,7 @@ $\underline{EPnP}$
 - Ref: https://zhuanlan.zhihu.com/p/59070440
 
 $\underline{BA}$
-- 重投影误差
+- 重投影误差，参见[[Bundle Adjustment|Bundle Adjustment]]
 - Ref: 十四讲，7.7.3
 
 # 3D-3D
