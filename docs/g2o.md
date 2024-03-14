@@ -66,7 +66,7 @@ share: true
 		- 边的输入：
 			- edge->setVertex(0, v);
 			- edge->setMeasurement(y_data[i]);
-		- 信息矩阵：dge->setInformation(Eigen::Matrix<double, 1, 1>::Identity()*1/(w_sigma*w_sigma));
+		- 信息矩阵：Edge->setInformation(Eigen::Matrix<double, 1, 1>::Identity()*1/(w_sigma*w_sigma));
 
 ## 优化
 - jacobian：使用numeric difference计算
