@@ -52,7 +52,7 @@ share: true
 - Step 3：求信息矩阵$H$
 	- $H = J^T\Omega^{-1}J$
 	- $\Omega$误差的协方差矩阵
-- Step 4: 利用$H$的稀疏性求解 → 参见[[Marginalization#Application|Marginalization > Application]]的BA部分；
+- Step 4: 利用$H$的稀疏性求解增量方程 → 参见[[Marginalization#Application|Marginalization > Application]]的BA部分；
 
 ## Ref
 - Bundle adjustment gone public.pdf, p11
