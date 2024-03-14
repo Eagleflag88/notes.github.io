@@ -50,10 +50,10 @@ share: true
 		- fitness的阈值, $t$
 		- inliner的个数阈值, $n$
 - Process
-	1. Sample the data points ($s$) from $D$ to get the inliers;
+	1. Sample the data points ($s$) from $D$；
 	2. Model Fitting using sampled inliers;
 	3. 计算剩余的点的fitness;
-	4. 把fitness大于$t$的点放入inliner，当inliner过少，废弃这轮获得的内点，跳回第一步;
+	4. 把fitness大于$t$的点放入inliner，当inliner过少，废弃这轮获得的内点，跳回第一步；
 	5. repeat 1,2,3,4;
 	6. 当inlier超过$n$时即认为算法成功;
 	7. 当尝试的次数多于$k$时，则认为失败；
@@ -69,6 +69,7 @@ share: true
 	2. 在一次model fitting中全抽到inlier的概率，$e^s$；
 	3. 一次model fitting失败的概率：即抽到的sample含有outlier的概率，$1 - e^s$
 	4. $k$次model fitting失败的概率：$(1 - e^s)^k$，$1 - p = (1 - e^s)^k$
+	5. 最终确定最多应该尝试的次数是：$k=\frac{\log(1-p)}{log(1-e^s)}$
 - Instance
 	1. ORBSLAM：
 		- 在计算匹配时使用了ransac

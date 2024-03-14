@@ -70,7 +70,7 @@ share: true
 	- zero-mean normally distributed
 	- Forster eq 42-43
 - Bias Update
-	- 当Bias的增量比较小 → 利用$\Delta PVQ$增量关于Bias的线性化来更新$\Delta PVQ$, Forster eq 44
+	- 当Bias的增量比较小 → 利用$\Delta PVQ$增量关于Bias的线性化来更新$\Delta PVQ$, Forster eq 44，因为这时候线性化仍然在有效范围；
 	- 当Bias变化量比较大 
 		- 重新计算$\Delta PVQ$
 		- 在vins-mono中在初始化求解solveGyroscopeBias()之后
@@ -78,5 +78,5 @@ share: true
 - Ref: On-Manifold Preintegration for Real-Time Visual-Inertial Odometry.pdf
 		
 ## Residual
-- 两个pose之间的imu测量值减去两个pose之间之差
-- 定义与pose graph里一致
+- 两个pose之间的imu预积分值减去两个pose的估计值变化量之差；
+- 定义与pose graph里一致；
