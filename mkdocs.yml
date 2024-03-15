@@ -131,7 +131,7 @@ nav:
       - 多任务模式: 多任务模式.md
       - 内存管理: 内存管理.md
     - C++:
-      - 基本概念: 基本概念-C++.md
+      - 基本概念: 00-基本概念-C++.md
       - 多态: 多态.md
       - 智能指针: 智能指针.md
       - 序列式容器: 序列式容器.md
@@ -150,6 +150,10 @@ nav:
       - 2023-MachMap: 2023-MachMap End-to-End Vectorized Solution for Compact HD-Map Construction.md
       - 2023-MapVR: 2023-Online Map Vectorization for Autonomous Driving A Rasterization Perspective.md
       - 2023-StreamMapNet: 2023-StreamMapNet.md
+      - 2023-Neural Map Prior for Autonomous Driving: 2023-Neural Map Prior for Autonomous Driving.md
+      - 2024-Complementing Onboard Sensors with Satellite Maps A New Perspective for HD Map Construction: 2024-Complementing Onboard Sensors with Satellite Maps A New Perspective for HD Map Construction.md
+      - 2024-MapEX: 2024-MapEX.md
+      - 2024-P-MapNet: 2024-P-MapNet.md
     - Map Merging:
       - 2017-3D Map Merging on Pose Graphs: 2017-3D Map Merging on Pose Graphs.md
       - 2019-Crowd-sourced Semantic Edge Mapping for Autonomous Vehicles: 2019-Crowd-sourced Semantic Edge Mapping for Autonomous Vehicles.md
