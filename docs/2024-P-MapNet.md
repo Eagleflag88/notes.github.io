@@ -32,9 +32,10 @@ share: true
 
 - Process
 1. Retrieve the sourrounding sd map
-2. CNN on rasterized sd map
-3. Sine positional embedding → $F_{sd}$
-4. Cross multihead attetion with BEV Feature → 消除miss alignment
+2. 对sdmap进行平整化；
+3. CNN on rasterized sd map
+4. Sine positional embedding → $F_{sd}$
+5. Cross multihead attetion with BEV Feature → 消除miss alignment
 
 ## HD Piror Module
 
@@ -48,6 +49,11 @@ Same as [[2022-HDMapNet An Online HD Map Construction and Evaluation|2022-HDMapN
 
 - Conclusion
 1. CNN Extraction of SDMap helps
+
+## Conclusion
+
+- 即使SDMap只有中心线，也能提高车道线和其他道路元素的检测性能；
+
 
 # Code
 
