@@ -24,7 +24,7 @@ share: true
 - Process
 1. 对每个地图元素进行均匀采样，得到点；
 2. 对每个点进行编码：坐标(x, y) + one-hot class labeling + Padding；
-3. Concat：和MapTR的learnable queries进行拼接；
+3. 替换：和MapTR的learnable queries进行替换；
 
 ## Pre-Attribution
 
