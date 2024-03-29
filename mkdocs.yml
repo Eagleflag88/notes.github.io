@@ -152,10 +152,12 @@ nav:
       - 2023-StreamMapNet: 2023-StreamMapNet.md
       - 2023-Neural Map Prior for Autonomous Driving: 2023-Neural Map Prior for Autonomous Driving.md
       - 2023-LaneSegNet: 2023-LaneSegNet.md
+      - 2023-SMERF: 2023-Augmenting Lane Perception and Topology Understanding with Standard Definition Navigation Maps.md
       - 2024-Complementing Onboard Sensors with Satellite Maps A New Perspective for HD Map Construction: 2024-Complementing Onboard Sensors with Satellite Maps A New Perspective for HD Map Construction.md
       - 2024-MapEX: 2024-MapEX.md
       - 2024-P-MapNet: 2024-P-MapNet.md
     - Topology Reasoning:
+      - 2023-TopoNet: 2023-TopoNet.md
       - 2023-TopoMLP: 2023-TopoMLP.md
     - Map Merging:
       - 2017-3D Map Merging on Pose Graphs: 2017-3D Map Merging on Pose Graphs.md
