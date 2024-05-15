@@ -21,7 +21,7 @@ share: true
 	1. Stride：Kernel在卷积时移动的格子数；
 	2. Padding
 
-- 可学习参数：(NxNxD + 1)xK。每个卷积核NxNxD + 1；这一层有K个；
+- 可学习参数：(NxNxD + 1)xK。每个卷积核NxNxD + 1，这一个卷积层有K个；
 
 $\underline{优化实现}$
 
