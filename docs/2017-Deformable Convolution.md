@@ -14,6 +14,7 @@ share: true
 	2. 采样点更新：标准卷积的采样点位置固定不变，而Deformable Convolution根据学习到的偏移量动态调整采样点的位置；
 	3. 双线性插值：因为偏移量可能是小数，直接使用会导致采样点落在像素格点之间，所以需要用双线性插值来计算这些位置的像素值；
 	4. 加权求和：最后，与标准卷积类似，使用更新后的采样点的像素值与卷积核的权重进行加权求和[[CNN Basics#Standard Convolution|CNN Basics > Standard Convolution]]，以产生最终的输出；
+- Termed as DCNv1;
 
 # DCNv2
 

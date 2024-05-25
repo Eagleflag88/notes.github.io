@@ -63,6 +63,16 @@ zeros_tensor = torch.zeros(shape)
 - tensor.permute(1, 0): 主要用于调整张量的维度顺序，不会改变每个维度元素的多少；
 - Ref: https://pytorch.org/docs/master/tensor_view.html
 
+## Unsqueeze
+- 用于在指定位置插入一个新的维度
+- 用法
+```
+torch.unsqueeze(input, dim)
+```
+- `input`: 需要操作的张量。
+- `dim`: 新维度插入的位置（索引）
+- 返回一个新的张量，在指定的维度插入一个新维度，其中内容是未填充的；
+
 ## Ref
 [Pytorch_Tutorial](https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py)
 
@@ -133,7 +143,7 @@ zeros_tensor = torch.zeros(shape)
 - 利用`__ini__`来定义模型的结构
 - 定义模型的forward方法
 
-## `__Init__`
+## `__Init__()`
 - nn.Sequential
 	- Container,一般用来搭建小的block
 	- 比如：Conv2d+ReLU+MaxPool

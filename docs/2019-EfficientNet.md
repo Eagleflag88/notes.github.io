@@ -38,7 +38,7 @@ $$
 
 # Architecture
 
-- EfficientNet-B0的结构如下：
+- EfficientNet-B0的结构以mobilenetv2为蓝本，经过缩放而来；
 
 ## Stem
 - Conv3x3

@@ -2,7 +2,9 @@
 share: true
 ---
 
-MobileNet是由Google的研究者Andrew G. Howard等人在2017年提出的一系列为移动和边缘设备优化的网络架构。MobileNet模型主要针对的是在计算能力、存储空间和能耗受限的设备上运行高效的深度学习模型。MobileNet架构的关键特点在于它的轻量级，这是通过使用深度可分离卷积（Depthwise Separable Convolution）实现的。
+# Problem
+
+- MobileNet模型主要针对的是在计算能力、存储空间和能耗受限的设备上运行高效的深度学习模型。MobileNet架构的关键特点在于它的轻量级，这是通过使用深度可分离卷积（Depthwise Separable Convolution）实现的。
 
 # 深度可分离卷积
 
