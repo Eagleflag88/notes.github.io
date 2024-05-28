@@ -14,7 +14,7 @@ share: true
 	2. 历史BEV Feature，$B_{t-1}$维度H, W, num_query。
 - Process：
 	1. Alignment：根据本车运动关系，把$B_{t-1}$加上本车运动，形成$B^{\prime}_{t-1}$
-	2. Deformable Attention：把BEV Query当作Q，上一个时刻的BEV Feature当作K和V，我们做Deformable Attention。详细的过程请参考[[2021-Deformable Detr#Deformable Attention|2021-Deformable Detr > Deformable Attention]]；
+	2. Deformable Attention：把BEV Query当作Q，上一个时刻的BEV Feature当作K和V，做Deformable Attention。详细的过程请参考[[2021-Deformable Detr#Deformable Attention|2021-Deformable Detr > Deformable Attention]]；
 	3. 我们实际上可以把BEV Feature理解为mmdetection框架下Transformer-Encoder的memory；
 - Output：
 	1. BEV Query和前一个时刻BEV Feature之间的相互关系，可以认为是临时的memory，也会被用作下一次Attention操作的Query；

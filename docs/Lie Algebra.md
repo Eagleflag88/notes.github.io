@@ -40,7 +40,7 @@ $$
 $$
 R = \exp(\phi^\wedge)
 $$
-- 当使用轴角来表达旋转时，$R=\exp(\theta n^\wedge)$，即获得了罗德里格斯公式；
+- 当使用轴角来表达旋转时，$R=\exp(\theta n^\wedge)$，即获得了罗德里格斯公式，参见[[Transform#Rotation Vector|Transform > Rotation Vector]]；
 - 指数映射$\Phi=\log(R)$；
 - Ref: Time Derivative of Rotation Matrices: A Tutorial.pdf
 
@@ -63,7 +63,7 @@ $$
 
 - 反过来，我们可以得到：
 $$
-\exp((\phi + \delta \phi)^{\wedge})=\exp((J_l\delta\phi)^{\wedge})\exp(\phi^{\wedge})=
+\exp((\phi + \delta \phi)^{\wedge}) \approx \exp((J_l\delta\phi)^{\wedge})\exp(\phi^{\wedge})=
 \exp(\phi^{\wedge})\exp((J_r\delta\phi)^{\wedge})
 $$
 
@@ -92,7 +92,7 @@ $$
 \frac{\partial (Rp)}{\partial \varphi} = \lim_{\varphi \to 0} \frac{\exp(\varphi^\wedge) \exp(\phi^\wedge) p - \exp(\phi^\wedge) p}{\varphi}=-(Rp)^{\wedge}
 $$
 - 推导过程:
-	- 对上式使用Tayler展开：$\exp(\delta\phi) = I + \exp(\delta\phi)$;
+	- 对上式使用Tayler展开：$\exp(\varphi) \approx I + \varphi$;
 	- 最后利用性质 $a^\wedge b = -b^\wedge a$消去上式中的$\delta\phi$
 - Ref: 十四讲 eq 4.41
 

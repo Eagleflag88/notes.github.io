@@ -22,7 +22,7 @@ share: true
 
 - Camera-to-BEV
 	1. LSS-based
-	2. 显式的预测camer-ray上的深度分布，生成一个camera feature point cloud，NHWD；
+	2. 显式的预测camer-ray上的深度分布，生成一个camera feature point cloud, NxHxWxD；
 	3.  N is the number of cameras and (H, W ) is the camera feature map size.
 	4. 进行BEV Pooling：即在BEV平面划分格子，然后聚合每一个格子里面的特征；
 
