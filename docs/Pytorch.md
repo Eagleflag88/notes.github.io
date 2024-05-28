@@ -63,6 +63,24 @@ zeros_tensor = torch.zeros(shape)
 - tensor.permute(1, 0): 主要用于调整张量的维度顺序，不会改变每个维度元素的多少；
 - Ref: https://pytorch.org/docs/master/tensor_view.html
 
+## 拼接
+
+- `torch.cat`（也称为 `concat`）用于沿着一个现有的维度将一系列张量拼接在一起。它不会创建一个新的维度，而是在现有的维度上进行操作。比如：
+```
+concatenated_tensor = torch.cat((tensor1, tensor2), dim=0)
+```
+- `torch.stack` 用于沿着一个新的维度将一系列张量堆叠在一起。换句话说，它会在现有张量的基础上增加一个新的维度。比如：
+```
+stacked_tensor = torch.stack((tensor1, tensor2))
+```
+## Flatten
+
+- `flatten` 用于将一个多维张量展平为一维张量或将指定范围的维度展平为一维张量；
+```
+flattened_tensor = torch.flatten(tensor)
+```
+- 这在需要将张量的高维数据展平以便于输入到全连接层（如神经网络中的全连接层）时非常有用；
+
 ## Unsqueeze
 - 用于在指定位置插入一个新的维度
 - 用法
