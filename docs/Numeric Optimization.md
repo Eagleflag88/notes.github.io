@@ -2,20 +2,19 @@
 share: true
 ---
 # Problem
-- 求$F(X)$的最小值时X的值
+- 求$F(X)$的最小值时$X$的值
 	- $X$是一个多维变量
 	- $F$一般可导
 	- $X_{opt} = \arg \min F(X)$
 
 # Approach
 
-## 直接法
-## 迭代法
+# 迭代法
+
 - 通过计算一连串$F(X_1, X_2, X_3, ..., X_n)$的值来获得$F(X)$的最小值和此时$X$的值
 - 通过调整$X$向量来使目标函数下降，能降多少降多少
-- 每一个iteration需要求解的问题变为：以现有的工作点$X$为基础，求使目标函数最小的增量，$\Delta X$ → $\Delta X = \arg \min F(X + \Delta X)$
+- 每一个iteration需要求解的问题变为：以现有的工作点$X$为基础，求使目标函数最小的增量，$\Delta X = \arg \min F(X + \Delta X)$
 
-# 迭代法
 ## Line Search
 - Idea → 对$F(X + \Delta X)$进行近似
 - 一阶梯度法(最速下降法)
@@ -56,7 +55,7 @@ share: true
 - Dog Leg
 	- Idea
 		1. 显性的使用trust region的概念
-		2. 结合GN和Steep Descent(SD)
+		2. 结合Gauss-Newton(GN)和Steep Descent(SD)
 		3. 在Trust Region中，目标函数被利用泰勒展开所近似
 	- Process
 		1. 在确定的Trust Region中
