@@ -44,7 +44,7 @@ share: true
 		- $W$的非对角线元素不为0；
 - Solution
 	- 在$W$已知的情况下，通过对$L$函数求$\beta$向量的偏导
-	- $XWX^T \beta = XWY$
+	- $XWX^T \beta = X^TWY$
 	- Ref：[wiki](https://en.wikipedia.org/wiki/Generalized_least_squares#Feasible_generalized_least_squares)
 
 # Nonlinear Case
