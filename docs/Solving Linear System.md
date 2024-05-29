@@ -20,11 +20,12 @@ share: true
 		- $A = LU$ → 这样解线性系统比较方便;
 		- 但是直接使用$LU$分解不能处理对角线元素有0的情况
 	- Row Pivoting能处理上述状况
-		- 代数上引入了一个permutation matrix， $P$ → $PA = LU$
+		- 相当于在代数上引入了一个permutation matrix， $P$ → $PA = LU$
 		- Ref: [wiki](https://en.wikipedia.org/wiki/Pivot_element)
-- $A$是对称矩阵: 使用$LDL^T$分解 → 计算量相对于高斯消元法小；
-- $A$ is symmetric positive definite matrix: 使用Cholesky分解 → 计算量小，不需要pivoting
-- Ref：https://fncbook.github.io/v1.0/linsys/lu.html
+	- Ref：https://fncbook.github.io/v1.0/linsys/lu.html
+- 如果$A$是对称矩阵（不一定正定）: 可以使用$LDL^T$分解 → 计算量相对于高斯消元法小；
+- 如果$A$ is symmetric positive definite matrix: 使用Cholesky分解 → 计算量小，不需要pivoting
+
 
 # 超定问题
 	
@@ -49,28 +50,29 @@ share: true
 		2. 速度最快但是数值上最不稳定
 	- Ref: https://fncbook.github.io/v1.0/leastsq/normaleqns.html
 
-- QR Decomposition
-	- Process
-		1. 求解$A$的QR分解 → 一般用houser holder
-		2. 计算$d = Q^Tb$
-		3. 求解$Rx = d$ → 这是一个square linear system，而且$R$是上三角矩阵
-	- QR 算法比较稳定, 但是不能解决Rank deficiency的问题；是求解最小二乘问题的首选方法，但是比较慢
-	- Ref: https://fncbook.github.io/v1.0/leastsq/qr.html
+## QR Decomposition
+- Process
+	1. 求解$A$的QR分解 → 一般用houser holder
+	2. 计算$d = Q^Tb$
+	3. 求解$Rx = d$ → 这是一个square linear system，而且$R$是上三角矩阵
+- QR 算法比较稳定, 但是不能解决Rank deficiency的问题；是求解最小二乘问题的首选方法，但是比较慢
+- Ref: https://fncbook.github.io/v1.0/leastsq/qr.html
 		
-- SVD Decomposition
-	- 能解决rank deficient的系统，计算量最大
-	- Nonhomogeneous System
-		- 实际上是在Least Square的框架
-		- $x = VD^{-1}U^TB$
-	- Homogeneous System
-		- $AX = 0$ → 比如说求fundamental matrix
-		- $\min \mathbf{norm}(Ax)$, st. norm(x) = 1
-		- $x = av_n$ → $v_n$是V的最后一列
-	- Ref
-		- Singular Value Decomposition.pdf
-		- The Least Squares Solution of Linear Systems.pdf
+## SVD Decomposition
+- 能解决rank deficient的系统，计算量最大
+- Nonhomogeneous System
+	- 实际上是在Least Square的框架
+	- $x = VD^{-1}U^TB$
+- Homogeneous System
+	- $AX = 0$ → 比如说求fundamental matrix
+	- $\min \mathbf{norm}(Ax)$, st. norm(x) = 1
+	- $x = av_n$ → $v_n$是V的最后一列
+- Ref
+	- Singular Value Decomposition.pdf
+	- The Least Squares Solution of Linear Systems.pdf
 		
-- Conjaguted Gradient → 优化的方法，迭代求解超大稀疏的矩阵
+## Conjaguted Gradient
+- 优化的方法，迭代求解超大稀疏的矩阵
 - Ref
 	- NUMERICALLY EFFICIENT METHODS FOR SOLVING LEAST SQUARES PROBLEMS.pdf
 	- https://blog.csdn.net/wangshuailpp/article/details/80209863
