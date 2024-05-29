@@ -50,6 +50,7 @@ nav:
     - CNN:
       - Basics: CNN Basics.md
       - 2015-ResNet: 2015-ResNet.md
+      - 2015-FCN: 2015-FCN.md
       - 2015-U-Net: 2015-UNet.md
       - 2017-Deformable Convolution: 2017-Deformable Convolution.md
       - 2017-FPN: 2017-Feature Pyramid Networks.md
