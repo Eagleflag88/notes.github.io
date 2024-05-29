@@ -19,7 +19,7 @@ share: true
 # Approach
 
 ## Likelihood Function
-- 似然函数（Likelihood Function）: The probability density of observed data $x$ viewed as a function of the parameters $\theta$ of a statistical model -> $L(\theta | x)$；
+- 似然函数（Likelihood Function）: 定义为给定参数$\theta$下，观测到数据$x$的概率；
 - 对随机变量$x$来说，它的似然函数可以认为是它的固定参数下的密度函数；
 $$
 L(\theta | x) = f_{\theta}(x)
@@ -32,7 +32,7 @@ $$
 \hat{\theta}=arg max \prod_0^n L_n(\theta, \textbf{x})
 $$
 - 是一种的点估计法，跟Uniform Prior的MAP估计等价；
-- The state is taken as constant not a distribution；
+- 一般通过最小化Likelihood的对数来计算求解；
 - No Prior can be included；
 
 ## Bayesian Approach
