@@ -80,3 +80,18 @@ Faster R-CNN 的推理流程是将训练好的模型应用于新图像，以检�
 # Ref
 
 - Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks
+
+# NMS
+
+## Concept
+
+- 在对象检测任务中，检测模型通常会对每个类别和每个位置输出多个候选检测框（bounding boxes）；
+- NMS可以去除冗余的检测框，确保每个检测目标只保留一个最准确的检测框；
+
+## Process
+
+1. **排序**：按照每个候选框的置信度（confidence score）从高到低排序；
+2. **选择框**：将置信度最高的候选框作为一个最终检测框；
+3. **计算 IoU**：计算当前选择的候选框与其他所有候选框的交并比（IoU）；
+4. **抑制框**：将与当前选择的候选框重叠度（IoU）超过预设阈值的候选框抑制（即去除）；
+5. **重复**：重复上述步骤，直到处理完所有候选框；
