@@ -2,14 +2,31 @@
 share: true
 ---
 
+# Problem
+
+- Detr训练收敛太慢；
+- Detr的小目标效果较差；
+- 普通的Attention模块的注意力是平均的；
+
 # Deformable Attention
 
-1. Attention Weight是输入query通过一个Linear和Softmax学习得到的。相当于Q和K的点乘结果；
-2. Value是通过Input feature map经过一个线性层后，再通过reference point和offest选取特定位置的特征得到的。相当于标准attention的Value；
-3. Reference point是提前得到的，基本上就是均匀采样，然后送入Deformable Attention模块直接使用；
-4. Offest是输入query通过一个Linear线性层学习得到的；
-5. Output是将Value与Attention Weight相乘后，经过一个线性层得到的;
+## Concept
+- 引入可变形的采样点来选择性地关注部分关键位置；
+- Fast convergence, and computational and memory efficiency；
+- 
 
+## Architecture
+
+- Input：
+	1. Feature Map
+	2. Query
+	3. Reference Point：关键概念之一。它们用于定义查询位置的初始位置，并作为可变形采样点计算的基准。基本上就是均匀采样，我们就在这个的基础上加上offset得到最终的sampling point
+- Process：
+	1. query通过一个Linear线性层得到Offset；
+	2. query通过一个Linear和Softmax得到Attention Weight。相当于Q和K的点乘结果；
+	3. 通过Input feature map经过一个线性层，再通过reference point和offest选取特定位置的特征得到value；
+- output：
+	- 将Value与Attention Weight相乘后，经过一个线性层得到;
 
 # Architecture
 
@@ -45,7 +62,7 @@ $\underline{Structure}$
 
 $\underline{Process}$
 1. 形成Object Query，shape是num_query, num_embed，这个是需要学习出来的；然后生成Query Pos，并利用它和一个线性变换生成参考点（DeformableAttention需要）；
-2. SelfAttention：Object Query自己做自注意，这个Object Query是待学习的，shape是num_query, query_embed；输出的维度也是一样；这里用的是普通的MultiHeadAttention。
+2. SelfAttention：Object Query自己做自注意，这里用的是普通的MultiHeadAttention。
 3. CrossAttention：用自注意的输出和Encoder的memory做互注意，企图获得我们要查找的object和图片的高维特征之间的关系；这个Attention机制中的Q是object query，K和V则是memory。因为要跟memory做交互，所以用了MSDeformableAttention。输出的shape跟Query是一致的；
 4. 最后输出的是每一层的Object Query和参考点；
 
