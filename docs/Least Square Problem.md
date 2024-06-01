@@ -97,3 +97,28 @@ share: true
 	- Ref
 		1. 十四讲，eq 6.24
 		2. https://zhuanlan.zhihu.com/p/136143299
+
+# Least square on SO3
+
+- 现在我们有一个关于旋转的函数$y = f(R)$，直接在$R$上应用泰勒展开不可行，因为SO3上没有定义加法；
+$$
+f(R + \Delta R) \approx f(R) + \frac{\partial f(R)}{\partial R} \Delta R
+$$
+- 把自变量从$R$变到它的李代数$\phi=[\phi_1, \phi_2, \phi_3]$，这样我们得到：
+$$
+y = f(R) = f(\exp(\phi^\wedge))
+$$
+- 在$\phi$上进行泰勒展开：
+$$
+f(\phi + \delta \phi) \approx f(\phi) + \frac{\partial f}{\partial \phi}\delta \phi
+$$
+
+- 求解关于$\phi$的normal equation之后获得更新公式：
+$$
+JJ^T \delta \phi = -Jr
+$$
+- 其中$J=\frac{\partial f}{\partial \phi}$是目标函数对李代数的求导。可以参考[[Lie Algebra#对旋转求导|Lie Algebra > 对旋转求导]]的方法获得结果；
+- 最终可以用指数映射来更新旋转：
+$$
+R_{t}=\exp(\delta\phi^\wedge)R_{t-1}
+$$
