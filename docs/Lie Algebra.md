@@ -41,7 +41,7 @@ $$
 R = \exp(\phi^\wedge)
 $$
 - 当使用轴角来表达旋转时，$R=\exp(\theta n^\wedge)$，即获得了罗德里格斯公式，参见[[Transform#Rotation Vector|Transform > Rotation Vector]]；
-- 指数映射$\Phi=\log(R)$；
+- 对数映射$\Phi=\log(R)$；
 - Ref: Time Derivative of Rotation Matrices: A Tutorial.pdf
 
 ## BCH近似
@@ -87,12 +87,13 @@ $$
 - Ref: 十四讲 eq 4.40
 
 $\underline{扰动模型}$
-- 如果我们对变化之后的位姿不用$\exp((\phi + \delta\phi)^\wedge)$而是用$\exp(\varphi^\wedge) \exp(\phi^\wedge)$计算（左扰动），那么结果如下：
+- 假设我们通过对现有旋转$R=\exp(\phi^\wedge)$进行一个扰动旋转$\Delta R=\exp(\delta \phi^\wedge)$来获得更新后的旋转；
+- 如果我们采用左扰动的方式的话，对变化之后的位姿不用$\exp((\phi + \delta \phi)^\wedge)$而是用$\exp(\delta \phi^\wedge) \exp(\phi^\wedge)$计算，那么结果如下：
 $$
-\frac{\partial (Rp)}{\partial \varphi} = \lim_{\varphi \to 0} \frac{\exp(\varphi^\wedge) \exp(\phi^\wedge) p - \exp(\phi^\wedge) p}{\varphi}=-(Rp)^{\wedge}
+\frac{\partial (Rp)}{\partial \phi} = \lim_{\delta \phi \to 0} \frac{\exp(\delta \phi^\wedge) \exp(\phi^\wedge) p - \exp(\phi^\wedge) p}{\delta \phi}=-(Rp)^{\wedge}
 $$
 - 推导过程:
-	- 对上式使用Tayler展开：$\exp(\varphi) \approx I + \varphi$;
+	- 对上式使用Tayler展开：$\exp(\delta \phi) \approx I + \delta \phi$;
 	- 最后利用性质 $a^\wedge b = -b^\wedge a$消去上式中的$\delta\phi$
 - Ref: 十四讲 eq 4.41
 

@@ -31,7 +31,7 @@ share: true
 	- $H(X)$对大规模问题来说比较难以计算
 	- Gauss-Newton
 		- 基本上仅用于求解最小二乘法；
-		- 可以理解为牛顿法的简化版本，把海森矩阵$H(X)$用$J^TJ$近似，参见[[Least Square Problem#Solution|Least Square Problem > Solution]]；
+		- 可以理解为牛顿法的简化版本（实际上只涉及一阶近似），把海森矩阵$H(X)$用$J^TJ$近似，参见[[Least Square Problem#Solution|Least Square Problem > Solution]]；
 	- Damped Method
 		- 引入阻尼因子$\mu$
 			- $L = F(X + \Delta X) + \mu\Delta X^T\Delta X$
