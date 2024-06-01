@@ -23,9 +23,7 @@ share: true
 	- State space model:
 		- $x_{k+1} = f(x_k)+ w_k$， eq1
 		- $z_{k+1} = h(x_{k+1}) + v_{k+1}$， eq2
-	- 目标: 
-		1. $x_{k+1}$的均值为0；
-		2. $x_{k+1}$的方差最小；
+	- 目标: $x_{k+1}$的方差最小；
 - Process
 	- 输入
 		- $x_k$的均值和方差
@@ -83,6 +81,10 @@ share: true
 - 缺点
 	1. 计算成本：迭代过程增加了计算负担，特别是在迭代次数较多时。
 	2. 收敛问题：在某些情况下，IKF可能不保证收敛，尤其是当非线性程度很高时。
+
+## Kalman Filter on Manifold
+
+- Ref: Kalman Filters on Differentiable Manifolds.pdf
 
 # Information Filter
 - Represent Gaussians in their canonical representation, information matrix and information vector, dual to moment representation as KF
