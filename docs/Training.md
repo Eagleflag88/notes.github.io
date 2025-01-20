@@ -30,35 +30,8 @@ share: true
 
 - 权重初始化的选择应考虑到所使用的激活函数、网络架构和任务的特性。正确的初始化方法可以确保梯度的良好流动，防止训练初期的梯度问题，并有助于模型更快地收敛。
 
-# Regularization
-
-在深度学习训练中，正则化技术用于防止模型过拟合，从而提高模型在新数据上的泛化能力。以下是一些常用的正则化技术：
-
-1. 权重衰减（L2正则化）：又叫Weight Decay。通过在损失函数中添加一个与权重大小成比例的项来惩罚大的权重值，通常表现为所有权重的平方和乘以一个常数；
-	- 因为更大的模型权重会导致模型对输入数据的变化非常敏感，即使是微小的输入变化也会引起输出的显著变化。这样模型可以记住训练数据中的噪声，从而导致过拟合；
-	- 在信号处理的角度来看，大权重值相当于模型包含了高频成分，小权重值则相当于过滤掉了这些高频成分；
-1. L1正则化：与L2类似，但是惩罚项是权重的绝对值之和，这可以导致稀疏的权重矩阵，有些权重会变成0。  
-2. Dropout：在训练过程中随机丢弃（即设置为零）网络中的一些神经元输出，以减少神经元之间复杂的共适应。
-	- 在训练的每次迭代中，每个神经元都有一定概率（通常设为 0.5）被随机丢弃，即它在前向传播和反向传播时暂时不参与计算；
-	- 实际上等同于每次都在训练不同的网络；
-	- 由于在训练时某些神经元被丢弃，因此在预测时需要对神经元的输出进行缩放，以补偿那些在训练时未被激活的神经元。如果在训练时使用了$p$的丢弃概率，则在预测时，网络的权重通常会乘以$1−p$（这个过程有时也被称为"inverted dropout"）；
-	- Dropout一般在卷积过后的全连接层使用；
-3. 数据增强：通过对训练数据进行旋转、缩放、裁剪等变换来人为增加样本多样性，提高模型的泛化能力；
-4. 早停（Early Stopping）：在验证集上的性能不再提升时停止训练，防止过拟合；
-5. Normalization：BN，GN和LN。详见[[Normalization#Batch Normalization|Normalization > Batch Normalization]]，[[Normalization#Group Normalization|Normalization > Group Normalization]]和[[Normalization#Layer Normalization|Normalization > Layer Normalization]]；
-6. 梯度剪切（Gradient Clipping）：限制梯度更新的步长，防止梯度爆炸；
-7. 学习率衰减：随着时间的推移逐渐减小学习率，有助于模型在训练后期稳定；
-8. Label Smoothing: 
-	- 通过将一部分真值概率标签分配给非目标类别，来对这些硬标签进行软化；
-	- 比如一个$K$分类问题，我们可以把GT的标签从0和1改为$\frac{\epsilon}{K-1}$和$1-\epsilon$，$\epsilon$是一个小的常数，比如0.01；
-9. Exponential Moving Average：
-	- Computes the weighted mean of all the previous data points and the weights decay exponentially；
-	- 模型参数的更新是按照EMA的方式计算出来的；
-	- [Ref](https://leimao.github.io/blog/Exponential-Moving-Average/)
-
 # Optimization
 
-## 一阶优化算法
 - Gradient Steepest：
 	1. 直接朝gradient的反方向走；
 	2. “最陡”方向可以根据不同的范数来定义。例如，在欧几里得范数下，最陡下降方向与梯度下降相同；
@@ -69,17 +42,45 @@ share: true
 	1. 小范围应用Batch Gradient Descent；
 	2. 超参数batch size，一般选32；
 -  SGD+Momentum：
-	1. Get over with saddle points with velocity (initial 0)；
+	1. 引入动量来加速梯度下降；
 	2. Nesterov Momentum，它在计算梯度之前先对当前参数进行一个“预估”更新。这种方法可以理解为“先看看前面，再决定下一步怎么走”，从而获得更准确的梯度信息；
 - AdaGrad：
-	1. 缓解各方向梯度不均匀的问题；
-	2. 主要方法是在训练过程中累积了一个参数的历史梯度的平方和，然后用这个信息来调整每个参数的学习率；
+	1. 主要用于解决传统梯度下降算法中学习率固定的问题；
+	2. 核心思想是根据参数的历史梯度信息动态调整每个参数的学习率，从而在训练过程中对不同参数采用不同的学习率
 	3. 时间久了，增量容易变为0；
 - RMSProp-AdaGrad：添加一个decay rate来缓解增量变0的问题；
 - Adam：Combination of SGD-Momentum and RMSProp；
 - AdamW：
 	1. 核心改进在于它更有效地处理权重衰减（Weight Decay）；
 	2. 它在更新参数前应用了权重衰减，这使得权重衰减与梯度更新分开；
+
+# Regularization
+
+在深度学习训练中，正则化技术用于防止模型过拟合，从而提高模型在新数据上的泛化能力。以下是一些常用的正则化技术：
+
+1. L2正则化：又叫Weight Decay。通过在损失函数中添加一个与权重大小成比例的项来惩罚大的权重值，通常表现为所有权重的平方和乘以一个常数；
+	- 因为更大的模型权重会导致模型对输入数据的变化非常敏感，即使是微小的输入变化也会引起输出的显著变化。这样模型可以记住训练数据中的噪声，从而导致过拟合；
+	- 在信号处理的角度来看，大权重值相当于模型包含了高频成分，小权重值则相当于过滤掉了这些高频成分；
+1. L1正则化：与L2类似，但是惩罚项是权重的绝对值之和，这可以导致稀疏的权重矩阵，有些权重会变成0。  
+2. Dropout：在训练过程中随机丢弃（即设置为零）网络中的一些神经元输出，以减少神经元之间复杂的共适应。
+	- 在训练的每次迭代中，每个神经元都有一定概率（通常设为 0.5）被随机丢弃，即它在前向传播和反向传播时暂时不参与计算；
+	- 实际上等同于每次都在训练不同的网络；
+	- 由于在训练时某些神经元被丢弃，因此在预测时需要对神经元的输出进行缩放，以补偿那些在训练时未被激活的神经元。如果在训练时使用了$p$的丢弃概率，则在预测时，网络的权重通常会乘以$1−p$（这个过程有时也被称为"inverted dropout"）；
+	- Dropout一般在卷积过后的全连接层使用；
+3. 数据增强：通过对训练数据进行旋转、缩放、裁剪等变换来人为增加样本多样性，提高模型的泛化能力；
+4. 早停（Early Stopping）：在验证集上的性能不再提升时停止训练，防止过拟合；
+5. Normalization：BN，GN和LN。详见[[Normalization#Batch Normalization|Normalization > Batch Normalization]]；
+6. 梯度剪切（Gradient Clipping）：限制梯度更新的步长，防止梯度爆炸；
+7. 学习率衰减：随着时间的推移逐渐减小学习率，有助于模型在训练后期稳定；
+8. Label Smoothing: 
+	- 通过将一部分真值概率标签分配给非目标类别，来对这些硬标签进行软化；
+	- 比如一个$K$分类问题，我们可以把GT的标签从0和1改为$\frac{\epsilon}{K-1}$和$1-\epsilon$，$\epsilon$是一个小的常数，比如0.01；
+9. Exponential Moving Average：
+	- Computes the weighted mean of all the previous data points and the weights decay exponentially；
+	- 模型参数的更新是按照EMA的方式计算出来的；
+	- [Ref](https://leimao.github.io/blog/Exponential-Moving-Average/)
+
+
 
 # 	Learning Rate
 

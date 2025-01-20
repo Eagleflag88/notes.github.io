@@ -27,7 +27,7 @@ share: true
 ## Dense Prediction Loss
 - Depth Prediction Loss
 	- GT: Lidar on perspective view；
-	- Depth Prediction: depth prediction head φdepth on the PV feature map；
+	- Depth Prediction: depth prediction head depth on the PV feature map；
 
 - BEV Segmentation Loss -> BCE Loss
 	- GT: BEV Map；

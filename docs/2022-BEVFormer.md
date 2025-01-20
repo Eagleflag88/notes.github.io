@@ -9,17 +9,20 @@ share: true
 - 我们把各个视角的特征图stack到一起，然后进行flatten操作；
 
 ## Temporal Self-Attention
+- 想法：利用BEV Query跟BEV Feature在时序上做Attention操作；
 - 输入：
 	1. BEV Query：维度H, W, num_query。这是一种学习出来的特征。此外，针对每个query还添加了可学习的positional embedding。
 	2. 历史BEV Feature，$B_{t-1}$维度H, W, num_query。
 - Process：
 	1. Alignment：根据本车运动关系，把$B_{t-1}$加上本车运动，形成$B^{\prime}_{t-1}$
 	2. Deformable Attention：把BEV Query当作Q，上一个时刻的BEV Feature当作K和V，做Deformable Attention。详细的过程请参考[[2021-Deformable Detr#Deformable Attention|2021-Deformable Detr > Deformable Attention]]；
-	3. 我们实际上可以把BEV Feature理解为mmdetection框架下Transformer-Encoder的memory；
+	3. 这个模块只在第一帧的时候（此时还没有BEV Feature）是Self Attention；如果有BEV Feature的时候其实是一个Cross Attention模块；
+	4. 我们实际上可以把BEV Feature理解为mmdetection框架下Transformer-Encoder的memory；
 - Output：
 	1. BEV Query和前一个时刻BEV Feature之间的相互关系，可以认为是临时的memory，也会被用作下一次Attention操作的Query；
 
 ## Spatial Cross-Attention
+- 想法：利用BEV Query跟Image Feature在空间上做Attention操作；
 - 输入：
 	1. BEV Query；
 	2. 每一个view的feature map；
@@ -43,6 +46,6 @@ share: true
 
 # Ref
 
-- BEVFormer: Learning Bird’s-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers
+- BEVFormer Learning Birds-Eye-View Representation from Multi-Camera Images via Spatiotemporal Transformers
 
 

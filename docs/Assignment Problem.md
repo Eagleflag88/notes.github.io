@@ -45,7 +45,7 @@ $$
 
 - Balanced Assignment：如果人数和任务数一样，则是balanced assignment。这个时候可以直接用上面的方法求解；
 - Unbalanced Assignment：如果人数和任务数不一样；
-	1. 如果问题本身是一个不平衡的问题，我们可以通过增加dummy col/row来把问题转化为平衡的版本；
+	1. 如果问题本身是一个不平衡的问题，我们可以通过增加dummy col/row with zero cost来把问题转化为平衡的版本；
 	2. 比如说视觉跟踪中的匹配问题；
 
 ## Ref

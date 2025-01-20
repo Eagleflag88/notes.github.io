@@ -3,7 +3,7 @@ share: true
 ---
 
 # Idea
-整个问题检测问题来处理，预测若干个set of polylines，每个polyline是由若干个有序顶点组成。
+整个问题当检测问题来处理，预测若干个set of polylines，每个polyline是由若干个有序顶点组成。
 
 # Architecture
 

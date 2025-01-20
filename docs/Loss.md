@@ -41,7 +41,13 @@ $$
 L(p,q)= -\sum_{i=1}^{n} p(x_i)\log(q(x_i))
 $$
 
-- 从上式可以看出，两个概率分布的$KL$散度最小与两者之间交叉熵最小是等价的；
+- 那我们可以得到：
+
+$$
+L(p,q)= H(p) + D_{K L}(p \| q)
+$$
+
+- 从上式可以看出，因为$H(p)$代表真值的分布，是固定的；那么两个概率分布的$KL$散度最小与两者之间交叉熵最小是等价的；
 
 ## Example
 
@@ -69,6 +75,7 @@ $$
 $$
 
 - 这里，$z$ 是模型的logits向量，$z_i$​ 是该向量中的第$i$个元素。
+- 这里指数操作（而不是直接归一化）的原因是能够把logit转换成一个正值，能自然的契合概率分布的性质；
 
 - 直接按公式计算会有数值问题：
 	1. 当$z_i$太大且大于0，直接计算$z_i$的指数会让计算Overflow；
@@ -101,21 +108,24 @@ p, & \text{when } y = 1 \\
 1-p, & \text{when } y = 0 
 \end{cases}
 $$
-- 其中，$p$指的是$y=1$的概率；
+- 其中，$p$指的是$y=1$的概率。是模型预测的概率值（经过 Sigmoid 或 Softmax 输出）；
 - $\alpha_t$​ 是正样本的权重，用于调节正负样本的重要性，可以是一个常数或者是类别的权重。
 - $\gamma$是调节因子，称为聚焦参数（focusing parameter），它的作用是减少容易分类样本的损失的影响，并使模型更加关注难以分类的样本。
+- 相比之下，Binary Cross Entropy Loss在这种terminlogy下的表达式为$BCE(p_t) = -\log(p_t)$；
 
 - 当 $\gamma=0$ 时，Focal Loss退化为标准的交叉熵损失；当 $\gamma>0$ 时，调节因子$(1-p_t)^\gamma$ 会降低易于分类样本的损失贡献，增加了对困难或错误分类样本的惩罚。具体来说：
-- 当$p_t$比较小：这个样本比较难，其Loss会被配以比较大权重；
-- 当$p_t$比较大：这个样本比较简单，其Loss会被配以比较小的权重；
+	- 当$p_t$比较小：这个样本比较难，其Loss会被配以比较大权重；
+	- 当$p_t$比较大：这个样本比较简单，其Loss会被配以比较小的权重；
 
 
 - Focal Loss特别适合于处理那些在类别分布极度不平衡的情况下的目标检测问题，比如在一幅图像中背景类的样本远多于前景类的样本。它使得模型在训练过程中更加关注那些难以正确分类的样本，从而提高整体的模型性能。
 
 # Quality Focal Loss
 
-- 普通的Focal Loss有如下问题：
-	1.  
+- 是 Focal Loss 的一个变体，它进一步结合了预测的质量（即预测的置信度）来调整损失函数；
+- 特别适用于目标检测等任务，其中预测的质量（如边界框的精确度）对最终性能影响显著；
+
+- Ref: Generalized Focal Loss: Learning Qualified and Distributed Bounding Boxes for Dense Object Detection.pdf
 
 # Smooth L1 Loss
 
@@ -156,22 +166,6 @@ $$
 - 这些变体确保了即使在没有交集的情况下，损失函数也是可导的，并且可以更有效地指导模型学习。
 
 - 总结来说，IoU损失及其变体是优化目标检测和图像分割模型中边界框定位的有效方法。它们通过对预测和真实边界框之间的重叠度进行量化，直接影响模型的训练过程，并解决了原始IoU损失在梯度方面的问题。
-
-# Dice Loss
-
-- Dice coefficient measures the overlap between the predicted mask and the ground truth mask.
-
-$$
-Dice(A, B) = \frac{2 \cdot |A \cap B|}{|A| + |B|}
-$$
-
-- The Dice loss is then calculated as the complement of the Dice coefficient
-
-$$
-DiceLoss(A, B) = 1 - Dice(A, B)
-$$
-
-- Dice Loss本身不可导，一般用作Eval的指标。但是如果一定要用来训练的话，可以使用smoothed version
 
 # Ref
 
