@@ -30,38 +30,46 @@ zeros_tensor = torch.zeros(shape)
 
 ## 属性
 
-- tensor.shape
-- tensor.dtype
-- tensor.device
-- tensor.size() → 返回的是torch.size对象，还提供了元素数量的信息
+- `tensor.shape`
+- `tensor.dtype`
+- `tensor.device`
+- `tensor.size()` → 返回的是torch.size对象，还提供了元素数量的信息
 
 ## Operation
 
-- =: tensor1 = tensor → 同一内存
+- =: `tensor1 = tensor` → 同一内存
 - Indexing
 	- 返回的也是tensor的object
-	- tensor = torch.ones(4, 4), tensor[:,1] = 0
+	- `tensor = torch.ones(4, 4), tensor[:,1] = 0`
 - Joining
-	- t1 = torch.cat([tensor, tensor, tensor], dim=1)
+	- `t1 = torch.cat([tensor, tensor, tensor], dim=1)`
 	- 默认是在第0个轴做拼接
 - 点乘
-	- tensor.mul(tensor): 表示两个tensor点乘tensor
-	- 跟tensor*tensor等价
-- 矩阵乘法: tensor.matmul(tensor.T)
-- in-place op: tensor.add_(5)
+	- `tensor.mul(tensor)`: 表示两个tensor点乘tensor
+	- 跟`tensor*tensor`等价
+- 矩阵乘法: `tensor.matmul(tensor.T)`
+- in-place op: `tensor.add_(5)`
 	- tensor本身会被改变
 	- id会保持
-- to Numpy: t = torch.ones(5), n = t.numpy()
+- to Numpy: `t = torch.ones(5), n = t.numpy()`
 
-## View
+## view
 
 - view只是在外表显示上修改了shape: 底层没有变化；
-	- tensor.view(2, 3)
+	- `tensor.view(2, 3)`
 	- 把tensor元素打乱重排，主要用于改变张量的维度大小；
 	- 但是只能在contigous的内存上 → Tensor底层一维数组元素的存储顺序与Tensor按行优先一维展开的元素顺序是否一致；
-- tensor.reshape: reshape = contiguous.view
-- tensor.permute(1, 0): 主要用于调整张量的维度顺序，不会改变每个维度元素的多少；
 - Ref: https://pytorch.org/docs/master/tensor_view.html
+
+## reshape
+
+- 不要求张量是连续的。
+- 如果张量是连续的，`reshape` 的行为与 `view` 完全相同。
+- 如果张量不连续，`reshape` 会返回一个新的张量（相当于先调用 `.contiguous()`，再调用 `.view()`）
+
+## permute
+
+- `tensor.permute(1, 0)`: 主要用于调整张量的维度顺序，不会改变每个维度元素的多少；
 
 ## 拼接
 
@@ -73,7 +81,7 @@ concatenated_tensor = torch.cat((tensor1, tensor2), dim=0)
 ```
 stacked_tensor = torch.stack((tensor1, tensor2))
 ```
-## Flatten
+## flatten
 
 - `flatten` 用于将一个多维张量展平为一维张量或将指定范围的维度展平为一维张量；
 ```
@@ -81,15 +89,29 @@ flattened_tensor = torch.flatten(tensor)
 ```
 - 这在需要将张量的高维数据展平以便于输入到全连接层（如神经网络中的全连接层）时非常有用；
 
-## Unsqueeze
+## unsqueeze
 - 用于在指定位置插入一个新的维度
 - 用法
 ```
 torch.unsqueeze(input, dim)
 ```
 - `input`: 需要操作的张量。
-- `dim`: 新维度插入的位置（索引）
+- `dim`: 新维度插入的位置（索引），可以是正数或负数，负数表示从后往前计数，比如-1表示在最后一个维度插入；
 - 返回一个新的张量，在指定的维度插入一个新维度，其中内容是未填充的；
+
+## squeeze
+- 用于压缩张量维度的函数。
+- 它的作用是移除张量中大小为 1 的维度，从而简化张量的形状。是一个非常常用的操作，特别是在需要减少不必要的维度或对齐张量形状时；
+```
+torch.squeeze(input, dim=None)
+```
+
+- Usage
+```
+x = torch.randn(1, 3, 1, 2)  # 形状: (1, 3, 1, 2)
+y = torch.squeeze(x)         # 移除所有大小为 1 的维度
+print(y.shape)               # 输出: (3, 2)
+```
 
 ## Ref
 [Pytorch_Tutorial](https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html#sphx-glr-beginner-blitz-tensor-tutorial-py)
@@ -98,22 +120,22 @@ torch.unsqueeze(input, dim)
 
 ## Forward Pass
 
-- prediction = model(data)
+- `prediction = model(data)`
 	- model
 		- 训练的resnet18模型
 		- 有参数
-	- data = torch.rand(1, 3, 64, 64)
+	- `data = torch.rand(1, 3, 64, 64)`
 - loss = (prediction - labels).sum(): loss是损失值，是个标量
 		
 ## Back Prop
 
-- loss.backward()
+- `loss.backward()`
 	- 按照链式求导计算loss对每个resnet18的参数的导数
 	- 存在参数的.grad属性中
 
 ## requires_grad
 
-- a = torch.tensor([2., 3.], requires_grad=True)
+- `a = torch.tensor([2., 3.], requires_grad=True)`
 - 当requires_grad = True: 这个变量就是trainable
 - 当任意输入requires_grad = True: 输出就是trainable
 
@@ -137,10 +159,10 @@ torch.unsqueeze(input, dim)
 - frozen parameter
 	- 可以通过把参数的requires_grad置false让计算图不再计算这个参数的梯度
 	- 在Finetuning的时候可用
-	- 也可以用torch.no_grad()来创造一个无grad的环境 → with torch.no_grad():
+	- 也可以用`torch.no_grad()`来创造一个无grad的环境 → `with torch.no_grad():`
 
 ## detach()
-- new_z = z.detach(): 返回一个new_z，这个tensor不会记得他的计算历史。但是z仍然存在计算图中
+- `new_z = z.detach()`: 返回一个new_z，这个tensor不会记得他的计算历史。但是z仍然存在计算图中
 
 ## Variable
 - Tensor的封装
@@ -252,8 +274,8 @@ trainset = torchvision.datasets.CIFAR10(root='./data',
 ## DataSet Splitting
 - torch.randperm: 产生random indices of training and test set
 - Splitting
-	- torch.utils.data.Subset(dataset)
-	- torch.utils.data.random_split(dataset)
+	- `torch.utils.data.Subset(dataset)`
+	- `torch.utils.data.random_split(dataset)`
 
 ## DataLoader
 - wrap the dataset into iterable
@@ -290,17 +312,17 @@ trainloader = torch.utils.data.DataLoader(trainset,
 	- 数据被分成多个大小一致的minibatch: 通过dataloader定义
 	- 针对每个minibatch
 		- 通过dataloader获得本minibatch的输入和标签 → ``for batch, (X, y) in enumerate(dataloader):``
-		- 根据输入计算预测的输出 → pred = model(X)
-		- 计算loss → loss = loss_fn(pred, y)
-		- 清除parameter的梯度信息 → optimizer.zero_grad()。因为在 PyTorch 中，默认情况下梯度是累积的。这意味着在每次反向传播过程中，新计算的梯度会添加到已存在的梯度上；
-		- 进行back prop → loss.backward()
-		- 调整参数 → optimizer.step()
+		- 根据输入计算预测的输出 → `pred = model(X)`
+		- 计算loss → `loss = loss_fn(pred, y)`
+		- 清除parameter的梯度信息 → `optimizer.zero_grad()`。因为在 PyTorch 中，默认情况下梯度是累积的。这意味着在每次反向传播过程中，新计算的梯度会添加到已存在的梯度上；
+		- 进行back prop → `loss.backward()`
+		- 调整参数 → `optimizer.step()`
 	- update learning rate
 	- Ref: [QuickStart](https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html)
 
 ## Testing
-- 把model调整到评估模式 → model.eval()
-- 开一个无grad的context → with torch.no_grad():
+- 把model调整到评估模式 → `model.eval()`
+- 开一个无grad的context → `with torch.no_grad():`
 - 计算loss
 
 
