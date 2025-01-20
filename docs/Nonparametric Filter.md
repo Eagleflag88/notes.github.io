@@ -39,9 +39,9 @@ share: true
 			- 每个particle被采到的概率跟importance相关；
 			- 使得高权重的粒子更有可能被选择，低权重的粒子被淘汰，从而保持样本的多样性和避免样本退化；
 			- 这个过程中不会直接更新粒子的权重，而是通过改变同一权重的粒子的数量改变整个权重在粒子之中的分布；
+			- 最终所有的粒子的权重一样；
 	- Step 4 -> 根据重采样出来的粒子更新状态
-		- 获得$p(x_k|z_k)$
-		- 实质上就是利用Likelihood进行Correction
+		- 计算所有粒子的加权平均来获得$p(x_k|z_k)$
 		- Alternative: 不进行resampling而是直接利用likelihood更新权重 → $w_{k,i} = p(z_k|x_{k,i})w_{k-1,i}$
 		- Ref: Probabilistic Robotics.pdf，p79
 - Importance Resampling
