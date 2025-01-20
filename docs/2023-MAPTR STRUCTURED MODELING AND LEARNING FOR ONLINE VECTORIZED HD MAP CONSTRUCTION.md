@@ -9,9 +9,9 @@ share: true
 # Architecture:
 
 ## Encoder
-- Feature Extraction (ResNet)
+- Feature Extraction (ResNet)，在Transformer Encoder的Attention模块中是Key和Value
 - 2D-BEV Transformation (GKT/LSS)
-- BEV Feature （HxWxC）
+- BEV Feature （HxWxC），在Transformer Encoder的Attention模块中是Query，其实就是代码中的BEV Query。最后输出的BEV Feature也是这个，可以理解为在每个BEV视角可能的坐标上都查询了一次；
 
 ## Decoder: 
 
