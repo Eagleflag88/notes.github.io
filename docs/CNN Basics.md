@@ -5,17 +5,17 @@ share: true
 # Standard Convolution
 
 - Input
-	1. Image Tensor: 维度 → B, C, H, W。H高，W宽，C通道数, B, sample数。
-	2. Conv Kernel: 维度 → N, N, D。N是长宽，D是深度（要求和C一样大，如果是图片作输入，C是3。）。一般会有K个Kernel；单个Kernel我们记为W；
+	1. Feature Map: 维度 → B, C, H, W。H高，W宽，C通道数, B, Batch Size。
+	2. Conv Kernel: 维度 → N, N, D。N是长宽，D是深度（要求和C一样大，如果是图片作输入，C是3）。一般会有K个Kernel。单个Kernel我们记为W；
 - Process
-	1. 在Image Tensor上提取出一块, I。跟Kernel的维度一致N, N, C；
-	2. 把W和I展平，做点乘并加上bias：$s=I*W+b$。$s$是一个标量，代表Feature Map上的一个点；
+	1. 在Feature Map上提取出一块, I。跟Kernel的维度一致N, N, C；
+	2. 把W和I展平，做点乘并加上bias：$s=I*W+b$。$s$是一个标量，形成输出Feature Map上的一个点；
 	3. 滑动窗口：卷积核在输入图像上滑动，每次移动一定的步长（stride），通常是1个像素点。如果超过了输入图片的范围，则会进行padding，一般置0；
 	4. 特征图反映了输入图像在卷积核探测的特定特征上的响应；
 	5. 一个卷积层可能有K个不同的卷积核，每个都会生成一个不同的特征图。K一般被称为卷积层的通道数；
 - Output
 	- 特征图：维度 → B, K, (H - N + 2xPadding)/Stride, (W - N + 2xPadding)/Stride。
-	- 可以看出，特征图的通道数由卷积层通道数决定；
+	- 可以看出，特征图的通道数由卷积核的个数K决定；
 
 - Hyperparameter
 	1. Stride：Kernel在卷积时移动的格子数；
@@ -25,7 +25,7 @@ share: true
 
 $\underline{优化实现}$
 
-直接按照卷积的定义进行计算效率很低，一般采用所谓im2col的方法来提速，具体来说：
+直接按照卷积的定义进行计算效率很低，一般采用所谓im2col的方法来提速，主要目的是将卷积操作转换为矩阵乘法，从而利用高效的线性代数库加速计算。具体来说：
 - Input
 	1. 特征图F，维度 → C, H, W；
 	2. 卷积核K，维度 → C, N, N；
