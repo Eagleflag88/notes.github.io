@@ -57,7 +57,6 @@ share: true
 ## Baseline Model
 
 - baseline large: BEVFormer + DETR
-- 
 
 ## Conclusion
 
