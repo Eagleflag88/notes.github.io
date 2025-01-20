@@ -9,7 +9,7 @@ share: true
 
 # Concept
 
-- 对lane的detection和topo关系采用统一的representation
+- 引入LaneSegment，对lane的detection和topo关系采用统一的representation
 
 ## Lane Segment
 
