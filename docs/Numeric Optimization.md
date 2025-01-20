@@ -9,7 +9,7 @@ share: true
 
 # Approach
 
-# 迭代法
+## 迭代法
 
 - 通过计算一连串$F(X_1, X_2, X_3, ..., X_n)$的值来获得$F(X)$的最小值和此时$X$的值
 - 通过调整$X$向量来使目标函数下降，能降多少降多少
@@ -21,7 +21,7 @@ share: true
 	- 泰勒展开后仅保留一阶项 → $F(X + \Delta X) = F(X) + J\Delta X$
 	- 求上式关于$\Delta X$的导数
 		1. 并令其为0
-		2. 获得迭代量 → $\Delta X = -J(X)$
+		2. 获得迭代量 → $\Delta X = -J(X)$，有时候可以在梯度上加上学习率$\gamma J(x)$；
 	- 因为过于贪心，迭代次数太多，收敛慢
 - 二阶梯度法(牛顿法)
 	- 保留一阶和二阶项 → $F(X + \Delta X) = F(X) + J\Delta X + \frac{1}{2}\Delta X^TH\Delta X$
