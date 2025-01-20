@@ -11,7 +11,7 @@ share: true
 - BN在每个mini-batch的数据通过以下步骤进行：
 	1. 计算均值：计算当前mini-batch的均值；
 	2. 计算方差：计算当前mini-batch的方差；
-	3. 这里的计算范围是这个mini-batch里的所有特征图的某一个通道，比如说特征图的维度是50x60x8，batch size是16，那么BN会计算出8个均值和方差。当然如果batch size是32，也是计算出8个均值和方差。直觉的理解是计算某一个特征通道在这些batch里的统计值；
+	3. 这里的计算范围是这个mini-batch里的所有特征图的某一个通道，比如说特征图的维度是50x60x8，batch size是16，那么BN会计算出8个均值和方差。当然如果batch size是32，也是计算出8个均值和方差。直觉的理解是计算某一个特征通道在这些batch里的统计值；注意，这里的计算是跨batch的；
 	4. 归一化：使用上述均值和方差对输入数据进行归一化处理，确保输出数据的均值为0，方差为1；
 	5. 缩放和偏移：对归一化后的数据进行缩放和偏移变换，这里引入了两个可学习参数，即$\gamma$（缩放因子）和$\beta$（偏移因子）；
 - In Training using the mean and variance of the mini batches, at inference the mean and variance of the whole training set will be used.
