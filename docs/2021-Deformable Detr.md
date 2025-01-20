@@ -11,16 +11,19 @@ share: true
 # Deformable Attention
 
 ## Concept
-- 引入可变形的采样点来选择性地关注部分关键位置；
+- 引入可变形的采样点（Sampling Points）来选择性地关注部分关键位置（Reference Points）；
 - Fast convergence, and computational and memory efficiency；
-- 
+- 多尺度支持：允许模型为每个 Query 预测一组采样点的偏移量，这些采样点可以分布在不同的空间位置和尺度上；
 
 ## Architecture
 
 - Input：
 	1. Feature Map
 	2. Query
-	3. Reference Point：关键概念之一。它们用于定义查询位置的初始位置，并作为可变形采样点计算的基准。基本上就是均匀采样，我们就在这个的基础上加上offset得到最终的sampling point
+	3. Reference Point：关键概念之一。参考点是每个查询（query）的初始位置，并作为可变形采样点计算的基准。
+		- 在Self Attention之中基本上就是均匀采样
+		- 在Cross Attention中通过一个简单的线性变换（如全连接层）从查询向量（query embeddings）中生成。
+		- 我们就在这个的基础上加上offset得到最终的sampling point；
 - Process：
 	1. query通过一个Linear线性层得到Offset；
 	2. query通过一个Linear和Softmax得到Attention Weight。相当于Q和K的点乘结果；
@@ -46,7 +49,7 @@ $\underline{Structure}$
 (MsDeformableSelfAttention, LayerNormalization, FeedForwardNetwork, LayerNormalization)x6
 
 $\underline{Process}$
-1. 生成encoder使用的reference_point，基本上就是均匀采样；
+1. 在feature map上生成encoder使用的reference_point，基本上就是均匀采样；
 2. 使用MultiScaleDeformableAttention的SelfAttention进行特征聚合，输入就是Q=feat_flatten+位置编码，Key和Value也是feat_flatten；重复6次，获得多尺度聚合的图片特征：bs, num_feat, num_embed，在mmdetection中被称为memory；
 
 ## Transformer-Decoder
@@ -63,7 +66,7 @@ $\underline{Structure}$
 $\underline{Process}$
 1. 形成Object Query，shape是num_query, num_embed，这个是需要学习出来的；然后生成Query Pos，并利用它和一个线性变换生成参考点（DeformableAttention需要）；
 2. SelfAttention：Object Query自己做自注意，这里用的是普通的MultiHeadAttention。
-3. CrossAttention：用自注意的输出和Encoder的memory做互注意，企图获得我们要查找的object和图片的高维特征之间的关系；这个Attention机制中的Q是object query，K和V则是memory。因为要跟memory做交互，所以用了MSDeformableAttention。输出的shape跟Query是一致的；
+3. CrossAttention：用自注意的输出和Encoder的memory做互注意，来获得我们要查找的object和图片的高维特征之间的关系；这个Attention机制中的Q是object query，K和V则是memory。因为要跟memory做交互，所以用了MSDeformableAttention。输出的shape跟Query是一致的；
 4. 最后输出的是每一层的Object Query和参考点；
 
 ## Head
