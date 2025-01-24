@@ -6,19 +6,28 @@ share: true
 
 - 之前的工作主要聚焦在加强detection的性能，以期获得更好的topo reasoning的表现；
 
+# Concept
+
+- 显式的计算lane之间的关系，然后融入到模型里面；
+
 
 # Architecture
 
 ## Feature Extraction
 
-- PV → Multiscale Feature Extraction → PV Feature, $F_{pv}$；
-- $F_{pv}$ → View Transformation → $F_{bev}$; 
+- PV：Multiscale Feature Extraction → PV Feature, $F_{pv}$；ResNet + FPN；
+- $F_{pv}$：View Transformation → $F_{bev}$; BEVFormer-like；
 
 ## Lane Decoder
 
 - Input:
 	- Lane Query
 	- $F_{bev}$
+- Process：
+	- DeTr-like Structure；
+	- GNN；
+- Output
+	- Lane Coordinate
 
 ## Geometric Distance Topology
 - Input
