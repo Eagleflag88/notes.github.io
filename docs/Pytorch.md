@@ -125,7 +125,7 @@ print(y.shape)               # 输出: (3, 2)
 		- 训练的resnet18模型
 		- 有参数
 	- `data = torch.rand(1, 3, 64, 64)`
-- loss = (prediction - labels).sum(): loss是损失值，是个标量
+- `loss = (prediction - labels).sum()`: loss是损失值，是个标量
 		
 ## Back Prop
 
@@ -136,8 +136,8 @@ print(y.shape)               # 输出: (3, 2)
 ## requires_grad
 
 - `a = torch.tensor([2., 3.], requires_grad=True)`
-- 当requires_grad = True: 这个变量就是trainable
-- 当任意输入requires_grad = True: 输出就是trainable
+- 当`requires_grad = True`: 这个变量就是trainable
+- 当任意输入`requires_grad = True`: 输出就是trainable
 
 ## Computational Graph
 
@@ -184,29 +184,29 @@ print(y.shape)               # 输出: (3, 2)
 - 定义模型的forward方法
 
 ## `__Init__()`
-- nn.Sequential
+- `nn.Sequential`
 	- Container,一般用来搭建小的block
 	- 比如：Conv2d+ReLU+MaxPool
-- nn.Conv2d
+- `nn.Conv2d`
 	- 2d卷积
 	- Parameter
 		- 输入输出通道数
 		- kernel size
 		- Stride，Padding等等，具体如何发挥作用参见[[CNN Basics#Standard Convolution|CNN Basics > Standard Convolution]]
 	- expect input with the shape (n_samples, channels, height, width)
-- nn.ReLU: inpalce置为true会导致输入变量被保留
-- nn.MaxPool2d: Pooling
-- nn.AvgPool2d
-- nn.Linear
+- `nn.ReLU`: inpalce置为true会导致输入变量被保留
+- `nn.MaxPool2d`: Pooling
+- `nn.AvgPool2d`
+- `nn.Linear`
 	- model线性关系
 	- Parameter
 		- 输入feature数
 		- 输出feature数
-- nn.Dropout(p)
+- `nn.Dropout(p)`
 	- 输出中的某些元素会以概率p被置0
 	- 放在全连接层前面
 	- 参见[[Training#Regularization|Training > Regularization]]
-- nn.BatchNorm2d
+- `nn.BatchNorm2d`
 	- 在每个Channel里计算mean和var
 	- 输入和输出的shape一致
 	- Parameter
@@ -216,22 +216,27 @@ print(y.shape)               # 输出: (3, 2)
 - 以上模块有默认的初始化方式
 	- 可以利用下面这句来初始化的时候调用父类的初始化函数
 	- ``super(Net, self).__init__()``
-- torch.nn → 包含可训练的参数
-- torch.nn.functional → 不包含可训练的参数
+- `torch.nn` → 包含可训练的参数
+- `torch.nn.functional` → 不包含可训练的参数
 
 ## forward()
-- x = self.module(x)
-- x.view: 调整tensor的组织方式
-- x.flatten: 把输入展平
+- `x = self.module(x)`
+- `x.view`: 调整tensor的组织方式
+- `x.flatten`: 把输入展平
 - 由Torch.nn搭建的模型只接受minibatch形式的输入
-- 对单个sample可以用input.unsqueeze(0)来fake minibatch
+- 对单个sample可以用`input.unsqueeze(0)`来fake minibatch
 
 ## 常用方法
-- model.parameters(): 返回模型的可学习参数
-- model.zero_grad(): 把模型的可学习参数置零
+- `model.parameters()`: 返回模型的可学习参数
+- `model.zero_grad()`: 把模型的可学习参数置零
 
 ## torch_stat
-- 获得模型的相关信息 → from torchstat import stat,  stat(model, (3, 224, 224))
+- 获得模型的相关信息 → 
+```
+from torchstat import stat
+stat(model, (3, 224, 224))
+```
+
 - Ref: https://github.com/Swall0w/torchstat
 
 ## Ref
@@ -296,13 +301,13 @@ trainloader = torch.utils.data.DataLoader(trainset,
 # Training
 
 ## Loss Function
-- criterion = nn.CrossEntropyLoss()
-- loss = criterion(output, target)
+- `criterion = nn.CrossEntropyLoss()`
+- `loss = criterion(output, target)`
 
 ## Optimizer
-- torch.optim → Optimizer Constructor
+- `torch.optim` → Optimizer Constructor
 - Parameter
-	- 模型的待优化变量model.parameter()
+	- 模型的待优化变量`model.parameter()`
 	- learning rate
 	- momentum
 - learning rate schedular

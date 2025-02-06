@@ -21,11 +21,11 @@ share: true
 
 ## 方法
 - 创建
-	- iterator = iter(iterable)
+	- `iterator = iter(iterable)`
 	- 利用可迭代对象创建一个iterator对象
 	- 不会返回iterable的所有内容，而是yield
 - 迭代
-	- value = next(iterator)
+	- `value = next(iterator)`
 	- 调用iterator的next方法返回可迭代对象中的下一个值
 ## Ref
 - https://www.geeksforgeeks.org/iterators-in-python/
@@ -42,19 +42,19 @@ share: true
 - 创建
 	- 创建之后返回的实际上是一个iterator
 		- 也是简单的创建iterator的办法
-		- 会同时自动实现__next()__和__iter()__方法
+		- 会同时自动实现`__next()__`和`__iter()__`方法
 	- 使用generator expression
-		- csv_gen = (row for row in open(file_name))
+		- `csv_gen = (row for row in open(file_name))`
 		- csv_gen是一个generator object
 	- 调用generator function -> 在返回的时候用yield
 		- 普通函数变成generator function
-		- def gen_func(): yield 1 yield 2
-		- x = gen_func() -> x是一个generator object
+		- `def gen_func(): yield 1 yield 2`
+		- `x = gen_func()` -> x是一个generator object
 - Usage
-	- x.next()/next(x) -> 返回下一个值
-	- x.send() -> 重置generator的状态
+	- `x.next()`/`next(x)` -> 返回下一个值
+	- `x.send()` -> 重置generator的状态
 	- For循环
-		- for i in gen_func() -> 使用generator expression也一样
+		- `for i in gen_func()` -> 使用generator expression也一样
 		- 使用yield返回，占用内存小
 - Ref
 	- geeksforgeeks
@@ -66,7 +66,7 @@ share: true
 # for
 - Collection-based loop
 	- 程序在一个collection of object上迭代
-	- for i in collection -> collection需要是iterable的对象，比如说range()返回的对象
+	- `for i in collection` -> collection需要是iterable的对象，比如说range()返回的对象
 - Process
 	1. 调用iter(iterable)返回一个iterator
 	2. 调用next(iterator)，返回值赋给i
@@ -75,10 +75,10 @@ share: true
 - Ref: https://realpython.com/python-for-loop/
 - range()
 	- 遍历元素
-	- for i in range(0, 5) -> range()返回的是一个list，全元素
+	- `for i in range(0, 5)` -> range()返回的是一个list，全元素
 - enumerate()
 	- 遍历的同时还能获得count
-	- for count, value in enumerate(values):
+	- `for count, value in enumerate(values):`
 
 # 名称作用域
 - local：函数内部变量
@@ -108,8 +108,10 @@ share: true
 - 动态类型风格
 - 一个对象能否被某个父类对象使用，关键不在于他的类型而决定与他所实现的方法和属性
 ## 例子
-- def makeRun(animalType):
+```
+def makeRun(animalType):
     animalType.run()
+```
 - 传入的参数类型不一定需要是animalType，只要他实现了run()，就能调用成功
 - Ref: https://www.jianshu.com/p/e97044a8169a
 
@@ -146,8 +148,50 @@ say_hello()
 	- 小整数对象池
 		- 小整数对象[-5,256]是全局解释器范围内被重复使用，引用的对象都是同一个
 		- 区间内的整数不同变量只要值相同，引用地址也相同
-		- c = 257, d = 257 -> c is d → true
+		- `c = 257, d = 257` -> `c is d` → true
 	- 大整数对象池
 		- 处于同一个代码块的不可变对象是同一个对象
 		- Ref: https://blog.csdn.net/LLY_A_/article/details/106724213
 	- intern机制 -> python对运行中产生的字符串也会形成一个池
+
+# typing
+
+- 可以使用typing模块来对基本数据类型作注解；
+- 基础的数据类型可以直接使用：
+```
+def add(x: int, y: int) -> int:
+    return x + y
+```
+- `x: int` 和 `y: int` 表示参数 `x` 和 `y` 只能是整数。
+- `-> int` 表示返回值是整数。
+
+- 3.8版本之中，复杂数据类型需要通过typing模块导入：
+```
+from typing import List, Tuple, Dict, Set, Union, Optional
+
+# 列表
+def process_items(items: List[int]) -> None:
+    for item in items:
+        print(item)
+
+# 元组（固定长度）
+def get_coordinates() -> Tuple[float, float]:
+    return (1.0, 2.0)
+
+# 字典
+def user_data() -> Dict[str, int]:
+    return {"age": 25, "score": 90}
+
+# 集合
+def unique_values() -> Set[str]:
+    return {"apple", "banana", "cherry"}
+
+# 多种可能的类型
+def parse_value(value: Union[int, str]) -> str:
+    return str(value)
+
+# 可选值（None 或 指定类型）
+def get_name(name: Optional[str]) -> str:
+    return name if name else "Unknown"
+```
+- Python 3.9+ 可以直接用 `list[int]`、`dict[str, int]`，减少 `typing` 依赖。
