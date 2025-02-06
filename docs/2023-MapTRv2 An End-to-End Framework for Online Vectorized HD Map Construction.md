@@ -14,7 +14,12 @@ share: true
 # Architecture:
 - Encoder: Feature Extraction (ResNet) + 2D-BEV Transformation （ LSS-based BEVPoolv2） -> BEV Feature （HxWxC）
 - Decoder: 
-	1. Decoupled Self-attention，performing attention along the inter-ins. dimension and intra-ins. dimension；
+	1. Decoupled Self-attention：
+		- 先做跨instance的self attention，然后再做instance内部的点的级别的self attention；
+		- 跟普通的self attention的计算复杂度是$O(N_{pt} \times N_{ins})^2$，decoupled的复杂度是$O(N_{pt} + N_{ins})^2$；
+	2. Cross Attention:
+		- 跟[[2023-MAPTR STRUCTURED MODELING AND LEARNING FOR ONLINE VECTORIZED HD MAP CONSTRUCTION#Decoder|2023-MAPTR STRUCTURED MODELING AND LEARNING FOR ONLINE VECTORIZED HD MAP CONSTRUCTION > Decoder]]的结构一致；
+- Prediction Head
 
 # Training
 
